@@ -26,12 +26,12 @@ Let’s start by learning how to introduce yourself in Japanese. Below are examp
 
 | Vocabulary | Kana       | English Gloss |
 |------------|------------|---------------|
-| こんにちは | こんにちは | Hello         |
+| こんにちは | - | Hello         |
 | 私         | わたし     | I, me         |
-| の         | の         | Possessive particle (of) |
+| の         | -         | Possessive particle (of) |
 | 名前       | なまえ     | Name          |
-| は         | は         | Topic marker  |
-| です       | です       | Is (copula)   |
+| は         | -         | Topic marker  |
+| です       | -       | Is (copula)   |
 
 - 私はアメリカから来ました。  
 *(I am from America.)*
@@ -39,9 +39,9 @@ Let’s start by learning how to introduce yourself in Japanese. Below are examp
 | Vocabulary | Kana       | English Gloss |
 |------------|------------|---------------|
 | 私         | わたし     | I, me         |
-| は         | は         | Topic marker  |
-| アメリカ   | アメリカ   | America       |
-| から       | から       | From          |
+| は         | -         | Topic marker  |
+| アメリカ   | -   | America       |
+| から       | -       | From          |
 | 来ました   | きました   | Came (past tense of "come") |
 
 - 私の家族は4人です。  
@@ -50,12 +50,12 @@ Let’s start by learning how to introduce yourself in Japanese. Below are examp
 | Vocabulary | Kana       | English Gloss |
 |------------|------------|---------------|
 | 私         | わたし     | I, me         |
-| の         | の         | Possessive particle (of) |
+| の         | -         | Possessive particle (of) |
 | 家族       | かぞく     | Family        |
-| は         | は         | Topic marker  |
+| は         | -         | Topic marker  |
 | 4          | よん       | Four          |
 | 人         | にん       | Person (counter for people) |
-| です       | です       | Is (copula)   |
+| です       | -       | Is (copula)   |
 
 - 私は日本語を勉強しています。  
 *(I am studying Japanese.)*
@@ -63,11 +63,11 @@ Let’s start by learning how to introduce yourself in Japanese. Below are examp
 | Vocabulary | Kana           | English Gloss |
 |------------|----------------|---------------|
 | 私         | わたし         | I, me         |
-| は         | は             | Topic marker  |
+| は         | -             | Topic marker  |
 | 日本語     | にほんご       | Japanese language |
-| を         | を             | Object marker |
+| を         | -             | Object marker |
 | 勉強       | べんきょう     | Study         |
-| しています | しています     | Is doing (progressive form) |
+| しています | -     | Is doing (progressive form) |
 
 - 私は毎日日本の本を読みます。  
 *(I read Japanese books every day.)*
@@ -75,12 +75,12 @@ Let’s start by learning how to introduce yourself in Japanese. Below are examp
 | Vocabulary | Kana       | English Gloss |
 |------------|------------|---------------|
 | 私         | わたし     | I, me         |
-| は         | は         | Topic marker  |
+| は         | -         | Topic marker  |
 | 毎日       | まいにち   | Every day     |
 | 日本       | にほん     | Japan         |
-| の         | の         | Possessive particle (of) |
+| の         | -         | Possessive particle (of) |
 | 本         | ほん       | Book          |
-| を         | を         | Object marker |
+| を         | -         | Object marker |
 | 読みます   | よみます   | Read (present tense) |
 
 - 家族と一緒旅行に行きます。  
@@ -89,11 +89,11 @@ Let’s start by learning how to introduce yourself in Japanese. Below are examp
 | Vocabulary | Kana       | English Gloss |
 |------------|------------|---------------|
 | 家族       | かぞく     | Family        |
-| と         | と         | With          |
+| と         | -         | With          |
 | 一緒       | いっしょ   | Together      |
-| に         | に         | Particle (indicating companionship) |
+| に         | -         | Particle (indicating companionship) |
 | 旅行       | りょこう   | Travel        |
-| に         | に         | Particle (indicating purpose/destination) |
+| に         | -         | Particle (indicating purpose/destination) |
 | 行きます   | いきます   | Go (present tense) |
 
 - こんにちは、アメリカから来た Edward です。  
@@ -101,11 +101,11 @@ Let’s start by learning how to introduce yourself in Japanese. Below are examp
 
 | Vocabulary | Kana       | English Gloss |
 |------------|------------|---------------|
-| こんにちは | こんにちは | Hello         |
-| アメリカ   | アメリカ   | America       |
-| から       | から       | From          |
+| こんにちは | - | Hello         |
+| アメリカ   | -   | America       |
+| から       | -       | From          |
 | 来た       | きた       | Came (past tense, informal) |
-| です       | です       | Is (copula)   |
+| です       | -       | Is (copula)   |
 
 - 私の名前は Edward で、家族は4人います。  
 *(My name is Edward, and my family has 4 people.)*
@@ -113,15 +113,15 @@ Let’s start by learning how to introduce yourself in Japanese. Below are examp
 | Vocabulary | Kana       | English Gloss |
 |------------|------------|---------------|
 | 私         | わたし     | I, me         |
-| の         | の         | Possessive particle (of) |
+| の         | -         | Possessive particle (of) |
 | 名前       | なまえ     | Name          |
-| は         | は         | Topic marker  |
-| で         | で         | And (conjunction) |
+| は         | -         | Topic marker  |
+| で         | -         | And (conjunction) |
 | 家族       | かぞく     | Family        |
-| は         | は         | Topic marker  |
+| は         | -         | Topic marker  |
 | 4          | よん       | Four          |
 | 人         | にん       | Person (counter for people) |
-| います     | います     | Exist (for animate objects) |
+| います     | -     | Exist (for animate objects) |
 
 ---
 
@@ -131,18 +131,18 @@ Next, let’s learn a conversation for checking into a hotel (*ホテル*). Belo
 
 ### 対話 (*たいわ*) - Dialogue:
 
-**ホテルスタッフ (*ホテルスタッフ*):**  
+**ホテルスタッフ:**  
 いらっしゃいませ。ご予約のお名前をお願いします。  
 *(Welcome. May I have your reservation name, please?)*
 
 | Vocabulary | Kana           | English Gloss |
 |------------|----------------|---------------|
-| いらっしゃいませ | いらっしゃいませ | Welcome (polite greeting) |
-| ご             | ご             | Honorific prefix |
+| いらっしゃいませ | - | Welcome (polite greeting) |
+| ご             | -             | Honorific prefix |
 | 予約           | よやく         | Reservation   |
-| の             | の             | Possessive particle (of) |
+| の             | -             | Possessive particle (of) |
 | 名前           | なまえ         | Name          |
-| を             | を             | Object marker |
+| を             | -             | Object marker |
 | お願いします   | おねがいします | Please (do)   |
 
 **あなた:**  
@@ -151,24 +151,24 @@ Next, let’s learn a conversation for checking into a hotel (*ホテル*). Belo
 
 | Vocabulary | Kana       | English Gloss |
 |------------|------------|---------------|
-| はい       | はい       | Yes           |
-| です       | です       | Is (copula)   |
+| はい       | -       | Yes           |
+| です       | -       | Is (copula)   |
 
-**ホテルスタッフ (*ホテルスタッフ*):**  
+**ホテルスタッフ:**  
 ありがとうございます。Edward 様ですね。シングルルームを1泊ご予約いただいています。  
 *(Thank you. Mr. Edward, you have a reservation for a single room for one night.)*
 
 | Vocabulary       | Kana           | English Gloss |
 |------------------|----------------|---------------|
-| ありがとうございます | ありがとうございます | Thank you (polite) |
+| ありがとうございます | - | Thank you (polite) |
 | 様               | さま           | Honorific suffix (Mr./Ms.) |
-| ですね           | ですね         | Isn’t it? (confirmation) |
-| シングルルーム   | シングルルーム | Single room   |
-| を               | を             | Object marker |
+| ですね           | -         | Isn’t it? (confirmation) |
+| シングルルーム   | - | Single room   |
+| を               | -             | Object marker |
 | 1泊              | いっぱく       | One night     |
 | ご               | ご             | Honorific prefix |
 | 予約             | よやく         | Reservation   |
-| いただいています | いただいています | Have received (humble) |
+| いただいています | - | Have received (humble) |
 
 **あなた:**  
 はい、そうです。  
@@ -176,26 +176,26 @@ Next, let’s learn a conversation for checking into a hotel (*ホテル*). Belo
 
 | Vocabulary | Kana       | English Gloss |
 |------------|------------|---------------|
-| はい       | はい       | Yes           |
-| そうです   | そうです   | That’s right  |
+| はい       | -       | Yes           |
+| そうです   | -   | That’s right  |
 
-**ホテルスタッフ (*ホテルスタッフ*):**  
+**ホテルスタッフ:**  
 お部屋の鍵です。朝食は7時から9時までです。  
 *(Here is your room key. Breakfast is from 7 to 9 a.m.)*
 
 | Vocabulary | Kana           | English Gloss |
 |------------|----------------|---------------|
-| お         | お             | Honorific prefix |
+| お         | -             | Honorific prefix |
 | 部屋       | へや           | Room          |
-| の         | の             | Possessive particle (of) |
+| の         | -             | Possessive particle (of) |
 | 鍵         | かぎ           | Key           |
-| です       | です           | Is (copula)   |
+| です       | -           | Is (copula)   |
 | 朝食       | ちょうしょく   | Breakfast     |
-| は         | は             | Topic marker  |
+| は         | -             | Topic marker  |
 | 7時        | しちじ         | 7 o’clock     |
-| から       | から           | From          |
+| から       | -           | From          |
 | 9時        | くじ           | 9 o’clock     |
-| まで       | まで           | Until         |
+| まで       | -           | Until         |
 
 **あなた:**  
 ありがとうございます。Wi-Fi はありますか？  
@@ -203,29 +203,29 @@ Next, let’s learn a conversation for checking into a hotel (*ホテル*). Belo
 
 | Vocabulary       | Kana           | English Gloss |
 |------------------|----------------|---------------|
-| ありがとうございます | ありがとうございます | Thank you (polite) |
+| ありがとうございます | - | Thank you (polite) |
 | Wi-Fi            | ワイファイ     | Wi-Fi         |
-| は               | は             | Topic marker  |
-| あります         | あります       | Exists (for inanimate objects) |
-| か               | か             | Question marker |
+| は               | -             | Topic marker  |
+| あります         | -       | Exists (for inanimate objects) |
+| か               | -             | Question marker |
 
-**ホテルスタッフ (*ホテルスタッフ*):**  
+**ホテルスタッフ:**  
 はい、Wi-Fi は無料でご利用いただけます。パスワードは「hotel123」です。  
 *(Yes, Wi-Fi is free. The password is "hotel123".)*
 
 | Vocabulary       | Kana           | English Gloss |
 |------------------|----------------|---------------|
-| はい             | はい           | Yes           |
+| はい             | -           | Yes           |
 | Wi-Fi            | ワイファイ     | Wi-Fi         |
-| は               | は             | Topic marker  |
+| は               | -             | Topic marker  |
 | 無料             | むりょう       | Free          |
-| で               | で             | By means of (particle) |
-| ご               | ご             | Honorific prefix |
+| で               | -             | By means of (particle) |
+| ご               | -             | Honorific prefix |
 | 利用             | りよう         | Use           |
-| いただけます     | いただけます   | Can use (humble) |
-| パスワード       | パスワード     | Password      |
-| は               | は             | Topic marker  |
-| です             | です           | Is (copula)   |
+| いただけます     | -   | Can use (humble) |
+| パスワード       | -     | Password      |
+| は               | -             | Topic marker  |
+| です             | -           | Is (copula)   |
 
 **あなた:**  
 わかりました。ありがとうございます。  
@@ -233,8 +233,8 @@ Next, let’s learn a conversation for checking into a hotel (*ホテル*). Belo
 
 | Vocabulary       | Kana           | English Gloss |
 |------------------|----------------|---------------|
-| わかりました     | わかりました   | I understand  |
-| ありがとうございます | ありがとうございます | Thank you (polite) |
+| わかりました     | -   | I understand  |
+| ありがとうございます | - | Thank you (polite) |
 
 ### 追加 (*ついか*) の例文 (*れいぶん*) - Additional Examples:
 
@@ -243,25 +243,25 @@ Next, let’s learn a conversation for checking into a hotel (*ホテル*). Belo
 
 | Vocabulary | Kana       | English Gloss |
 |------------|------------|---------------|
-| ご         | ご         | Honorific prefix |
+| ご         | -         | Honorific prefix |
 | 予約       | よやく     | Reservation   |
-| は         | は         | Topic marker  |
+| は         | -         | Topic marker  |
 | 2          | に         | Two           |
 | 泊         | はく       | Night (counter for nights) |
-| です       | です       | Is (copula)   |
+| です       | -       | Is (copula)   |
 
 - お部屋は2階にあります。  
 *(The room is on the 2nd floor.)*
 
 | Vocabulary | Kana       | English Gloss |
 |------------|------------|---------------|
-| お         | お         | Honorific prefix |
+| お         | -         | Honorific prefix |
 | 部屋       | へや       | Room          |
-| は         | は         | Topic marker  |
+| は         | -         | Topic marker  |
 | 2          | に         | Two           |
 | 階         | かい       | Floor (counter for floors) |
-| に         | に         | Particle (location) |
-| あります   | あります   | Exists (for inanimate objects) |
+| に         | -         | Particle (location) |
+| あります   | -   | Exists (for inanimate objects) |
 
 - 朝ご飯はありますか？  
 *(Is there breakfast?)*
@@ -269,9 +269,9 @@ Next, let’s learn a conversation for checking into a hotel (*ホテル*). Belo
 | Vocabulary | Kana       | English Gloss |
 |------------|------------|---------------|
 | 朝ご飯     | あさごはん | Breakfast     |
-| は         | は         | Topic marker  |
-| あります   | あります   | Exists (for inanimate objects) |
-| か         | か         | Question marker |
+| は         | -         | Topic marker  |
+| あります   | -   | Exists (for inanimate objects) |
+| か         | -         | Question marker |
 
 - 鍵をください。  
 *(Please give me the key.)*
@@ -279,8 +279,8 @@ Next, let’s learn a conversation for checking into a hotel (*ホテル*). Belo
 | Vocabulary | Kana       | English Gloss |
 |------------|------------|---------------|
 | 鍵         | かぎ       | Key           |
-| を         | を         | Object marker |
-| ください   | ください   | Please (give me) |
+| を         | -         | Object marker |
+| ください   | -   | Please (give me) |
 
 ---
 
@@ -296,7 +296,7 @@ Next, let’s learn a conversation for checking into a hotel (*ホテル*). Belo
 | Wi-Fi      | ワイファイ | Wi-Fi         |
 | 無料       | むりょう   | Free          |
 | 利用       | りよう     | Use           |
-| パスワード | パスワード | Password      |
+| パスワード | - | Password      |
 
 #### Note on “Breakfast” Words:
 - **朝食 (*ちょうしょく*) vs. 朝ご飯 (*あさごはん*):**  
@@ -305,11 +305,11 @@ Next, let’s learn a conversation for checking into a hotel (*ホテル*). Belo
 
 - **部屋 (*へや*) vs. ルーム (*ルーム*):**  
   - 部屋 (*へや*) is a native Japanese word for "room," used broadly (e.g., "my room").  
-  - ルーム (*ルーム*) is a loanword from English, often used in modern contexts like hotels (e.g., "single room" as シングルルーム). In this lesson, 部屋 (*へや*) is polite and versatile, while ルーム (*ルーム*) is specific to hotel jargon.
+  - ルーム is a loanword from English, often used in modern contexts like hotels (e.g., "single room" as シングルルーム). In this lesson, 部屋 (*へや*) is polite and versatile, while ルーム is specific to hotel jargon.
 
 ---
 
-### 文法 (*ぶんぽう*) のポイント (*ポイント*) - Grammar Points
+### 文法 (*ぶんぽう*) のポイント - Grammar Points
 
 1. **丁寧語 (*ていねいご*) - Polite Language:**  
    - In Japanese, polite language is used in service settings like hotels.  
@@ -320,20 +320,20 @@ Next, let’s learn a conversation for checking into a hotel (*ホテル*). Belo
 
 | Vocabulary   | Kana           | English Gloss |
 |--------------|----------------|---------------|
-| どうぞ       | どうぞ         | Please (offering) |
-| お           | お             | Honorific prefix |
+| どうぞ       | -         | Please (offering) |
+| お           | -             | Honorific prefix |
 | 部屋         | へや           | Room          |
-| へ           | へ             | Particle (direction) |
-| お上がりください | おあがりください | Please go up (humble) |
+| へ           | -             | Particle (direction) |
+| お上がりください | - | Please go up (humble) |
 
 - お荷物を預かりします。
   *(I’ll take your luggage.)*
 
 | Vocabulary   | Kana           | English Gloss |
 |--------------|----------------|---------------|
-| お           | お             | Honorific prefix |
+| お           | -             | Honorific prefix |
 | 荷物         | にもつ         | Luggage       |
-| を           | を             | Object marker |
+| を           | -             | Object marker |
 | お預かりします | おあずかりします | Will take (humble) |
 
 2. **名詞 (*めいし*) + です:**  
@@ -346,19 +346,19 @@ Next, let’s learn a conversation for checking into a hotel (*ホテル*). Belo
 | Vocabulary | Kana       | English Gloss |
 |------------|------------|---------------|
 | 日本       | にほん     | Japan         |
-| は         | は         | Topic marker  |
-| きれい     | きれい     | Beautiful     |
-| です       | です       | Is (copula)   |
+| は         | -         | Topic marker  |
+| きれい     | -     | Beautiful     |
+| です       | -       | Is (copula)   |
 
-     - ホテルは新しいです。  
-       *(The hotel is new.)*
+- ホテルは新しいです。  
+  *(The hotel is new.)*
 
 | Vocabulary | Kana       | English Gloss |
 |------------|------------|---------------|
-| ホテル     | ホテル     | Hotel         |
-| は         | は         | Topic marker  |
+| ホテル     | -     | Hotel         |
+| は         | -         | Topic marker  |
 | 新しい     | あたらしい | New           |
-| です       | です       | Is (copula)   |
+| です       | -       | Is (copula)   |
 
 3. **質問 (*しつもん*) の仕方 (*しかた*) - How to Ask Questions:**  
    - Add 「か」 to the end of a sentence to make it a question.  
@@ -370,10 +370,10 @@ Next, let’s learn a conversation for checking into a hotel (*ホテル*). Belo
 | Vocabulary | Kana       | English Gloss |
 |------------|------------|---------------|
 | 駅         | えき       | Station       |
-| は         | は         | Topic marker  |
+| は         | -         | Topic marker  |
 | 近い       | ちかい     | Close         |
-| です       | です       | Is (copula)   |
-| か         | か         | Question marker |
+| です       | -       | Is (copula)   |
+| か         | -         | Question marker |
 
 - 水は冷たいですか？  
   *(Is the water cold?)*
@@ -381,10 +381,10 @@ Next, let’s learn a conversation for checking into a hotel (*ホテル*). Belo
 | Vocabulary | Kana       | English Gloss |
 |------------|------------|---------------|
 | 水         | みず       | Water         |
-| は         | は         | Topic marker  |
+| は         | -         | Topic marker  |
 | 冷たい     | つめたい   | Cold          |
-| です       | です       | Is (copula)   |
-| か         | か         | Question marker |
+| です       | -       | Is (copula)   |
+| か         | -         | Question marker |
 
 ---
 
@@ -392,78 +392,78 @@ That’s it for today’s lesson! Next time, we’ll focus on conversations at t
 
 ---
 
-## 語彙 (*ごい*) リスト (*リスト*) - Vocabulary Glossary
+## 語彙 (*ごい*) リスト - Vocabulary Glossary
 
 Here’s a complete list of all vocabulary used in this lesson, including romanization.
 
 | Vocabulary       | Kana           | English Gloss         | Romanization        |
 |------------------|----------------|-----------------------|---------------------|
-| こんにちは       | こんにちは     | Hello                 | konnichiha          |
+| こんにちは       | -     | Hello                 | konnichiha          |
 | 私               | わたし         | I, me                 | watashi             |
-| の               | の             | Possessive particle (of) | no               |
+| の               | -             | Possessive particle (of) | no               |
 | 名前             | なまえ         | Name                  | namae               |
-| は               | は             | Topic marker          | ha                  |
-| です             | です           | Is (copula)           | desu                |
-| アメリカ         | アメリカ       | America               | amerika             |
-| から             | から           | From                  | kara                |
+| は               | -             | Topic marker          | ha                  |
+| です             | -           | Is (copula)           | desu                |
+| アメリカ         | -       | America               | amerika             |
+| から             | -           | From                  | kara                |
 | 来ました         | きました       | Came (past tense of "come") | kimashita     |
 | 家族             | かぞく         | Family                | kazoku              |
 | 4                | よん           | Four                  | yon                 |
 | 人               | にん           | Person (counter for people) | nin           |
 | 日本語           | にほんご       | Japanese language     | nihongo             |
-| を               | を             | Object marker         | o                   |
+| を               | -             | Object marker         | o                   |
 | 勉強             | べんきょう     | Study                 | benkyō              |
-| しています       | しています     | Is doing (progressive form) | shiteimasu    |
+| しています       | -     | Is doing (progressive form) | shiteimasu    |
 | 毎日             | まいにち       | Every day             | mainichi            |
 | 日本             | にほん         | Japan                 | nihon               |
 | 本               | ほん           | Book                  | hon                 |
 | 読みます         | よみます       | Read (present tense)  | yomimasu            |
-| と               | と             | With                  | to                  |
+| と               | -             | With                  | to                  |
 | 一緒             | いっしょ       | Together              | issho               |
-| に               | に             | Particle (various uses) | ni                |
+| に               | -             | Particle (various uses) | ni                |
 | 旅行             | りょこう       | Travel                | ryokō               |
 | 行きます         | いきます       | Go (present tense)    | ikimasu             |
 | 来た             | きた           | Came (past tense, informal) | kita          |
-| で               | で             | And (conjunction)     | de                  |
-| います           | います         | Exist (for animate objects) | imasu         |
+| で               | -             | And (conjunction)     | de                  |
+| います           | -         | Exist (for animate objects) | imasu         |
 | いらっしゃいませ | いらっしゃいませ | Welcome (polite greeting) | irasshaimase  |
-| ご               | ご             | Honorific prefix      | go                  |
+| ご               | -             | Honorific prefix      | go                  |
 | 予約             | よやく         | Reservation           | yoyaku              |
 | お願いします     | おねがいします | Please (do)           | onegaishimasu       |
-| はい             | はい           | Yes                   | hai                 |
-| ありがとうございます | ありがとうございます | Thank you (polite) | arigatō gozaimasu |
+| はい             | -           | Yes                   | hai                 |
+| ありがとうございます | - | Thank you (polite) | arigatō gozaimasu |
 | 様               | さま           | Honorific suffix (Mr./Ms.) | sama         |
-| ですね           | ですね         | Isn’t it? (confirmation) | desu ne        |
-| シングルルーム   | シングルルーム | Single room           | shinguru rūmu       |
+| ですね           | -         | Isn’t it? (confirmation) | desu ne        |
+| シングルルーム   | - | Single room           | shinguru rūmu       |
 | 1泊              | いっぱく       | One night             | ippaku              |
-| いただいています | いただいています | Have received (humble) | itadaiteimasu |
-| そうです         | そうです       | That’s right          | sō desu             |
-| お               | お             | Honorific prefix      | o                   |
+| いただいています | - | Have received (humble) | itadaiteimasu |
+| そうです         | -       | That’s right          | sō desu             |
+| お               | -             | Honorific prefix      | o                   |
 | 部屋             | へや           | Room                  | heya                |
 | 鍵               | かぎ           | Key                   | kagi                |
 | 朝食             | ちょうしょく   | Breakfast (formal)    | chōshoku            |
 | 7時              | しちじ         | 7 o’clock             | shichiji            |
 | 9時              | くじ           | 9 o’clock             | kuji                |
-| まで             | まで           | Until                 | made                |
+| まで             | -           | Until                 | made                |
 | Wi-Fi            | ワイファイ     | Wi-Fi                 | waifai              |
-| あります         | あります       | Exists (for inanimate objects) | arimasu    |
-| か               | か             | Question marker       | ka                  |
+| あります         | -       | Exists (for inanimate objects) | arimasu    |
+| か               | -             | Question marker       | ka                  |
 | 無料             | むりょう       | Free                  | muryō               |
 | 利用             | りよう         | Use                   | riyō                |
-| いただけます     | いただけます   | Can use (humble)      | itadakemasu         |
-| パスワード       | パスワード     | Password              | pasuwādo            |
-| わかりました     | わかりました   | I understand          | wakarimashita       |
+| いただけます     | -   | Can use (humble)      | itadakemasu         |
+| パスワード       | -     | Password              | pasuwādo            |
+| わかりました     | -   | I understand          | wakarimashita       |
 | 2                | に             | Two                   | ni                  |
 | 泊               | はく           | Night (counter for nights) | haku           |
 | 階               | かい           | Floor (counter for floors) | kai           |
 | 朝ご飯           | あさごはん     | Breakfast (casual)    | asagohan            |
-| ください         | ください       | Please (give me)      | kudasai             |
-| どうぞ           | どうぞ         | Please (offering)     | dōzo                |
-| へ               | へ             | Particle (direction)  | e                   |
+| ください         | -       | Please (give me)      | kudasai             |
+| どうぞ           | -         | Please (offering)     | dōzo                |
+| へ               | -             | Particle (direction)  | e                   |
 | お上がりください | おあがりください | Please go up (humble) | oagari kudasai |
 | 荷物             | にもつ         | Luggage               | nimotsu             |
 | お預かりします   | おあずかりします | Will take (humble)    | oazukari shimasu    |
-| きれい           | きれい         | Beautiful             | kirei               |
+| きれい           | -         | Beautiful             | kirei               |
 | 新しい           | あたらしい     | New                   | atarashii           |
 | 駅               | えき           | Station               | eki                 |
 | 近い             | ちかい         | Close                 | chikai              |
