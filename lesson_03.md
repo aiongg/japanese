@@ -341,12 +341,16 @@ Here’s a list of 40 common Japanese food items not already covered, useful for
 ### 文法 (*ぶんぽう*) のポイント - Grammar Points
 
 1. **～をください - Requesting Items:**  
-   - Used to politely request something (e.g., "Please give me").  
-   - Example: 「みそ汁をください。」 *(Please give me miso soup.)*  
-   - Additional Examples:  
+
+Use ～をください to politely request something (e.g., "Please give me").  
+
+- みそ汁をください。
+*(Please give me miso soup.)*  
+
+[missing vocabulary gloss table]
 
 - お水をください。  
-  *(Please give me water.)*
+*(Please give me water.)*
 
 | Vocabulary | Kana       | English Gloss |
 |------------|------------|---------------|
@@ -355,7 +359,7 @@ Here’s a list of 40 common Japanese food items not already covered, useful for
 | ください   | -   | Please (give me) |
 
 - お箸をください。  
-  *(Please give me chopsticks.)*
+*(Please give me chopsticks.)*
 
 | Vocabulary | Kana       | English Gloss |
 |------------|------------|---------------|
@@ -363,13 +367,17 @@ Here’s a list of 40 common Japanese food items not already covered, useful for
 | を         | -         | Object marker |
 | ください   | -   | Please (give me) |
 
-2. **～てください - Polite Command:**  
-   - Politely requests an action (e.g., "Please make it").  
-   - Example: 「辛くしてください。」 *(Please make it spicy.)*  
-   - Additional Examples:  
+1. **～てください - Polite Command:**  
+
+Use ～てください to politely requests an action (e.g., "Please make it").
+
+- 辛くしてください。
+*(Please make it spicy.)*
+
+[missing vocabulary gloss table]
 
 - 早くしてください。  
-  *(Please hurry.)*
+*(Please hurry.)*
 
 | Vocabulary | Kana           | English Gloss |
 |------------|----------------|---------------|
@@ -377,7 +385,7 @@ Here’s a list of 40 common Japanese food items not already covered, useful for
 | してください | - | Please do     |
 
 - 袋に入れてください。  
-  *(Please put it in a bag.)*
+*(Please put it in a bag.)*
 
 | Vocabulary | Kana           | English Gloss |
 |------------|----------------|---------------|
@@ -385,13 +393,17 @@ Here’s a list of 40 common Japanese food items not already covered, useful for
 | に         | -             | Particle (location) |
 | 入れてください | いれてください | Please put in |
 
-3. **～入っていませんか - Checking Ingredients:**  
-   - Asks if something is included (e.g., "Does it contain gluten?").  
-   - Example: 「グルテンは入っていませんか？」 *(Does this contain gluten?)*  
-   - Additional Examples:  
+1. **～入っていませんか - Checking Ingredients:**  
+
+Use ～入っていませんか to ask if something is included (e.g., "Does it contain gluten?").
+
+- グルテンは入っていませんか？
+*(Does this contain gluten?)*  
+
+[missing vocabulary gloss table]
 
 - 小麦は入っていませんか？  
-  *(Does it contain wheat?)*
+*(Does it contain wheat?)*
 
 | Vocabulary | Kana           | English Gloss |
 |------------|----------------|---------------|
@@ -401,7 +413,7 @@ Here’s a list of 40 common Japanese food items not already covered, useful for
 | か         | -             | Question marker |
 
 - 唐辛子 (*とうがらし*) は入っていませんか？  
-  *(Does it contain chili peppers?)*
+*(Does it contain chili peppers?)*
 
 | Vocabulary | Kana           | English Gloss |
 |------------|----------------|---------------|
@@ -416,7 +428,7 @@ That’s it for Lesson 3! Next time, we’ll tackle shopping scenarios. Feel fre
 
 ---
 
-## 語彙 (*ごい*) リスト (*リスト*) - Vocabulary Glossary
+## 語彙 (*ごい*) リスト - Vocabulary Glossary
 
 | Vocabulary       | Kana           | English Gloss         | Romanization        |
 |------------------|----------------|-----------------------|---------------------|

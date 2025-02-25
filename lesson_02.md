@@ -429,12 +429,15 @@ Now, let’s move to airport (*くうこう*) scenarios, including check-in, in-
 ### 文法 (*ぶんぽう*) のポイント (*ポイント*) - Grammar Points
 
 1. **～まで - Destination/Extent:**  
-   - Indicates a destination or limit (e.g., "to Tokyo").  
-   - Example: 「東京まで切符をください。」 *(Please give me a ticket to Tokyo.)*  
-   - Additional Examples:  
+～まで indicates a destination or limit (e.g., "to Tokyo").
+
+- 東京まで切符をください。
+*(Please give me a ticket to Tokyo.)*  
+
+[missing vocabulary gloss table]
 
 - 大阪まで行きます。  
-  *(I’ll go to Osaka.)*
+*(I’ll go to Osaka.)*
 
 | Vocabulary | Kana       | English Gloss |
 |------------|------------|---------------|
@@ -443,7 +446,7 @@ Now, let’s move to airport (*くうこう*) scenarios, including check-in, in-
 | 行きます   | いきます   | Go            |
 
 - 駅まで歩きます。  
-  *(I’ll walk to the station.)*
+*(I’ll walk to the station.)*
 
 | Vocabulary | Kana       | English Gloss |
 |------------|------------|---------------|
@@ -451,13 +454,17 @@ Now, let’s move to airport (*くうこう*) scenarios, including check-in, in-
 | まで       | -       | Until/to      |
 | 歩きます   | あるきます | Walk          |
 
-2. **～たいです - Desire:**  
-   - Expresses wanting to do something (e.g., "I want to store").  
-   - Example: 「荷物を預けたいです。」 *(I want to store my luggage.)*  
-   - Additional Examples:  
+1. **～たいです - Desire:**  
+
+～たいです expresses wanting to do something (e.g., "I want to store").  
+
+- 荷物を預けたいです。
+*(I want to store my luggage.)*
+
+[missing vocabulary gloss table]
 
 - 日本に行きたいです。  
-  *(I want to go to Japan.)*
+*(I want to go to Japan.)*
 
 | Vocabulary | Kana       | English Gloss |
 |------------|------------|---------------|
@@ -467,7 +474,7 @@ Now, let’s move to airport (*くうこう*) scenarios, including check-in, in-
 | です       | -       | Is (copula)   |
 
 - 水を飲みたいです。  
-  *(I want to drink water.)*
+*(I want to drink water.)*
 
 | Vocabulary | Kana       | English Gloss |
 |------------|------------|---------------|
@@ -476,13 +483,17 @@ Now, let’s move to airport (*くうこう*) scenarios, including check-in, in-
 | 飲みたい   | のみたい   | Want to drink |
 | です       | -       | Is (copula)   |
 
-3. **～できますか - Ability/Permission:**  
-   - Asks if something can be done (e.g., "Can I use?").  
-   - Example: 「切符は新幹線で使えますか？」 *(Can this ticket be used for the Shinkansen?)*  
-   - Additional Examples:  
+1. **～できますか - Ability/Permission:**  
+
+～できますか asks if something can be done (e.g., "Can I use?").
+
+- 切符は新幹線で使えますか？
+*(Can this ticket be used for the Shinkansen?)*  
+
+[missing vocabulary gloss table]
 
 - ここで写真を撮れますか？  
-  *(Can I take a photo here?)*
+*(Can I take a photo here?)*
 
 | Vocabulary | Kana       | English Gloss |
 |------------|------------|---------------|
@@ -493,8 +504,8 @@ Now, let’s move to airport (*くうこう*) scenarios, including check-in, in-
 | 撮れます   | とれます   | Can take      |
 | か         | -         | Question marker |
 
-- このパスを使えますか？  
-  *(Can I use this pass?)*
+- このパスを使えますか？
+*(Can I use this pass?)*
 
 | Vocabulary | Kana       | English Gloss |
 |------------|------------|---------------|
@@ -510,7 +521,7 @@ That’s it for Lesson 2! Next time, we’ll explore restaurant and shopping sce
 
 ---
 
-## 語彙 (*ごい*) リスト (*リスト*) - Vocabulary Glossary
+## 語彙 (*ごい*) リスト - Vocabulary Glossary
 
 | Vocabulary       | Kana           | English Gloss         | Romanization        |
 |------------------|----------------|-----------------------|---------------------|

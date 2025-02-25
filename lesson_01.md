@@ -337,11 +337,16 @@ Next, let’s learn a conversation for checking into a hotel (*ホテル*). Belo
 | お預かりします | おあずかりします | Will take (humble) |
 
 2. **名詞 (*めいし*) + です:**  
-   - A basic sentence structure: "AはBです."  
-   - Example: 「私は Edward です。」 *(I am Edward.)*  
-   - Additional Examples:  
-     - 日本はきれいです。  
-       *(Japan is beautiful.)*
+
+A basic sentence structure: "AはBです."
+
+- 私は Edward です。
+- *(I am Edward.)*
+
+[missing vocabulary gloss table]
+   
+- 日本はきれいです。  
+*(Japan is beautiful.)*
 
 | Vocabulary | Kana       | English Gloss |
 |------------|------------|---------------|
@@ -351,7 +356,7 @@ Next, let’s learn a conversation for checking into a hotel (*ホテル*). Belo
 | です       | -       | Is (copula)   |
 
 - ホテルは新しいです。  
-  *(The hotel is new.)*
+*(The hotel is new.)*
 
 | Vocabulary | Kana       | English Gloss |
 |------------|------------|---------------|
@@ -360,12 +365,17 @@ Next, let’s learn a conversation for checking into a hotel (*ホテル*). Belo
 | 新しい     | あたらしい | New           |
 | です       | -       | Is (copula)   |
 
-3. **質問 (*しつもん*) の仕方 (*しかた*) - How to Ask Questions:**  
-   - Add 「か」 to the end of a sentence to make it a question.  
-   - Example: 「Wi-Fi はありますか？」 *(Is there Wi-Fi?)*  
-   - Additional Examples:  
-     - 駅は近いですか？  
-       *(Is the station close?)*
+1. **質問 (*しつもん*) の仕方 (*しかた*) - How to Ask Questions:**  
+
+Add 「か」 to the end of a sentence to make it a question.  
+
+- Wi-Fi はありますか？
+*(Is there Wi-Fi?)*  
+
+[missing vocabulary gloss table]
+
+- 駅は近いですか？  
+*(Is the station close?)*
 
 | Vocabulary | Kana       | English Gloss |
 |------------|------------|---------------|
