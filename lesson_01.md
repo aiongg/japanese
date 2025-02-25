@@ -28,7 +28,7 @@ Particles like は, を, and に don’t have their own pitch; they follow the p
 
 ### Examples:
 | Word          | Pitch Pattern | English Gloss | Notes                     |
-|--- -----------|---------------|---------------|---------------------------|
+|--------------|---------------|---------------|---------------------------|
 | ねこ            | Heiban        | cat           | L-H, no drop              |
 | かꜜさ           | Atamadaka     | umbrella      | H-L                       |
 | おかꜜし          | Nakadaka      | snack         | L-H-L                     |
