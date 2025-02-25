@@ -1,9 +1,11 @@
 # Prompt for Generating Japanese Language Lessons
 
 <background>
+## Background
+
 You are an expert Japanese language instructor tasked with creating a series of high-quality Japanese lessons for a student named Edward, an English speaker from America with a family of 4 (himself, his wife, and two children). Edward has basic Japanese knowledge (can pronounce Hiragana and Katakana, recognizes some Kanji from Mandarin but not their Japanese readings) and aims to reach JLPT N2 level within 6-12 months. He speaks English, Mandarin, Taiwanese Hokkien, French, and Dutch, giving him experience with second languages. Below are the detailed instructions for generating each lesson.
 
-## General Lesson Structure and Goals
+### General Lesson Structure and Goals
 
 - **Objective:** Teach practical, conversational Japanese for everyday scenarios Edward might encounter on a vacation in Japan (e.g., airport, train station, hotel check-in, restaurants, shopping).
 - **Lesson Format:** Each lesson must include:
@@ -15,7 +17,7 @@ You are an expert Japanese language instructor tasked with creating a series of 
   6. An "Additional Vocabulary" section listing 30-50 items of additional, related vocabulary that have not already been taught in the lesson, formatted similarly to the glossary.
 - **Personalization:** Incorporate Edward’s family (wife and two kids) and preferences into dialogues and examples where relevant (e.g., needing a high chair, payment preferences). Use Edward’s name in the intro and dialogues.
 
-## Specific Content Requirements
+### Specific Content Requirements
 
 - **Scenarios:** Focus on practical vacation contexts. Examples include:
   - Airport (check-in, immigration, in-flight)
@@ -31,7 +33,7 @@ You are an expert Japanese language instructor tasked with creating a series of 
   - **Spice Preferences:** Edward likes very spicy food, his wife prefers mild spice, kids cannot have spice.
   - **Dietary Note:** Edward has a minor gluten allergy; include one example per restaurant lesson asking if a dish contains gluten (*グルテン*), with yes/no responses, separate from specific food orders.
 
-## Language and Writing Specifications
+### Language and Writing Specifications
 
 - **Japanese Usage:** Use standard Japanese writing with Kanji, Hiragana, and Katakana as appropriate for natural, polite conversation (e.g., *丁寧語* in service settings).
 - **Kana Pronunciation:**
@@ -41,22 +43,24 @@ You are an expert Japanese language instructor tasked with creating a series of 
   - After each dialogue segment or example sentence, provide a table listing all vocabulary used in that sentence.
   - Columns: "Vocabulary" (Kanji/Katakana/Hiragana form), "Kana" (pronunciation, blank for pure Kana words), "English Gloss" (translation).
   - Include every word, even particles (e.g., は, を) and repeated terms from earlier in the lesson.
+  - Mark pitch accent using Accent Mark Notation: place a ꜜ after the syllable where the pitch drops. For Heiban (flat) patterns, use no marker. For pure Kana words (with an empty Kana column), mark the pitch accent in the Vocabulary column (e.g., こんにちはꜜ). For words with Kanji, mark the pitch accent in the Kana column (e.g., 私 with わたꜜし).
   - The English gloss (translation) should generally be lowercase, unless standard English casing rules call for uppercase such as proper nouns, the word "I", and so on.
   - Example:
 
     | Vocabulary | Kana       | English Gloss |
     |------------|------------|---------------|
-    | こんにちは | - | hello         |
-    | 私         | わたし     | I, me         |
-    | は         | -         | topic marker  |
+    | こんにちはꜜ | -          | hello         |
+    | 私         | わたꜜし   | I, me         |
+    | は         | -          | topic marker  |
 
 - **Glossary:**
   - At the end of the lesson, provide a comprehensive table of all vocabulary (excluding items in the "Related Vocabulary" list).
   - Columns: "Vocabulary" (Kanji/Katakana/Hiragana form), "Kana" (pronunciation, blank for pure Kana), "English Gloss," "Romanization" (e.g., "konnichiha").
   - Include every word from dialogues, examples, and grammar points, but not from separate vocabulary sections.
+  - Mark pitch accent using Accent Mark Notation: place a ꜜ after the syllable where the pitch drops. For Heiban (flat) patterns, use no marker. For pure Kana words (with an empty Kana column), mark the pitch accent in the Vocabulary column (e.g., こんにちはꜜ). For words with Kanji, mark the pitch accent in the Kana column (e.g., 私 with わたꜜし).
   - The English gloss (translation) should follow the same casing rules as the Gloss Tables.
 
-## Dialogue and Example Details
+### Dialogue and Example Details
 
 - **Dialogues:**
   - Write a full dialogue (7-10 exchanges) between Edward (あなた) and a service worker (e.g., 店員 for waitstaff), reflecting the scenario and Edward’s preferences/needs.
@@ -68,7 +72,7 @@ You are an expert Japanese language instructor tasked with creating a series of 
   - Include a "Gloss Table" after each example sentence.
   - Examples should use varied sentence structures and vocabulary from the dialogue.
 
-## Grammar Points and Additional Notes
+### Grammar Points and Additional Notes
 
 - **Grammar Points:**
   - Include 3 key grammatical structures per lesson, explained briefly (e.g., "~をください - Requesting Items").
@@ -80,14 +84,14 @@ You are an expert Japanese language instructor tasked with creating a series of 
   - Where applicable, add notes under relevant sections (e.g., after "Key Vocabulary" in Lesson 1) about contextual usage, such as formal vs. casual alternatives (e.g., 朝食 (*ちょうしょく*) vs. 朝ご飯 (*あさごはん*)).
   - Keep notes concise and practical, focusing on everyday usage.
 
-## Lesson-Specific Instructions
+### Lesson-Specific Instructions
 
 - **Lesson Numbering:** Title each lesson as "Lesson X: [Topic]" (e.g., "Lesson 3: Dining at Restaurants").
 - **No Practice Sections:** Do not include prompts for Edward to practice (e.g., "Your Turn"), as he manages his own practice.
 - **No Study Advice:** Exclude sections like "Additional Advice" with study tips, as Edward is comfortable studying independently.
 - **Food Vocabulary (Lesson 3+):** When focusing on restaurants, include a "Food Vocabulary" section with 30-50 common Japanese food items not already in the lesson (e.g., meats, dairy, fruits, vegetables, sushi fish, soups). Exclude these from the final glossary.
 
-## Example Lesson Outline (Reference)
+### Example Lesson Outline (Reference)
 
 - **Intro:** Welcome Edward, outline the focus (e.g., restaurants).
 - **Dialogue Section:** Full conversation (e.g., ordering steak and ramen, asking for a high chair), with gloss tables.
@@ -96,11 +100,11 @@ You are an expert Japanese language instructor tasked with creating a series of 
 - **Glossary:** All vocab from dialogue, examples, and grammar, excluding "Additional Vocabulary."
 - **Additional Vocabulary:** 30-50 related words (e.g., different types of foods), formatted the same as the Glossary.
 
-## Output Format
+### Output Format
 
 - Provide the lesson in plain text first for review. When prompted to output the lesson in Markdown, provide the complete lesson in Markdown inside of a code block for easy copying into applications. Use standard Markdown (e.g., `#` for titles, `|` for tables, no extra indentation causing code blocks). When Markdown is not specified, output the lesson in plain text.
 
-## Tone and Style
+### Tone and Style
 
 - Maintain a friendly, encouraging tone (e.g., "Let’s get started!" "Great work!").
 - End with a motivational note: "がんばってください (*ganbatte kudasai*)!"
@@ -108,527 +112,555 @@ You are an expert Japanese language instructor tasked with creating a series of 
 Generate lessons following these exact specifications, ensuring consistency with Edward’s preferences, family details, and learning goals. Find the previous lesson content or summaries below, and wait for instructions on which lesson number and topic to generate next, or which modifications to make for a previous lesson. Specific instructions will be written in the <instructions></instructions> tag.
 </background>
 
-<lesson number=3>
-# Lesson 3: Dining at Restaurants
+<lesson number=1>
+# Lesson 1: Basic Introductions and Hotel Check-in
 
-こんにちは (*konnichiha*), Edward! Welcome to Lesson 3. Today, we’ll focus on practical Japanese for restaurant scenarios, tailored to your love for steak (*ステーキ*)—especially ribeye (*リブアイ*) and NY strip (*ニューヨークストリップ*), occasionally Wagyu (*和牛*)—grilling meats (*やきにく*), sashimi (*さしみ*), sushi (*すし*), and pork cutlet curries (*カツカレー*), and your wife’s favorites: ramen noodles (*ラーメン*), gyudon (*ぎゅうどん*), miso soup (*みそしる*), and other common Japanese dishes. You both enjoy Japanese fruits (*くだもの*), though they can be pricey. We’ll also include common dishes like steamed eggs (*茶碗蒸し*) and hot pot (*鍋*). We’ll cover family needs (two kids, one high chair), payment options (you asking about card or cash), spice preferences (very spicy for you, mild for your wife, none for kids), and your minor gluten allergy with one dedicated example. A new food vocabulary section will expand your options. Let’s get started!
+こんにちは (*konnichiha*)! I’m your Japanese language instructor, and I’m excited to help you, エドワード (*edowādo*), learn practical Japanese for everyday situations. Your goal of reaching N2 level in 6-12 months is ambitious, but with dedication and the right approach, it’s achievable. Since you already speak multiple languages, including Mandarin and Taiwanese Hokkien, you’ll likely adapt well to Japanese pronunciation and grammar. Plus, your familiarity with some Kanji from Mandarin will give you a head start, even though pronunciations differ.
 
----
+I’ll teach you using standard Japanese writing, including Kanji (*かんじ*), Hiragana (*ひらがな*), and Katakana (*カタカナ*), with Kana readings provided in parentheses or vocabulary tables for all Kanji except in example sentences themselves. We’ll focus on practical scenarios you might encounter on vacation, such as:
 
-## レストランでの会話 (*かいわ*) - Restaurant Conversations
+- At the airport or train station (*くうこう* or *えき*)
+- Checking into a hotel (*ホテル*)
+- At a restaurant (*レストラン*)
+- Asking for directions (*みちあんない*) or help (*たすけ*)
+- Giving basic information about yourself and your family (*かぞく*)
+- Shopping (*かいもの*) and social interactions (*かいわ*)
 
-Here’s a dialogue at a restaurant, followed by additional examples reflecting your family’s preferences and needs.
+We’ll start with a basic self-introduction (*じこしょうかい*) and then move into a dialogue for checking into a hotel (*ホテル* の *チェックイン*). I’ll provide vocabulary, grammar explanations, and additional example sentences to help you get comfortable with the language. Let’s begin!
+
+## 自己紹介 (*じこしょうかい*) - Self Introduction
+
+Let’s start by learning how to introduce yourself in Japanese. Below are example sentences tailored to you, エドワード, being from America with a family of 4.
+
+### 例文 (*れいぶん*) - Examples:
+
+- こんにちは、私の名前はエドワードです。  
+*(Hello, my name is Edward.)*
+
+| Vocabulary | Kana       | English Gloss            |
+|------------|------------|--------------------------|
+| こんにちは | -          | hello                    |
+| 私         | わたし     | I, me                    |
+| の         | -          | possessive particle (of) |
+| 名前       | なまえ     | name                     |
+| は         | -          | topic marker             |
+| エドワード | -          | Edward                   |
+| です       | -          | is (copula)              |
+
+- 私はアメリカから来ました。  
+*(I am from America.)*
+
+| Vocabulary | Kana       | English Gloss            |
+|------------|------------|--------------------------|
+| 私         | わたし     | I, me                    |
+| は         | -          | topic marker             |
+| アメリカ   | -          | America                  |
+| から       | -          | from                     |
+| 来ました   | きました   | came (past tense of "come") |
+
+- 私の家族は4人です。  
+*(My family has 4 people.)*
+
+| Vocabulary | Kana       | English Gloss            |
+|------------|------------|--------------------------|
+| 私         | わたし     | I, me                    |
+| の         | -          | possessive particle (of) |
+| 家族       | かぞく     | family                   |
+| は         | -          | topic marker             |
+| 4          | よん       | four                     |
+| 人         | にん       | person (counter for people) |
+| です       | -          | is (copula)              |
+
+- 私は日本語を勉強しています。  
+*(I am studying Japanese.)*
+
+| Vocabulary | Kana           | English Gloss            |
+|------------|----------------|--------------------------|
+| 私         | わたし         | I, me                    |
+| は         | -              | topic marker             |
+| 日本語     | にほんご       | Japanese language        |
+| を         | -              | object marker            |
+| 勉強       | べんきょう     | study                    |
+| しています | -              | is doing (progressive form) |
+
+- 私は毎日日本の本を読みます。  
+*(I read Japanese books every day.)*
+
+| Vocabulary | Kana       | English Gloss            |
+|------------|------------|--------------------------|
+| 私         | わたし     | I, me                    |
+| は         | -          | topic marker             |
+| 毎日       | まいにち   | every day                |
+| 日本       | にほん     | Japan                    |
+| の         | -          | possessive particle (of) |
+| 本         | ほん       | book                     |
+| を         | -          | object marker            |
+| 読みます   | よみます   | read (present tense)     |
+
+- 家族と一緒旅行に行きます。  
+*(I go traveling with my family.)*
+
+| Vocabulary | Kana       | English Gloss            |
+|------------|------------|--------------------------|
+| 家族       | かぞく     | family                   |
+| と         | -          | with                     |
+| 一緒       | いっしょ   | together                 |
+| に         | -          | particle (indicating companionship) |
+| 旅行       | りょこう   | travel                   |
+| に         | -          | particle (indicating purpose/destination) |
+| 行きます   | いきます   | go (present tense)       |
+
+- こんにちは、アメリカから来たエドワードです。  
+*(Hello, I’m Edward from America.)*
+
+| Vocabulary | Kana       | English Gloss            |
+|------------|------------|--------------------------|
+| こんにちは | -          | hello                    |
+| アメリカ   | -          | America                  |
+| から       | -          | from                     |
+| 来た       | きた       | came (past tense, informal) |
+| エドワード | -          | Edward                   |
+| です       | -          | is (copula)              |
+
+- 私の名前はエドワードで、家族は4人います。  
+*(My name is Edward, and my family has 4 people.)*
+
+| Vocabulary | Kana       | English Gloss            |
+|------------|------------|--------------------------|
+| 私         | わたし     | I, me                    |
+| の         | -          | possessive particle (of) |
+| 名前       | なまえ     | name                     |
+| は         | -          | topic marker             |
+| エドワード | -          | Edward                   |
+| で         | -          | and (conjunction)        |
+| 家族       | かぞく     | family                   |
+| は         | -          | topic marker             |
+| 4          | よん       | four                     |
+| 人         | にん       | person (counter for people) |
+| います     | -          | exist (for animate objects) |
+
+## ホテル (*ホテル*) のチェックイン (*チェックイン*) - Hotel Check-in
+
+Next, let’s learn a conversation for checking into a hotel (*ホテル*). Below is a dialogue with additional examples.
 
 ### 対話 (*たいわ*) - Dialogue:
 
-**あなた:**  
-こんにちは、4人です。子供が2人います。ハイチェアはありますか？  
-*(Hello, we’re four people. We have two children. Is there a high chair?)*
+**ホテルスタッフ:**  
+いらっしゃいませ。ご予約のお名前をお願いします。  
+*(Welcome. May I have your reservation name, please?)*
 
-| Vocabulary | Kana       | English Gloss |
-|------------|------------|---------------|
-| こんにちは | - | Hello         |
-| 4          | よん       | Four          |
-| 人         | にん       | Person (counter for people) |
-| です       | -       | Is (copula)   |
-| 子供       | こども     | Child/children |
-| が         | -         | Subject marker |
-| 2          | に         | Two           |
-| います     | -     | Exist (for animate objects) |
-| ハイチェア | - | High chair    |
-| は         | -         | Topic marker  |
-| あります   | -   | Exists (for inanimate objects) |
-| か         | -         | Question marker |
-
-**店員 (*てんいん*) - Waitstaff:**  
-はい、ございます。こちらへどうぞ。メニューをどうぞ。  
-*(Yes, we have one. This way please. Here’s the menu.)*
-
-| Vocabulary | Kana       | English Gloss |
-|------------|------------|---------------|
-| はい       | -       | Yes           |
-| ございます | - | Exists (polite) |
-| こちら     | -     | This way      |
-| へ         | -         | Particle (direction) |
-| どうぞ     | -     | Please (offering) |
-| メニュー   | -   | Menu          |
-| を         | -         | Object marker |
+| Vocabulary | Kana           | English Gloss            |
+|------------|----------------|--------------------------|
+| いらっしゃいませ | -          | welcome (polite greeting) |
+| ご         | -              | honorific prefix         |
+| 予約       | よやく         | reservation              |
+| の         | -              | possessive particle (of) |
+| 名前       | なまえ         | name                     |
+| を         | -              | object marker            |
+| お願いします | おねがいします | please (do)              |
 
 **あなた:**  
-リブアイステーキを注文します。とても辛くしてください。  
-*(I’ll order a ribeye steak. Please make it very spicy.)*
+はい、エドワードです。  
+*(Yes, it’s Edward.)*
 
-| Vocabulary | Kana           | English Gloss |
-|------------|----------------|---------------|
-| リブアイ   | -       | Ribeye        |
-| ステーキ   | -       | Steak         |
-| を         | -             | Object marker |
-| 注文       | ちゅうもん     | Order         |
-| します     | -         | Do            |
-| とても     | -         | Very          |
-| 辛く       | からく         | Spicy (adverb form) |
-| してください | - | Please do     |
+| Vocabulary | Kana       | English Gloss            |
+|------------|------------|--------------------------|
+| はい       | -          | yes                      |
+| エドワード | -          | Edward                   |
+| です       | -          | is (copula)              |
 
-**店員 (*てんいん*):**  
-かしこまりました。焼き加減はどうしますか？  
-*(Understood. How would you like it cooked?)*
+**ホテルスタッフ:**  
+ありがとうございます。エドワード様ですね。シングルルームを1泊ご予約いただいています。  
+*(Thank you. Mr. Edward, you have a reservation for a single room for one night.)*
 
-| Vocabulary | Kana           | English Gloss |
-|------------|----------------|---------------|
-| かしこまりました | - | Understood (formal) |
-| 焼き加減       | やきかげん     | Cooking preference |
-| は             | -             | Topic marker  |
-| どう           | -           | How           |
-| します         | -         | Do            |
-| か             | -             | Question marker |
-
-**あなた:**  
-ミディアムでお願いします。妻は牛丼、少し辛くしてください。子供には辛くないみそ汁をください。  
-*(Medium, please. My wife will have gyudon, mildly spicy. Please give the kids non-spicy miso soup.)*
-
-| Vocabulary | Kana           | English Gloss |
-|------------|----------------|---------------|
-| ミディアム     | -     | Medium        |
-| で             | -             | By means of (particle) |
-| お願いします   | おねがいします | Please (do)   |
-| 妻             | つま           | Wife          |
-| は             | -             | Topic marker  |
-| 牛丼           | ぎゅうどん     | Gyudon (beef bowl) |
-| 少し           | すこし         | A little      |
-| 辛く           | からく         | Spicy (adverb form) |
-| してください   | -   | Please do     |
-| 子供           | こども         | Child/children |
-| に             | -             | Particle (indirect object) |
-| 辛くない       | からくない     | Not spicy     |
-| みそ汁         | みそしる       | Miso soup     |
-| を             | -             | Object marker |
-| ください       | -       | Please (give me) |
+| Vocabulary       | Kana           | English Gloss            |
+|------------------|----------------|--------------------------|
+| ありがとうございます | -          | thank you (polite)       |
+| エドワード       | -              | Edward                   |
+| 様               | さま           | honorific suffix (Mr./Ms.) |
+| ですね           | -              | isn’t it? (confirmation) |
+| シングルルーム   | -              | single room              |
+| を               | -              | object marker            |
+| 1泊              | いっぱく       | one night                |
+| ご               | -              | honorific prefix         |
+| 予約             | よやく         | reservation              |
+| いただいています | -              | have received (humble)   |
 
 **あなた:**  
-カードでお支払いできますか、それとも現金だけですか？  
-*(Can I pay by card, or is it cash only?)*
+はい、そうです。  
+*(Yes, that’s correct.)*
 
-| Vocabulary | Kana           | English Gloss |
-|------------|----------------|---------------|
-| カード         | -         | Card          |
-| で             | -             | By means of (particle) |
-| お支払い       | おしはらい     | Payment       |
-| できます       | -       | Can do        |
-| か             | -             | Question marker |
-| それとも       | -       | Or            |
-| 現金           | げんきん       | Cash          |
-| だけ           | -           | Only          |
-| です           | -           | Is (copula)   |
+| Vocabulary | Kana       | English Gloss            |
+|------------|------------|--------------------------|
+| はい       | -          | yes                      |
+| そうです   | -          | that’s right             |
 
-**店員 (*てんいん*) - Response 1:**  
-はい、カードで大丈夫です。お預かりします。  
-*(Yes, card is fine. I’ll take it.)*
+**ホテルスタッフ:**  
+お部屋の鍵です。朝食は7時から9時までです。  
+*(Here is your room key. Breakfast is from 7 to 9 a.m.)*
 
-| Vocabulary | Kana           | English Gloss |
-|------------|----------------|---------------|
-| はい           | -           | Yes           |
-| カード         | -         | Card          |
-| で             | -             | By means of (particle) |
-| 大丈夫         | だいじょうぶ   | Fine/OK       |
-| です           | -           | Is (copula)   |
-| お預かりします | おあずかりします | Will take (humble) |
-
-**店員 (*てんいん*) - Response 2:**  
-申し訳ありません、現金だけです。  
-*(I’m sorry, cash only.)*
-
-| Vocabulary | Kana           | English Gloss |
-|------------|----------------|---------------|
-| 申し訳ありません | もうしわけありません | I’m sorry (formal) |
-| 現金           | げんきん       | Cash          |
-| だけ           | -           | Only          |
-| です           | -           | Is (copula)   |
+| Vocabulary | Kana           | English Gloss            |
+|------------|----------------|--------------------------|
+| お         | -              | honorific prefix         |
+| 部屋       | へや           | room                     |
+| の         | -              | possessive particle (of) |
+| 鍵         | かぎ           | key                      |
+| です       | -              | is (copula)              |
+| 朝食       | ちょうしょく   | breakfast                |
+| は         | -              | topic marker             |
+| 7時        | しちじ         | 7 o’clock                |
+| から       | -              | from                     |
+| 9時        | くじ           | 9 o’clock                |
+| まで       | -              | until                    |
 
 **あなた:**  
-果物はありますか？  
-*(Do you have fruit?)*
+ありがとうございます。Wi-Fiはありますか？  
+*(Thank you. Is there Wi-Fi?)*
 
-| Vocabulary | Kana           | English Gloss |
-|------------|----------------|---------------|
-| 果物           | くだもの       | Fruit         |
-| は             | -             | Topic marker  |
-| あります       | -       | Exists (for inanimate objects) |
-| か             | -             | Question marker |
+| Vocabulary       | Kana           | English Gloss            |
+|------------------|----------------|--------------------------|
+| ありがとうございます | -          | thank you (polite)       |
+| Wi-Fi            | ワイファイ     | Wi-Fi                    |
+| は               | -              | topic marker             |
+| あります         | -              | exists (for inanimate objects) |
+| か               | -              | question marker          |
 
-**店員 (*てんいん*):**  
-はい、メロンがあります。少々お待ちください。  
-*(Yes, we have melon. Please wait a moment.)*
+**ホテルスタッフ:**  
+はい、Wi-Fiは無料でご利用いただけます。パスワードは「hotel123」です。  
+*(Yes, Wi-Fi is free. The password is "hotel123".)*
 
-| Vocabulary | Kana           | English Gloss |
-|------------|----------------|---------------|
-| はい           | -           | Yes           |
-| メロン         | -         | Melon         |
-| が             | -             | Subject marker |
-| あります       | -       | Exists (for inanimate objects) |
-| 少々           | しょうしょう   | A little (time) |
-| お待ちください | おまちください | Please wait (humble) |
+| Vocabulary       | Kana           | English Gloss            |
+|------------------|----------------|--------------------------|
+| はい             | -              | yes                      |
+| Wi-Fi            | ワイファイ     | Wi-Fi                    |
+| は               | -              | topic marker             |
+| 無料             | むりょう       | free                     |
+| で               | -              | by means of (particle)   |
+| ご               | -              | honorific prefix         |
+| 利用             | りよう         | use                      |
+| いただけます     | -              | can use (humble)         |
+| パスワード       | -              | password                 |
+| は               | -              | topic marker             |
+| です             | -              | is (copula)              |
+
+**あなた:**  
+わかりました。ありがとうございます。  
+*(I understand. Thank you.)*
+
+| Vocabulary       | Kana           | English Gloss            |
+|------------------|----------------|--------------------------|
+| わかりました     | -              | I understand             |
+| ありがとうございます | -          | thank you (polite)       |
 
 ### 追加 (*ついか*) の例文 (*れいぶん*) - Additional Examples:
 
-- ニューヨークストリップを注文します。  
-*(I’ll order an NY strip.)*
+- ご予約は2泊です。  
+*(The reservation is for 2 nights.)*
 
-| Vocabulary | Kana           | English Gloss |
-|------------|----------------|---------------|
-| ニューヨークストリップ | - | NY strip      |
-| を             | -             | Object marker |
-| 注文           | ちゅうもん     | Order         |
-| します         | -         | Do            |
+| Vocabulary | Kana       | English Gloss            |
+|------------|------------|--------------------------|
+| ご         | -          | honorific prefix         |
+| 予約       | よやく     | reservation              |
+| は         | -          | topic marker             |
+| 2          | に         | two                      |
+| 泊         | はく       | night (counter for nights) |
+| です       | -          | is (copula)              |
 
-- 和牛ステーキをレアでお願いします。  
-*(Please make the Wagyu steak rare.)*
+- お部屋は2階にあります。  
+*(The room is on the 2nd floor.)*
 
-| Vocabulary | Kana           | English Gloss |
-|------------|----------------|---------------|
-| 和牛           | わぎゅう       | Wagyu         |
-| ステーキ       | -       | Steak         |
-| を             | -             | Object marker |
-| レア           | -           | Rare          |
-| で             | -             | By means of (particle) |
-| お願いします   | おねがいします | Please (do)   |
+| Vocabulary | Kana       | English Gloss            |
+|------------|------------|--------------------------|
+| お         | -          | honorific prefix         |
+| 部屋       | へや       | room                     |
+| は         | -          | topic marker             |
+| 2          | に         | two                      |
+| 階         | かい       | floor (counter for floors) |
+| に         | -          | particle (location)      |
+| あります   | -          | exists (for inanimate objects) |
 
-- 焼き肉を注文したいです。辛くしてください。  
-*(I’d like to order grilled meat. Please make it spicy.)*
+- 朝ご飯はありますか？  
+*(Is there breakfast?)*
 
-| Vocabulary | Kana           | English Gloss |
-|------------|----------------|---------------|
-| 焼き肉         | やきにく       | Grilled meat  |
-| を             | -             | Object marker |
-| 注文           | ちゅうもん     | Order         |
-| したい         | -         | Want to (do)  |
-| です           | -           | Is (copula)   |
-| 辛く           | からく         | Spicy (adverb form) |
-| してください   | -   | Please do     |
+| Vocabulary | Kana       | English Gloss            |
+|------------|------------|--------------------------|
+| 朝ご飯     | あさごはん | breakfast                |
+| は         | -          | topic marker             |
+| あります   | -          | exists (for inanimate objects) |
+| か         | -          | question marker          |
 
-- カツカレーを注文します。  
-*(I’ll order a pork cutlet curry.)*
+- 鍵をください。  
+*(Please give me the key.)*
 
-| Vocabulary | Kana           | English Gloss |
-|------------|----------------|---------------|
-| カツカレー     | -     | Pork cutlet curry |
-| を             | -             | Object marker |
-| 注文           | ちゅうもん     | Order         |
-| します         | -         | Do            |
+| Vocabulary | Kana       | English Gloss            |
+|------------|------------|--------------------------|
+| 鍵         | かぎ       | key                      |
+| を         | -          | object marker            |
+| ください   | -          | please (give me)         |
 
-- 妻はラーメンを少し辛くしてください。  
-*(Please make my wife’s ramen mildly spicy.)*
-
-| Vocabulary | Kana           | English Gloss |
-|------------|----------------|---------------|
-| 妻             | つま           | Wife          |
-| は             | -             | Topic marker  |
-| ラーメン       | -       | Ramen         |
-| を             | -             | Object marker |
-| 少し           | すこし         | A little      |
-| 辛く           | からく         | Spicy (adverb form) |
-| してください   | -   | Please do     |
-
-- 子供に辛くない寿司をください。  
-*(Please give the kids non-spicy sushi.)*
+### 重要 (*じゅうよう*) な単語 (*たんご*) - Key Vocabulary
 
 | Vocabulary | Kana       | English Gloss |
 |------------|------------|---------------|
-| 子供       | こども     | Child/children |
-| に         | -         | Particle (indirect object) |
-| 辛くない   | からくない | Not spicy     |
-| 寿司       | すし       | Sushi         |
-| を         | -         | Object marker |
-| ください   | -   | Please (give me) |
+| 予約       | よやく     | reservation   |
+| 名前       | なまえ     | name          |
+| 部屋       | へや       | room          |
+| 鍵         | かぎ       | key           |
+| 朝食       | ちょうしょく | breakfast     |
+| Wi-Fi      | ワイファイ | Wi-Fi         |
+| 無料       | むりょう   | free          |
+| 利用       | りよう     | use           |
+| パスワード | -          | password      |
 
-- 茶碗蒸しを注文したいです。子供用にしてください。  
-*(I’d like to order steamed eggs. Please make it for kids.)*
+#### Note on “Breakfast” Words:
+- **朝食 (*ちょうしょく*) vs. 朝ご飯 (*あさごはん*):**  
+  - 朝食 (*ちょうしょく*) is formal/polite, often used in hotels or written contexts (e.g., "Breakfast is from 7 to 9").  
+  - 朝ご飯 (*あさごはん*) is casual, common in daily speech (e.g., "Did you eat breakfast?"). For travel, 朝食 (*ちょうしょく*) is more likely in service settings, while 朝ご飯 (*あさごはん*) suits informal chats.
 
-| Vocabulary | Kana           | English Gloss |
-|------------|----------------|---------------|
-| 茶碗蒸し   | ちゃわんむし   | Steamed eggs  |
-| を         | -             | Object marker |
-| 注文       | ちゅうもん     | Order         |
-| したい     | -         | Want to (do)  |
-| です       | -       | Is (copula)   |
-| 子供用     | こどもよう     | For kids      |
-| に         | -             | Particle (purpose) |
-| してください | - | Please do     |
-
-- 鍋を4人前ください。辛くしないでください。  
-*(Please give me four servings of hot pot. Don’t make it spicy.)*
-
-| Vocabulary | Kana           | English Gloss |
-|------------|----------------|---------------|
-| 鍋         | なべ           | Hot pot       |
-| を         | -             | Object marker |
-| 4          | よん           | Four          |
-| 人前       | にんまえ       | Serving (for people) |
-| ください   | -       | Please (give me) |
-| 辛く       | からく         | Spicy (adverb form) |
-| しないでください | - | Please don’t do |
-
-- この料理にグルテンは入っていませんか？  
-*(Does this dish contain gluten?)*
-
-| Vocabulary | Kana           | English Gloss |
-|------------|----------------|---------------|
-| この           | -           | This          |
-| 料理           | りょうり       | Dish/food     |
-| に             | -             | Particle (location) |
-| グルテン       | -       | Gluten        |
-| は             | -             | Topic marker  |
-| 入っていません | はいっていません | Is not included |
-| か             | -             | Question marker |
-
-**店員 (*てんいん*) - Response 1:**  
-いいえ、入っていません。  
-*(No, it doesn’t.)*
-
-| Vocabulary | Kana           | English Gloss |
-|------------|----------------|---------------|
-| いいえ         | -         | No            |
-| 入っていません | はいっていません | Is not included |
-
-**店員 (*てんいん*) - Response 2:**  
-はい、入っています。  
-*(Yes, it does.)*
-
-| Vocabulary | Kana           | English Gloss |
-|------------|----------------|---------------|
-| はい           | -           | Yes           |
-| 入っています   | はいっています | Is included   |
-
----
-
-### 食品 (*しょくひん*) ボキャブラリー - Food Vocabulary
-
-Here’s a list of 40 common Japanese food items not already covered, useful for expanding your restaurant vocabulary. These won’t appear in the final glossary.
-
-| Vocabulary       | Kana           | English Gloss         |
-|------------------|----------------|-----------------------|
-| 鶏肉    | にわとり       | Chicken (meat)        |
-| 豚肉 | ぶたにく      | Pork                  |
-| 鴨肉 | かもにく      | Duck                  |
-| 羊肉 | ひつじにく | Lamb                  |
-| チーズ           | -         | Cheese                |
-| ヨーグルト       | -     | Yogurt                |
-| バター           | -         | Butter                |
-| 牛乳 | ぎゅうにゅう | Milk                  |
-| リンゴ           | -         | Apple                 |
-| バナナ           | -         | Banana                |
-| イチゴ           | -         | Strawberry            |
-| 桃      | もも           | Peach                 |
-| 梨      | なし           | Pear                  |
-| キャベツ         | -       | Cabbage               |
-| レタス           | -         | Lettuce               |
-| 玉ねぎ | たまねぎ    | Onion                 |
-| にんじん         | -       | Carrot                |
-| ジャガイモ       | -     | Potato                |
-| トマト           | -         | Tomato                |
-| キュウリ         | -       | Cucumber              |
-| マグロ           | -         | Tuna (sushi)          |
-| サーモン         | -       | Salmon (sushi)        |
-| ハマチ           | -         | Yellowtail (sushi)    |
-| イカ             | -           | Squid (sushi)         |
-| タコ             | -           | Octopus (sushi)       |
-| エビ             | -           | Shrimp (sushi)        |
-| ウニ             | -           | Sea urchin (sushi)    |
-| カニ             | -           | Crab (sushi)          |
-| イクラ           | -         | Salmon roe (sushi)    |
-| 味噌汁 | みそしる    | Miso soup (alternate reading) |
-| すまし汁 | すましじる   | Clear soup            |
-| とん汁 | とんじる       | Pork miso soup        |
-| おでん           | -         | Oden (stewed dish)    |
-| うどん           | -         | Udon noodles          |
-| そば             | -           | Soba noodles          |
-| 天ぷら | てんぷら    | Tempura               |
-| 焼き魚 | やきざかな | Grilled fish          |
-| 唐揚げ | からあげ   | Fried chicken         |
-| おにぎり         | -       | Rice ball             |
-| 納豆 | なっとう       | Natto (fermented soybeans) |
-
----
+- **部屋 (*へや*) vs. ルーム (*ルーム*):**  
+  - 部屋 (*へや*) is a native Japanese word for "room," used broadly (e.g., "my room").  
+  - ルーム is a loanword from English, often used in modern contexts like hotels (e.g., "single room" as シングルルーム). In this lesson, 部屋 (*へや*) is polite and versatile, while ルーム is specific to hotel jargon.
 
 ### 文法 (*ぶんぽう*) のポイント - Grammar Points
 
-1. **～をください - Requesting Items:**  
+1. **丁寧語 (*ていねいご*) - Polite Language:**  
+Polite language, or *丁寧語* (*teineigo*), is essential in service settings like hotels or restaurants. It shows respect and is marked by polite verb forms (e.g., です, ます) and honorific prefixes like お or ご.
 
-Use ～をください to politely request something (e.g., "Please give me").  
+- お願いします。  
+*(Please do it.)*
 
-- みそ汁をください。
-*(Please give me miso soup.)*  
+| Vocabulary   | Kana           | English Gloss |
+|--------------|----------------|---------------|
+| お願いします | おねがいします | please (do)   |
 
-[missing vocabulary gloss table]
+- どうぞ、お部屋へお上がりください。  
+*(Please, go to your room.)*
 
-- お水をください。  
-*(Please give me water.)*
+| Vocabulary   | Kana           | English Gloss            |
+|--------------|----------------|--------------------------|
+| どうぞ       | -              | please (offering)        |
+| お           | -              | honorific prefix         |
+| 部屋         | へや           | room                     |
+| へ           | -              | particle (direction)     |
+| お上がりください | -          | please go up (humble)    |
+
+- お荷物を預かります。  
+*(I’ll take your luggage.)*
+
+| Vocabulary   | Kana           | English Gloss            |
+|--------------|----------------|--------------------------|
+| お           | -              | honorific prefix         |
+| 荷物         | にもつ         | luggage                  |
+| を           | -              | object marker            |
+| 預かります   | あずかります   | will take (humble)       |
+
+2. **名詞 (*めいし*) + です - Noun + "Is":**  
+This structure connects a subject (A) to a description (B) using は (topic marker) and です (copula), meaning "A is B." It’s a simple way to state facts or identities.
+
+- 私はエドワードです。  
+*(I am Edward.)*
 
 | Vocabulary | Kana       | English Gloss |
 |------------|------------|---------------|
-| お水       | おみず     | Water (polite) |
-| を         | -         | Object marker |
-| ください   | -   | Please (give me) |
+| 私         | わたし     | I, me         |
+| は         | -          | topic marker  |
+| エドワード | -          | Edward        |
+| です       | -          | is (copula)   |
 
-- お箸をください。  
-*(Please give me chopsticks.)*
+- 日本はきれいです。  
+*(Japan is beautiful.)*
 
 | Vocabulary | Kana       | English Gloss |
 |------------|------------|---------------|
-| お箸       | おはし     | Chopsticks (polite) |
-| を         | -         | Object marker |
-| ください   | -   | Please (give me) |
+| 日本       | にほん     | Japan         |
+| は         | -          | topic marker  |
+| きれい     | -          | beautiful     |
+| です       | -          | is (copula)   |
 
-1. **～てください - Polite Command:**  
+- ホテルは新しいです。  
+*(The hotel is new.)*
 
-Use ～てください to politely requests an action (e.g., "Please make it").
+| Vocabulary | Kana       | English Gloss |
+|------------|------------|---------------|
+| ホテル     | -          | hotel         |
+| は         | -          | topic marker  |
+| 新しい     | あたらしい | new           |
+| です       | -          | is (copula)   |
 
-- 辛くしてください。
-*(Please make it spicy.)*
+3. **質問 (*しつもん*) の仕方 (*しかた*) - Asking Questions:**  
+To ask a yes/no question, add か (question marker) to the end of a statement. It turns a declaration into a query without changing the word order.
 
-[missing vocabulary gloss table]
+- Wi-Fiはありますか？  
+*(Is there Wi-Fi?)*
 
-- 早くしてください。  
-*(Please hurry.)*
+| Vocabulary | Kana       | English Gloss            |
+|------------|------------|--------------------------|
+| Wi-Fi      | ワイファイ | Wi-Fi                    |
+| は         | -          | topic marker             |
+| あります   | -          | exists (for inanimate objects) |
+| か         | -          | question marker          |
 
-| Vocabulary | Kana           | English Gloss |
-|------------|----------------|---------------|
-| 早く       | はやく         | Quickly       |
-| してください | - | Please do     |
+- 駅は近いですか？  
+*(Is the station close?)*
 
-- 袋に入れてください。  
-*(Please put it in a bag.)*
+| Vocabulary | Kana       | English Gloss |
+|------------|------------|---------------|
+| 駅         | えき       | station       |
+| は         | -          | topic marker  |
+| 近い       | ちかい     | close         |
+| です       | -          | is (copula)   |
+| か         | -          | question marker |
 
-| Vocabulary | Kana           | English Gloss |
-|------------|----------------|---------------|
-| 袋         | ふくろ         | Bag           |
-| に         | -             | Particle (location) |
-| 入れてください | いれてください | Please put in |
+- 水は冷たいですか？  
+*(Is the water cold?)*
 
-1. **～入っていませんか - Checking Ingredients:**  
-
-Use ～入っていませんか to ask if something is included (e.g., "Does it contain gluten?").
-
-- グルテンは入っていませんか？
-*(Does this contain gluten?)*  
-
-[missing vocabulary gloss table]
-
-- 小麦は入っていませんか？  
-*(Does it contain wheat?)*
-
-| Vocabulary | Kana           | English Gloss |
-|------------|----------------|---------------|
-| 小麦       | こむぎ         | Wheat         |
-| は         | -             | Topic marker  |
-| 入っていません | はいっていません | Is not included |
-| か         | -             | Question marker |
-
-- 唐辛子 (*とうがらし*) は入っていませんか？  
-*(Does it contain chili peppers?)*
-
-| Vocabulary | Kana           | English Gloss |
-|------------|----------------|---------------|
-| 唐辛子     | とうがらし     | Chili peppers |
-| は         | -             | Topic marker  |
-| 入っていません | はいっていません | Is not included |
-| か         | -             | Question marker |
-
----
-
-That’s it for Lesson 3! Next time, we’ll tackle shopping scenarios. Feel free to ask any questions or request clarification. がんばってください (*ganbatte kudasai*)!
-
----
+| Vocabulary | Kana       | English Gloss |
+|------------|------------|---------------|
+| 水         | みず       | water         |
+| は         | -          | topic marker  |
+| 冷たい     | つめたい   | cold          |
+| です       | -          | is (copula)   |
+| か         | -          | question marker |
 
 ## 語彙 (*ごい*) リスト - Vocabulary Glossary
 
-| Vocabulary       | Kana           | English Gloss         | Romanization        |
-|------------------|----------------|-----------------------|---------------------|
-| こんにちは       | -     | Hello                 | konnichiha          |
-| 4                | よん           | Four                  | yon                 |
-| 人               | にん           | Person (counter for people) | nin           |
-| です             | -           | Is (copula)           | desu                |
-| 子供             | こども         | Child/children        | kodomo              |
-| が               | -             | Subject marker        | ga                  |
-| 2                | に             | Two                   | ni                  |
-| います           | -         | Exist (for animate objects) | imasu         |
-| ハイチェア       | -     | High chair            | haichea             |
-| は               | -             | Topic marker          | ha                  |
-| あります         | -       | Exists (for inanimate objects) | arimasu    |
-| か               | -             | Question marker       | ka                  |
-| はい             | -           | Yes                   | hai                 |
-| ございます       | -     | Exists (polite)       | gozaimasu           |
-| こちら           | -         | This way              | kochira             |
-| へ               | -             | Particle (direction)  | e                   |
-| どうぞ           | -         | Please (offering)     | dōzo                |
-| メニュー         | -       | Menu                  | menyū               |
-| を               | -             | Object marker         | o                   |
-| リブアイ         | -       | Ribeye                | ribuai              |
-| ステーキ         | -       | Steak                 | sutēki              |
-| 注文             | ちゅうもん     | Order                 | chūmon              |
-| します           | -         | Do                    | shimasu             |
-| とても           | -         | Very                  | totemo              |
-| 辛く             | からく         | Spicy (adverb form)   | karaku              |
-| してください     | -   | Please do             | shite kudasai       |
-| かしこまりました | - | Understood (formal) | kashikomarimashita |
-| 焼き加減         | やきかげん     | Cooking preference    | yakikagen           |
-| どう             | -           | How                   | dō                  |
-| ミディアム       | -     | Medium                | midiamu             |
-| で               | -             | By means of (particle) | de                 |
-| お願いします     | おねがいします | Please (do)           | onegaishimasu       |
-| 妻               | つま           | Wife                  | tsuma               |
-| 牛丼             | ぎゅうどん     | Gyudon (beef bowl)    | gyūdon              |
-| 少し             | すこし         | A little              | sukoshi             |
-| 辛くない         | からくない     | Not spicy             | karakunai           |
-| みそ汁           | みそしる       | Miso soup             | misoshiru           |
-| に               | -             | Particle (various uses) | ni                |
-| ください         | -       | Please (give me)      | kudasai             |
-| カード           | -         | Card                  | kādo                |
-| お支払い         | おしはらい     | Payment               | oshiharai           |
-| できます         | できます       | Can do                | dekimasu            |
-| それとも         | それとも       | Or                    | soretomo            |
-| 現金             | げんきん       | Cash                  | genkin              |
-| だけ             | -           | Only                  | dake                |
-| 大丈夫           | だいじょうぶ   | Fine/OK               | daijōbu             |
-| お預かりします   | おあずかりします | Will take (humble)  | oazukari shimasu    |
-| 申し訳ありません | もうしわけありません | I’m sorry (formal) | mōshiwake arimasen |
-| 果物             | くだもの       | Fruit                 | kudamono            |
-| メロン           | -         | Melon                 | meron               |
-| 少々             | しょうしょう   | A little (time)       | shōshō              |
-| お待ちください   | おまちください | Please wait (humble)  | omachi kudasai      |
-| ニューヨークストリップ | - | NY strip      | nyūyōku sutorippu |
-| 和牛             | わぎゅう       | Wagyu                 | wagyū               |
-| レア             | -           | Rare                  | rea                 |
-| 焼き肉           | やきにく       | Grilled meat          | yakiniku            |
-| したい           | -         | Want to (do)          | shitai              |
-| カツカレー       | -     | Pork cutlet curry     | katsukarē           |
-| ラーメン         | -       | Ramen                 | rāmen               |
-| 寿司             | すし           | Sushi                 | sushi               |
-| 茶碗蒸し         | ちゃわんむし   | Steamed eggs          | chawanmushi         |
-| 子供用           | こどもよう     | For kids              | kodomo yō           |
-| 鍋               | なべ           | Hot pot               | nabe                |
-| 人前             | にんまえ       | Serving (for people)  | ninmae              |
-| しないでください | - | Please don’t do     | shinaide kudasai    |
-| 料理             | りょうり       | Dish/food             | ryōri               |
-| グルテン         | -       | Gluten                | guruten             |
-| いいえ           | -         | No                    | iie                 |
-| 入っています     | はいっています | Is included           | haitteimasu         |
-| お水             | おみず         | Water (polite)        | omizu               |
-| お箸             | おはし         | Chopsticks (polite)   | ohashi              |
-| 早く             | はやく         | Quickly               | hayaku              |
-| 袋               | ふくろ         | Bag                   | fukuro              |
-| 入れてください   | いれてください | Please put in         | irete kudasai       |
-| 小麦             | こむぎ         | Wheat                 | komugi              |
-| 唐辛子           | とうがらし     | Chili peppers         | tōgarashi           |
+Here’s a complete list of all vocabulary used in this lesson, including romanization.
 
+| Vocabulary       | Kana           | English Gloss            | Romanization        |
+|------------------|----------------|--------------------------|---------------------|
+| こんにちは       | -              | hello                    | konnichiha          |
+| 私               | わたし         | I, me                    | watashi             |
+| の               | -              | possessive particle (of) | no                  |
+| 名前             | なまえ         | name                     | namae               |
+| は               | -              | topic marker             | ha                  |
+| エドワード       | -              | Edward                   | edowādo             |
+| です             | -              | is (copula)              | desu                |
+| アメリカ         | -              | America                  | amerika             |
+| から             | -              | from                     | kara                |
+| 来ました         | きました       | came (past tense of "come") | kimashita        |
+| 家族             | かぞく         | family                   | kazoku              |
+| 4                | よん           | four                     | yon                 |
+| 人               | にん           | person (counter for people) | nin              |
+| 日本語           | にほんご       | Japanese language        | nihongo             |
+| を               | -              | object marker            | o                   |
+| 勉強             | べんきょう     | study                    | benkyō              |
+| しています       | -              | is doing (progressive form) | shiteimasu       |
+| 毎日             | まいにち       | every day                | mainichi            |
+| 日本             | にほん         | Japan                    | nihon               |
+| 本               | ほん           | book                     | hon                 |
+| 読みます         | よみます       | read (present tense)     | yomimasu            |
+| と               | -              | with                     | to                  |
+| 一緒             | いっしょ       | together                 | issho               |
+| に               | -              | particle (various uses)  | ni                  |
+| 旅行             | りょこう       | travel                   | ryokō               |
+| 行きます         | いきます       | go (present tense)       | ikimasu             |
+| 来た             | きた           | came (past tense, informal) | kita             |
+| で               | -              | and (conjunction)        | de                  |
+| います           | -              | exist (for animate objects) | imasu            |
+| いらっしゃいませ | -              | welcome (polite greeting) | irasshaimase       |
+| ご               | -              | honorific prefix         | go                  |
+| 予約             | よやく         | reservation              | yoyaku              |
+| お願いします     | おねがいします | please (do)              | onegaishimasu       |
+| はい             | -              | yes                      | hai                 |
+| ありがとうございます | -          | thank you (polite)       | arigatō gozaimasu   |
+| 様               | さま           | honorific suffix (Mr./Ms.) | sama             |
+| ですね           | -              | isn’t it? (confirmation) | desu ne             |
+| シングルルーム   | -              | single room              | shinguru rūmu       |
+| 1泊              | いっぱく       | one night                | ippaku              |
+| いただいています | -              | have received (humble)   | itadaiteimasu       |
+| そうです         | -              | that’s right             | sō desu             |
+| お               | -              | honorific prefix         | o                   |
+| 部屋             | へや           | room                     | heya                |
+| 鍵               | かぎ           | key                      | kagi                |
+| 朝食             | ちょうしょく   | breakfast                | chōshoku            |
+| 7時              | しちじ         | 7 o’clock                | shichiji            |
+| 9時              | くじ           | 9 o’clock                | kuji                |
+| まで             | -              | until                    | made                |
+| Wi-Fi            | ワイファイ     | Wi-Fi                    | waifai              |
+| あります         | -              | exists (for inanimate objects) | arimasu      |
+| か               | -              | question marker          | ka                  |
+| 無料             | むりょう       | free                     | muryō               |
+| 利用             | りよう         | use                      | riyō                |
+| いただけます     | -              | can use (humble)         | itadakemasu         |
+| パスワード       | -              | password                 | pasuwādo            |
+| わかりました     | -              | I understand             | wakarimashita       |
+| 2                | に             | two                      | ni                  |
+| 泊               | はく           | night (counter for nights) | haku             |
+| 階               | かい           | floor (counter for floors) | kai             |
+| 朝ご飯           | あさごはん     | breakfast                | asagohan            |
+| ください         | -              | please (give me)         | kudasai             |
+| どうぞ           | -              | please (offering)        | dōzo                |
+| へ               | -              | particle (direction)     | e                   |
+| お上がりください | -              | please go up (humble)    | oagari kudasai      |
+| 荷物             | にもつ         | luggage                  | nimotsu             |
+| 預かります       | あずかります   | will take (humble)       | azukarimasu         |
+| きれい           | -              | beautiful                | kirei               |
+| 新しい           | あたらしい     | new                      | atarashii           |
+| 駅               | えき           | station                  | eki                 |
+| 近い             | ちかい         | close                    | chikai              |
+| 水               | みず           | water                    | mizu                |
+| 冷たい           | つめたい       | cold                     | tsumetai            |
+
+## 追加 (*ついか*) の語彙 (*ごい*) - Additional Vocabulary
+
+Here are 30-50 related words to expand your vocabulary:
+
+| Vocabulary | Kana         | English Gloss    | Romanization    |
+|------------|--------------|------------------|-----------------|
+| 空港       | くうこう     | airport          | kūkō            |
+| 駅         | えき         | station          | eki             |
+| 電車       | でんしゃ     | train            | densha          |
+| 切符       | きっぷ       | ticket           | kippu           |
+| 荷物       | にもつ       | luggage          | nimotsu         |
+| スーツケース | -          | suitcase         | sūtsukēsu       |
+| パスポート | -            | passport         | pasupōto        |
+| チェックイン | -          | check-in         | chekkuin        |
+| チェックアウト | -        | check-out        | chekkuauto      |
+| フロント   | -            | front desk       | furonto         |
+| エレベーター | -          | elevator         | erebētā         |
+| 階段       | かいだん     | stairs           | kaidan          |
+| 入り口     | いりぐち     | entrance         | iriguchi        |
+| 出口       | でぐち       | exit             | deguchi         |
+| トイレ     | -            | toilet           | toire           |
+| 浴室       | よくしつ     | bathroom         | yokushitsu      |
+| シャワー   | -            | shower           | shawā           |
+| タオル     | -            | towel            | taoru           |
+| ベッド     | -            | bed              | beddo           |
+| 枕         | まくら       | pillow           | makura          |
+| 布団       | ふとん       | futon (bedding)  | futon           |
+| 窓         | まど         | window           | mado            |
+| カーテン   | -            | curtain          | kāten           |
+| テレビ     | -            | television       | terebi          |
+| 電話       | でんわ       | telephone        | denwa           |
+| 冷蔵庫     | れいぞうこ   | refrigerator     | reizōko         |
+| エアコン   | -            | air conditioner  | eakon           |
+| 暖房       | だんぼう     | heating          | danbō           |
+| インターネット | -        | internet         | intānetto      |
+| ランプ     | -            | lamp             | ranpu           |
+
+That’s it for today’s lesson! Next time, we’ll focus on conversations at the airport (*くうこう*) or train station (*えき*). If you have any questions or need clarification, feel free to ask. Keep up the great work, and let’s work together to reach your N2 goal! がんばってください (*ganbatte kudasai*)!
 </lesson>
 
 <instructions>
-Make the following modifications to lesson 3:
+Updates for lesson 1.
 
-- Fill in the places marked [missing translation and vocabulary gloss table] or [missing vocabulary gloss table]
-- Some of the grammar points sections do not have clear explanations. Ensure all grammar points have clear and concise explanations.
-- Fix the casing of all the gloss and vocabulary tables.
-- Add the final Additional Vocabulary section
+1. Update all gloss and vocabulary tables as follows:
 
-Output the full revised content of lesson 3 in a markdown code block.
+- Each word should be marked for pitch accent, using Accent Mark Notation.
+- For this notation, place a ꜜ after the syllable where the pitch drops.
+- Don't use any arrow for Heiban
+- If the Vocabulary column is only Kana and the Kana column is empty, mark the word in the Vocabulary column.
+- Otherwise, mark the word in the Kana column
+
+2. Add an additional section explaining Japanese pitch accent:
+
+- Add it above the Self Introduction
+- Explain the Accent Mark Notation used in this lesson.
+- Explain the different pitch patterns.
+- Explain the pitch of particles as relates to the pitch patterns.
+- Provide a table with some examples. Do not include these words in the lesson Glossary.
+
+3. The vocabulary word お上がりください is missing the Kana column.
+
+Output the markdown code block for Lesson 1 directly.
 </instructions>
