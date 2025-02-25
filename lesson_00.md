@@ -101,56 +101,56 @@ Some sounds appear in Katakana for foreign loanwords and don’t fit the standar
 
 Before Hiragana and Katakana, Japanese was written using Manyōgana—Kanji chosen for their phonetic values rather than meaning. Named after the *Manyōshū* (8th-century poetry anthology), this system was simplified over time into the cursive Hiragana and angular Katakana we use today. Below is a table showing the primary Kanji from which each Kana was derived. Note that multiple Kanji were sometimes used for the same sound; this table lists common examples.
 
-| Sound | Hiragana | Derived Kanji (Hiragana) | Katakana | Derived Kanji (Katakana) |
-|-------|----------|--------------------------|----------|--------------------------|
-| a     | あ       | 安                       | ア       | 阿                       |
-| i     | い       | 以                       | イ       | 伊                       |
-| u     | う       | 宇                       | ウ       | 宇                       |
-| e     | え       | 衣                       | エ       | 江                       |
-| o     | お       | 於                       | オ       | 於                       |
-| ka    | か       | 加                       | カ       | 加                       |
-| ki    | き       | 幾                       | キ       | 幾                       |
-| ku    | く       | 久                       | ク       | 久                       |
-| ke    | け       | 計                       | ケ       | 計                       |
-| ko    | こ       | 己                       | コ       | 己                       |
-| sa    | さ       | 左                       | サ       | 散                       |
-| shi   | し       | 之                       | シ       | 之                       |
-| su    | す       | 寸                       | ス       | 須                       |
-| se    | せ       | 世                       | セ       | 世                       |
-| so    | そ       | 曽                       | ソ       | 曾                       |
-| ta    | た       | 太                       | タ       | 多                       |
-| chi   | ち       | 知                       | チ       | 千                       |
-| tsu   | つ       | 津                       | ツ       | 都                       |
-| te    | て       | 手                       | テ       | 天                       |
-| to    | と       | 止                       | ト       | 止                       |
-| na    | な       | 奈                       | ナ       | 那                       |
-| ni    | に       | 仁                       | ニ       | 仁                       |
-| nu    | ぬ       | 奴                       | ヌ       | 奴                       |
-| ne    | ね       | 禰                       | ネ       | 祢                       |
-| no    | の       | 乃                       | ノ       | 乃                       |
-| ha    | は       | 波                       | ハ       | 八                       |
-| hi    | ひ       | 比                       | ヒ       | 比                       |
-| fu    | ふ       | 不                       | フ       | 不                       |
-| he    | へ       | 部                       | ヘ       | 部                       |
-| ho    | ほ       | 保                       | ホ       | 保                       |
-| ma    | ま       | 馬                       | マ       | 末                       |
-| mi    | み       | 美                       | ミ       | 三                       |
-| mu    | む       | 武                       | ム       | 牟                       |
-| me    | め       | 女                       | メ       | 女                       |
-| mo    | も       | 毛                       | モ       | 毛                       |
-| ya    | や       | 也                       | ヤ       | 也                       |
-| yu    | ゆ       | 由                       | ユ       | 由                       |
-| yo    | よ       | 与                       | ヨ       | 与                       |
-| ra    | ら       | 良                       | ラ       | 良                       |
-| ri    | り       | 利                       | リ       | 利                       |
-| ru    | る       | 留                       | ル       | 流                       |
-| re    | れ       | 礼                       | レ       | 礼                       |
-| ro    | ろ       | 呂                       | ロ       | 呂                       |
-| wa    | わ       | 和                       | ワ       | 和                       |
-| wi    | ゐ       | 為                       | ヰ       | 井                       |
-| we    | ゑ       | 惠                       | ヱ       | 恵                       |
-| wo    | を       | 遠                       | ヲ       | 乎                       |
-| n     | ん       | 無                       | ン       | 尓                       |
+| Sound | Hiragana | Kanji | Katakana | Kanji |
+|-------|----------|-------|----------|-------|
+| a     | あ       | 安    | ア       | 阿    |
+| i     | い       | 以    | イ       | 伊    |
+| u     | う       | 宇    | ウ       | 宇    |
+| e     | え       | 衣    | エ       | 江    |
+| o     | お       | 於    | オ       | 於    |
+| ka    | か       | 加    | カ       | 加    |
+| ki    | き       | 幾    | キ       | 幾    |
+| ku    | く       | 久    | ク       | 久    |
+| ke    | け       | 計    | ケ       | 計    |
+| ko    | こ       | 己    | コ       | 己    |
+| sa    | さ       | 左    | サ       | 散    |
+| shi   | し       | 之    | シ       | 之    |
+| su    | す       | 寸    | ス       | 須    |
+| se    | せ       | 世    | セ       | 世    |
+| so    | そ       | 曽    | ソ       | 曾    |
+| ta    | た       | 太    | タ       | 多    |
+| chi   | ち       | 知    | チ       | 千    |
+| tsu   | つ       | 津    | ツ       | 都    |
+| te    | て       | 手    | テ       | 天    |
+| to    | と       | 止    | ト       | 止    |
+| na    | な       | 奈    | ナ       | 那    |
+| ni    | に       | 仁    | ニ       | 仁    |
+| nu    | ぬ       | 奴    | ヌ       | 奴    |
+| ne    | ね       | 禰    | ネ       | 祢    |
+| no    | の       | 乃    | ノ       | 乃    |
+| ha    | は       | 波    | ハ       | 八    |
+| hi    | ひ       | 比    | ヒ       | 比    |
+| fu    | ふ       | 不    | フ       | 不    |
+| he    | へ       | 部    | ヘ       | 部    |
+| ho    | ほ       | 保    | ホ       | 保    |
+| ma    | ま       | 馬    | マ       | 末    |
+| mi    | み       | 美    | ミ       | 三    |
+| mu    | む       | 武    | ム       | 牟    |
+| me    | め       | 女    | メ       | 女    |
+| mo    | も       | 毛    | モ       | 毛    |
+| ya    | や       | 也    | ヤ       | 也    |
+| yu    | ゆ       | 由    | ユ       | 由    |
+| yo    | よ       | 与    | ヨ       | 与    |
+| ra    | ら       | 良    | ラ       | 良    |
+| ri    | り       | 利    | リ       | 利    |
+| ru    | る       | 留    | ル       | 流    |
+| re    | れ       | 礼    | レ       | 礼    |
+| ro    | ろ       | 呂    | ロ       | 呂    |
+| wa    | わ       | 和    | ワ       | 和    |
+| wi    | ゐ       | 為    | ヰ       | 井    |
+| we    | ゑ       | 惠    | ヱ       | 恵    |
+| wo    | を       | 遠    | ヲ       | 乎    |
+| n     | ん       | 無    | ン       | 尓    |
 
 ### Notes on Manyōgana:
 - **Origins:** Hiragana evolved from cursive forms of Manyōgana Kanji, written quickly by hand, while Katakana came from abbreviated parts of the same Kanji, often used by monks for annotations.
