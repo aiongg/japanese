@@ -70,19 +70,9 @@ export default function Flashcard({ sentence, showAnswerByDefault, onNext }: Fla
     console.log('Tap detected:', tapCount + 1);
     console.log('Current state - showAnswer:', showAnswer, 'showAnswerByDefault:', showAnswerByDefault);
     
-    if (showAnswerByDefault) {
-      // If answers are shown by default, just go to next card
-      console.log('Answers shown by default, advancing to next card');
-      onNext();
-    } else if (showAnswer) {
-      // If answer is already showing, go to next card
-      console.log('Answer already showing, advancing to next card');
-      onNext();
-    } else {
-      // If answer is hidden, show it
-      console.log('Revealing answer');
-      setShowAnswer(true);
-    }
+    // The key issue: we need to call onNext() directly instead of setting local state
+    // This ensures the parent component (DeckView) handles the state properly
+    onNext();
   };
 
   return (
