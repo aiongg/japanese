@@ -1,0 +1,113 @@
+import { createContext, useContext, useState, useEffect, ReactNode, useCallback } from 'react';
+import { Deck, DeckMetadata } from '../types';
+import { fetchDeckList, fetchDeck } from '../utils/parseMarkdown';
+
+interface DeckContextType {
+  decks: DeckMetadata[];
+  currentDeck: Deck | null;
+  loading: boolean;
+  error: string | null;
+  loadDeck: (deckId: string) => Promise<void>;
+}
+
+const DeckContext = createContext<DeckContextType | undefined>(undefined);
+
+export function DeckProvider({ children }: { children: ReactNode }) {
+  const [decks, setDecks] = useState<DeckMetadata[]>([]);
+  const [currentDeck, setCurrentDeck] = useState<Deck | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  // Load all decks with their sentence counts
+  useEffect(() => {
+    async function loadDecks() {
+      try {
+        setLoading(true);
+        const deckFiles = await fetchDeckList();
+        
+        // Create initial metadata with placeholder counts
+        const initialDeckMetadata: DeckMetadata[] = deckFiles.map(file => ({
+          id: file,
+          title: file.replace('sentences_', 'Sentences ').replace('.md', '').replace('-', ' to '),
+          count: 0 // Placeholder count
+        }));
+        
+        // Set initial metadata to show something immediately
+        setDecks(initialDeckMetadata);
+        
+        // Load each deck in parallel to get the sentence counts
+        const deckPromises = deckFiles.map(async (deckId) => {
+          try {
+            const deck = await fetchDeck(deckId);
+            return deck ? {
+              id: deckId,
+              title: deck.title,
+              count: deck.sentences.length
+            } : null;
+          } catch (error) {
+            console.error(`Error loading deck ${deckId}:`, error);
+            return null;
+          }
+        });
+        
+        // Wait for all deck metadata to load
+        const loadedDecks = await Promise.all(deckPromises);
+        
+        // Update decks with actual counts, filtering out any that failed to load
+        const validDecks = loadedDecks.filter((deck): deck is DeckMetadata => deck !== null);
+        setDecks(validDecks);
+      } catch (err) {
+        setError('Failed to load deck list');
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    
+    loadDecks();
+  }, []);
+
+  // Memoize the loadDeck function to prevent unnecessary re-renders
+  const loadDeck = useCallback(async (deckId: string) => {
+    try {
+      setLoading(true);
+      setError(null);
+      
+      const deck = await fetchDeck(deckId);
+      
+      if (deck) {
+        setCurrentDeck(deck);
+        
+        // Update the deck metadata with the correct count
+        setDecks(prevDecks => 
+          prevDecks.map(d => 
+            d.id === deckId 
+              ? { ...d, count: deck.sentences.length } 
+              : d
+          )
+        );
+      } else {
+        setError(`Failed to load deck: ${deckId}`);
+      }
+    } catch (err) {
+      setError(`Error loading deck: ${deckId}`);
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  return (
+    <DeckContext.Provider value={{ decks, currentDeck, loading, error, loadDeck }}>
+      {children}
+    </DeckContext.Provider>
+  );
+}
+
+export function useDeck() {
+  const context = useContext(DeckContext);
+  if (context === undefined) {
+    throw new Error('useDeck must be used within a DeckProvider');
+  }
+  return context;
+} 
