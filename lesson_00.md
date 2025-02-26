@@ -12,24 +12,7 @@ Japanese uses three writing systems: Hiragana, Katakana, and Kanji. Hiragana and
 
 ## Katakana Table
 
-|   | a | i | u | e | o | ya | yu | yo |
-| - | - | - | - | - | - | -- | -- | -- |
-| - | ア | イ | ウ | エ | オ | ャ  | ュ  | ョ  |
-| k | カ | キ | ク | ケ | コ | キャ | キュ | キョ |
-| g | ガ | ギ | グ | ゲ | ゴ | ギャ | ギュ | ギョ |
-| s | サ | シ | ス | セ | ソ | シャ | シュ | ショ |
-| z | ザ | ジ | ズ | ゼ | ゾ | ジャ | ジュ | ジョ |
-| t | タ | チ | ツ | テ | ト | チャ | チュ | チョ |
-| d | ダ | ヂ | ヅ | デ | ド | -  | -  | -  |
-| n | ナ | ニ | ヌ | ネ | ノ | ニャ | ニュ | ニョ |
-| h | ハ | ヒ | フ | ヘ | ホ | ヒャ | ヒュ | ヒョ |
-| b | バ | ビ | ブ | ベ | ボ | ビャ | ビュ | ビョ |
-| p | パ | ピ | プ | ペ | ポ | ピャ | ピュ | ピョ |
-| m | マ | ミ | ム | メ | モ | ミャ | ミュ | ミョ |
-| y | ヤ | - | ユ | - | ヨ | -  | -  | -  |
-| r | ラ | リ | ル | レ | ロ | リャ | リュ | リョ |
-| w | ワ | ヰ | - | ヱ | ヲ | -  | -  | -  |
-| n | - | - | ン | - | - | -  | -  | -  |
+<table><thead><tr><th width="81"></th><th width="63">a</th><th width="41">i</th><th width="87">u</th><th width="85">e</th><th width="55">o</th><th width="73">ya</th><th width="81">yu</th><th width="75">yo</th></tr></thead><tbody><tr><td>-</td><td>ア</td><td>イ</td><td>ウ</td><td>エ</td><td>オ</td><td>ャ</td><td>ュ</td><td>ョ</td></tr><tr><td>k</td><td>カ</td><td>キ</td><td>ク</td><td>ケ</td><td>コ</td><td>キャ</td><td>キュ</td><td>キョ</td></tr><tr><td>g</td><td>ガ</td><td>ギ</td><td>グ</td><td>ゲ</td><td>ゴ</td><td>ギャ</td><td>ギュ</td><td>ギョ</td></tr><tr><td>s</td><td>サ</td><td>シ</td><td>ス</td><td>セ</td><td>ソ</td><td>シャ</td><td>シュ</td><td>ショ</td></tr><tr><td>z</td><td>ザ</td><td>ジ</td><td>ズ</td><td>ゼ</td><td>ゾ</td><td>ジャ</td><td>ジュ</td><td>ジョ</td></tr><tr><td>t</td><td>タ</td><td>チ</td><td>ツ</td><td>テ</td><td>ト</td><td>チャ</td><td>チュ</td><td>チョ</td></tr><tr><td>d</td><td>ダ</td><td>ヂ</td><td>ヅ</td><td>デ</td><td>ド</td><td>-</td><td>-</td><td>-</td></tr><tr><td>n</td><td>ナ</td><td>ニ</td><td>ヌ</td><td>ネ</td><td>ノ</td><td>ニャ</td><td>ニュ</td><td>ニョ</td></tr><tr><td>h</td><td>ハ</td><td>ヒ</td><td>フ</td><td>ヘ</td><td>ホ</td><td>ヒャ</td><td>ヒュ</td><td>ヒョ</td></tr><tr><td>b</td><td>バ</td><td>ビ</td><td>ブ</td><td>ベ</td><td>ボ</td><td>ビャ</td><td>ビュ</td><td>ビョ</td></tr><tr><td>p</td><td>パ</td><td>ピ</td><td>プ</td><td>ペ</td><td>ポ</td><td>ピャ</td><td>ピュ</td><td>ピョ</td></tr><tr><td>m</td><td>マ</td><td>ミ</td><td>ム</td><td>メ</td><td>モ</td><td>ミャ</td><td>ミュ</td><td>ミョ</td></tr><tr><td>y</td><td>ヤ</td><td>-</td><td>ユ</td><td>-</td><td>ヨ</td><td>-</td><td>-</td><td>-</td></tr><tr><td>r</td><td>ラ</td><td>リ</td><td>ル</td><td>レ</td><td>ロ</td><td>リャ</td><td>リュ</td><td>リョ</td></tr><tr><td>w</td><td>ワ</td><td>ヰ</td><td>-</td><td>ヱ</td><td>ヲ</td><td>-</td><td>-</td><td>-</td></tr><tr><td>n</td><td>-</td><td>-</td><td>ン</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr></tbody></table>
 
 ## Additional Sounds and Explanations
 
@@ -90,56 +73,7 @@ Some sounds appear in Katakana for foreign loanwords and don’t fit the standar
 
 Before Hiragana and Katakana, Japanese was written using Manyōgana—Kanji chosen for their phonetic values rather than meaning. Named after the _Manyōshū_ (8th-century poetry anthology), this system was simplified over time into the cursive Hiragana and angular Katakana we use today. Below is a table showing the primary Kanji from which each Kana was derived. Note that multiple Kanji were sometimes used for the same sound; this table lists common examples.
 
-| Sound | Hiragana | Kanji | Katakana | Kanji |
-| ----- | -------- | ----- | -------- | ----- |
-| a     | あ        | 安     | ア        | 阿     |
-| i     | い        | 以     | イ        | 伊     |
-| u     | う        | 宇     | ウ        | 宇     |
-| e     | え        | 衣     | エ        | 江     |
-| o     | お        | 於     | オ        | 於     |
-| ka    | か        | 加     | カ        | 加     |
-| ki    | き        | 幾     | キ        | 幾     |
-| ku    | く        | 久     | ク        | 久     |
-| ke    | け        | 計     | ケ        | 計     |
-| ko    | こ        | 己     | コ        | 己     |
-| sa    | さ        | 左     | サ        | 散     |
-| shi   | し        | 之     | シ        | 之     |
-| su    | す        | 寸     | ス        | 須     |
-| se    | せ        | 世     | セ        | 世     |
-| so    | そ        | 曽     | ソ        | 曾     |
-| ta    | た        | 太     | タ        | 多     |
-| chi   | ち        | 知     | チ        | 千     |
-| tsu   | つ        | 津     | ツ        | 都     |
-| te    | て        | 手     | テ        | 天     |
-| to    | と        | 止     | ト        | 止     |
-| na    | な        | 奈     | ナ        | 那     |
-| ni    | に        | 仁     | ニ        | 仁     |
-| nu    | ぬ        | 奴     | ヌ        | 奴     |
-| ne    | ね        | 禰     | ネ        | 祢     |
-| no    | の        | 乃     | ノ        | 乃     |
-| ha    | は        | 波     | ハ        | 八     |
-| hi    | ひ        | 比     | ヒ        | 比     |
-| fu    | ふ        | 不     | フ        | 不     |
-| he    | へ        | 部     | ヘ        | 部     |
-| ho    | ほ        | 保     | ホ        | 保     |
-| ma    | ま        | 馬     | マ        | 末     |
-| mi    | み        | 美     | ミ        | 三     |
-| mu    | む        | 武     | ム        | 牟     |
-| me    | め        | 女     | メ        | 女     |
-| mo    | も        | 毛     | モ        | 毛     |
-| ya    | や        | 也     | ヤ        | 也     |
-| yu    | ゆ        | 由     | ユ        | 由     |
-| yo    | よ        | 与     | ヨ        | 与     |
-| ra    | ら        | 良     | ラ        | 良     |
-| ri    | り        | 利     | リ        | 利     |
-| ru    | る        | 留     | ル        | 流     |
-| re    | れ        | 礼     | レ        | 礼     |
-| ro    | ろ        | 呂     | ロ        | 呂     |
-| wa    | わ        | 和     | ワ        | 和     |
-| wi    | ゐ        | 為     | ヰ        | 井     |
-| we    | ゑ        | 惠     | ヱ        | 恵     |
-| wo    | を        | 遠     | ヲ        | 乎     |
-| n     | ん        | 無     | ン        | 尓     |
+<table><thead><tr><th width="129">Sound</th><th width="107">Hiragana</th><th width="112">Kanji</th><th width="127">Katakana</th><th width="100">Kanji</th></tr></thead><tbody><tr><td>a</td><td>あ</td><td>安</td><td>ア</td><td>阿</td></tr><tr><td>i</td><td>い</td><td>以</td><td>イ</td><td>伊</td></tr><tr><td>u</td><td>う</td><td>宇</td><td>ウ</td><td>宇</td></tr><tr><td>e</td><td>え</td><td>衣</td><td>エ</td><td>江</td></tr><tr><td>o</td><td>お</td><td>於</td><td>オ</td><td>於</td></tr><tr><td>ka</td><td>か</td><td>加</td><td>カ</td><td>加</td></tr><tr><td>ki</td><td>き</td><td>幾</td><td>キ</td><td>幾</td></tr><tr><td>ku</td><td>く</td><td>久</td><td>ク</td><td>久</td></tr><tr><td>ke</td><td>け</td><td>計</td><td>ケ</td><td>計</td></tr><tr><td>ko</td><td>こ</td><td>己</td><td>コ</td><td>己</td></tr><tr><td>sa</td><td>さ</td><td>左</td><td>サ</td><td>散</td></tr><tr><td>shi</td><td>し</td><td>之</td><td>シ</td><td>之</td></tr><tr><td>su</td><td>す</td><td>寸</td><td>ス</td><td>須</td></tr><tr><td>se</td><td>せ</td><td>世</td><td>セ</td><td>世</td></tr><tr><td>so</td><td>そ</td><td>曽</td><td>ソ</td><td>曾</td></tr><tr><td>ta</td><td>た</td><td>太</td><td>タ</td><td>多</td></tr><tr><td>chi</td><td>ち</td><td>知</td><td>チ</td><td>千</td></tr><tr><td>tsu</td><td>つ</td><td>津</td><td>ツ</td><td>都</td></tr><tr><td>te</td><td>て</td><td>手</td><td>テ</td><td>天</td></tr><tr><td>to</td><td>と</td><td>止</td><td>ト</td><td>止</td></tr><tr><td>na</td><td>な</td><td>奈</td><td>ナ</td><td>那</td></tr><tr><td>ni</td><td>に</td><td>仁</td><td>ニ</td><td>仁</td></tr><tr><td>nu</td><td>ぬ</td><td>奴</td><td>ヌ</td><td>奴</td></tr><tr><td>ne</td><td>ね</td><td>禰</td><td>ネ</td><td>祢</td></tr><tr><td>no</td><td>の</td><td>乃</td><td>ノ</td><td>乃</td></tr><tr><td>ha</td><td>は</td><td>波</td><td>ハ</td><td>八</td></tr><tr><td>hi</td><td>ひ</td><td>比</td><td>ヒ</td><td>比</td></tr><tr><td>fu</td><td>ふ</td><td>不</td><td>フ</td><td>不</td></tr><tr><td>he</td><td>へ</td><td>部</td><td>ヘ</td><td>部</td></tr><tr><td>ho</td><td>ほ</td><td>保</td><td>ホ</td><td>保</td></tr><tr><td>ma</td><td>ま</td><td>馬</td><td>マ</td><td>末</td></tr><tr><td>mi</td><td>み</td><td>美</td><td>ミ</td><td>三</td></tr><tr><td>mu</td><td>む</td><td>武</td><td>ム</td><td>牟</td></tr><tr><td>me</td><td>め</td><td>女</td><td>メ</td><td>女</td></tr><tr><td>mo</td><td>も</td><td>毛</td><td>モ</td><td>毛</td></tr><tr><td>ya</td><td>や</td><td>也</td><td>ヤ</td><td>也</td></tr><tr><td>yu</td><td>ゆ</td><td>由</td><td>ユ</td><td>由</td></tr><tr><td>yo</td><td>よ</td><td>与</td><td>ヨ</td><td>与</td></tr><tr><td>ra</td><td>ら</td><td>良</td><td>ラ</td><td>良</td></tr><tr><td>ri</td><td>り</td><td>利</td><td>リ</td><td>利</td></tr><tr><td>ru</td><td>る</td><td>留</td><td>ル</td><td>流</td></tr><tr><td>re</td><td>れ</td><td>礼</td><td>レ</td><td>礼</td></tr><tr><td>ro</td><td>ろ</td><td>呂</td><td>ロ</td><td>呂</td></tr><tr><td>wa</td><td>わ</td><td>和</td><td>ワ</td><td>和</td></tr><tr><td>wi</td><td>ゐ</td><td>為</td><td>ヰ</td><td>井</td></tr><tr><td>we</td><td>ゑ</td><td>惠</td><td>ヱ</td><td>恵</td></tr><tr><td>wo</td><td>を</td><td>遠</td><td>ヲ</td><td>乎</td></tr><tr><td>n</td><td>ん</td><td>無</td><td>ン</td><td>尓</td></tr></tbody></table>
 
 ### Notes on Manyōgana:
 
