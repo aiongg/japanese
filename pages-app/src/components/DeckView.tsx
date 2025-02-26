@@ -47,9 +47,13 @@ export default function DeckView() {
   
   // Add keyboard navigation
   const goToNext = useCallback(() => {
+    console.log('goToNext called');
     if (currentDeck && currentIndex < currentDeck.sentences.length - 1) {
+      console.log('Advancing to next card, resetting isAnswerRevealed to', showAnswerByDefault);
       setCurrentIndex(prev => prev + 1);
       setIsAnswerRevealed(showAnswerByDefault);
+    } else {
+      console.log('Already at the last card');
     }
   }, [currentDeck, currentIndex, showAnswerByDefault]);
   
@@ -62,11 +66,16 @@ export default function DeckView() {
   
   // Handle card interaction (tap or keyboard)
   const handleCardInteraction = useCallback(() => {
+    console.log('Card interaction detected');
+    console.log('Current state - showAnswerByDefault:', showAnswerByDefault, 'isAnswerRevealed:', isAnswerRevealed);
+    
     if (showAnswerByDefault || isAnswerRevealed) {
       // If answers are shown by default or answer is already revealed, go to next card
+      console.log('Answer already revealed, going to next card');
       goToNext();
     } else {
       // If answer is hidden, reveal it
+      console.log('Revealing answer');
       setIsAnswerRevealed(true);
     }
   }, [showAnswerByDefault, isAnswerRevealed, goToNext]);

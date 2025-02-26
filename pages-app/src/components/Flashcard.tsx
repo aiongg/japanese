@@ -20,14 +20,20 @@ export default function Flashcard({ sentence, showAnswerByDefault, onNext }: Fla
   const [showAnswer, setShowAnswer] = useState(showAnswerByDefault);
   const [renderedHTML, setRenderedHTML] = useState('');
   
+  // Debug counter to track taps
+  const [tapCount, setTapCount] = useState(0);
+  
   // Update showAnswer when showAnswerByDefault changes
   useEffect(() => {
+    console.log('showAnswerByDefault changed:', showAnswerByDefault);
     setShowAnswer(showAnswerByDefault);
   }, [showAnswerByDefault]);
   
   // Reset showAnswer when sentence changes
   useEffect(() => {
+    console.log('Sentence changed, resetting state. showAnswerByDefault:', showAnswerByDefault);
     setShowAnswer(showAnswerByDefault);
+    setTapCount(0);
   }, [sentence, showAnswerByDefault]);
 
   // Render markdown when sentence changes
@@ -60,14 +66,21 @@ export default function Flashcard({ sentence, showAnswerByDefault, onNext }: Fla
   }, [sentence]);
 
   const handleClick = () => {
+    setTapCount(prev => prev + 1);
+    console.log('Tap detected:', tapCount + 1);
+    console.log('Current state - showAnswer:', showAnswer, 'showAnswerByDefault:', showAnswerByDefault);
+    
     if (showAnswerByDefault) {
       // If answers are shown by default, just go to next card
+      console.log('Answers shown by default, advancing to next card');
       onNext();
     } else if (showAnswer) {
       // If answer is already showing, go to next card
+      console.log('Answer already showing, advancing to next card');
       onNext();
     } else {
       // If answer is hidden, show it
+      console.log('Revealing answer');
       setShowAnswer(true);
     }
   };
@@ -92,7 +105,10 @@ export default function Flashcard({ sentence, showAnswerByDefault, onNext }: Fla
         <div 
           className="gloss-table-container"
           dangerouslySetInnerHTML={{ __html: renderedHTML }}
-          onClick={(e) => e.stopPropagation()} // Prevent clicks on table from triggering card click
+          onClick={(e) => {
+            console.log('Table clicked, stopping propagation');
+            e.stopPropagation();
+          }}
         />
       </div>
     </div>
