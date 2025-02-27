@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useDeck } from '../hooks/useDeck';
 import Flashcard from './Flashcard';
 import ProgressBar from './ProgressBar';
@@ -241,23 +241,11 @@ export default function DeckView() {
   
   return (
     <div className="container flashcard-container">
-      <StudyModeControls
-        randomMode={randomMode}
-        showAnswerByDefault={showAnswerByDefault}
-        autoPlayJapanese={audioSettings.autoPlayJapanese}
-        viewMode={viewMode}
-        onToggleRandomMode={toggleRandomMode}
-        onToggleShowAnswerByDefault={toggleShowAnswerByDefault}
-        onToggleAutoPlay={toggleAutoPlay}
-        onToggleListenMode={toggleListenMode}
-      />
-      
-      <AudioSettings
-        pauseDuration={audioSettings.pauseDuration}
-        onIncrement={incrementPauseDuration}
-        onDecrement={decrementPauseDuration}
-        isListenMode={viewMode === 'listen'}
-      />
+      <div className="back-button-container">
+        <Link to="/" className="back-button">
+          &larr; Back to Decks
+        </Link>
+      </div>
       
       <ProgressBar
         currentIndex={currentIndex}
@@ -285,6 +273,24 @@ export default function DeckView() {
         isAnswerRevealed={isAnswerRevealed}
         isFirstCard={isFirstCard}
         isLastCard={isLastCard}
+      />
+
+      <StudyModeControls
+        randomMode={randomMode}
+        showAnswerByDefault={showAnswerByDefault}
+        autoPlayJapanese={audioSettings.autoPlayJapanese}
+        viewMode={viewMode}
+        onToggleRandomMode={toggleRandomMode}
+        onToggleShowAnswerByDefault={toggleShowAnswerByDefault}
+        onToggleAutoPlay={toggleAutoPlay}
+        onToggleListenMode={toggleListenMode}
+      />
+      
+      <AudioSettings
+        pauseDuration={audioSettings.pauseDuration}
+        onIncrement={incrementPauseDuration}
+        onDecrement={decrementPauseDuration}
+        isListenMode={viewMode === 'listen'}
       />
       
       <KeyboardShortcutsInfo />
