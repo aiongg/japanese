@@ -1,9 +1,17 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useDeck } from '../context/DeckContext';
 import Flashcard from './Flashcard';
-import { ViewMode, AudioSettings } from '../types';
+import ProgressBar from './ProgressBar';
+import NavigationButtons from './NavigationButtons';
+import StudyModeControls from './StudyModeControls';
+import AudioSettings from './AudioSettings';
+import KeyboardShortcutsInfo from './KeyboardShortcutsInfo';
+import { ViewMode, AudioSettings as AudioSettingsType } from '../types';
 import { useAudio } from '../hooks/useAudio';
+import { useDeckNavigation } from '../hooks/useDeckNavigation';
+import { useFlashcardState } from '../hooks/useFlashcardState';
+import { useKeyboardShortcuts } from '../hooks/useKeyboardShortcuts';
 
 // Debug flag - set to true to enable debug logs
 const DEBUG = true;
@@ -16,7 +24,7 @@ function debugLog(...args: any[]) {
 }
 
 // Default audio settings
-const DEFAULT_AUDIO_SETTINGS: AudioSettings = {
+const DEFAULT_AUDIO_SETTINGS: AudioSettingsType = {
   autoPlayJapanese: true,
   autoPlayEnglish: true,
   pauseDuration: 2000 // 2 seconds pause between audio files
@@ -26,27 +34,18 @@ export default function DeckView() {
   const { deckId } = useParams<{ deckId: string }>();
   const { currentDeck, loading, error, loadDeck } = useDeck();
   
-  // State for deck navigation
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [randomMode, setRandomMode] = useState(false);
-  const [randomIndices, setRandomIndices] = useState<number[]>([]);
+  // State for audio and view mode
+  const [viewMode, setViewMode] = useState<ViewMode>('normal');
+  const [audioSettings, setAudioSettings] = useState<AudioSettingsType>(DEFAULT_AUDIO_SETTINGS);
+  const [listenModePaused, setListenModePaused] = useState(false);
   
   // State for flashcard display
   const [showAnswerByDefault, setShowAnswerByDefault] = useState(false);
-  const [isAnswerRevealed, setIsAnswerRevealed] = useState(false);
-  const [useFlipAnimation, setUseFlipAnimation] = useState(false);
   
-  // State for audio and view mode
-  const [viewMode, setViewMode] = useState<ViewMode>('normal');
-  const [audioSettings, setAudioSettings] = useState<AudioSettings>(DEFAULT_AUDIO_SETTINGS);
-  const [listenModePaused, setListenModePaused] = useState(false);
+  // Refs to track view mode changes
+  const prevViewModeRef = useRef<ViewMode>('normal');
   
-  // Refs to track card changes and prevent infinite loops
-  const lastSentenceIdRef = useRef<number | null>(null);
-  const isAutoPlayingRef = useRef<boolean>(false);
-  const prevViewModeRef = useRef<ViewMode>('normal'); // Add this ref to track previous view mode
-  
-  // Use our custom audio hook
+  // Use our custom hooks
   const { 
     isPlaying, 
     play,
@@ -58,48 +57,74 @@ export default function DeckView() {
     subscribe
   } = useAudio();
   
-  // Get the current sentence
-  const getCurrentSentence = useCallback(() => {
-    if (!currentDeck) return null;
-    const actualIndex = randomMode ? randomIndices[currentIndex] : currentIndex;
-    return currentDeck.sentences[actualIndex];
-  }, [currentDeck, currentIndex, randomMode, randomIndices]);
+  // Handle toggling showAnswerByDefault
+  const handleToggleShowAnswerByDefault = useCallback((newValue: boolean) => {
+    debugLog('Setting showAnswerByDefault to', newValue);
+    setShowAnswerByDefault(newValue);
+  }, []);
+  
+  // Use flashcard state hook
+  const {
+    isAnswerRevealed,
+    useFlipAnimation,
+    setIsAnswerRevealed,
+    revealAnswer,
+    toggleShowAnswerByDefault
+  } = useFlashcardState({
+    showAnswerByDefault,
+    onToggleShowAnswerByDefault: handleToggleShowAnswerByDefault
+  });
+  
+  // Use deck navigation hook
+  const {
+    currentIndex,
+    randomMode,
+    getCurrentSentence,
+    goToNext,
+    goToPrevious,
+    toggleRandomMode,
+    isFirstCard,
+    isLastCard,
+    progress,
+    actualIndex
+  } = useDeckNavigation({
+    deck: currentDeck,
+    showAnswerByDefault,
+    onAnswerReveal: setIsAnswerRevealed
+  });
+  
+  // Refs to track card changes and prevent infinite loops
+  const lastSentenceIdRef = useRef<number | null>(null);
+  const isAutoPlayingRef = useRef<boolean>(false);
   
   // Load the deck when deckId changes
   useEffect(() => {
     if (deckId) {
       loadDeck(deckId);
-      setCurrentIndex(0);
       lastSentenceIdRef.current = null;
       isAutoPlayingRef.current = false; // Reset auto-playing flag when loading a new deck
     }
   }, [deckId, loadDeck]);
   
-  // Generate random indices when randomMode changes
-  useEffect(() => {
-    if (currentDeck && randomMode) {
-      // Generate random order of indices
-      const indices = [...Array(currentDeck.sentences.length).keys()];
-      for (let i = indices.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [indices[i], indices[j]] = [indices[j], indices[i]];
+  // Play Japanese audio for the current sentence
+  const playJapaneseAudio = useCallback(async () => {
+    if (!currentDeck) return;
+    
+    const currentSentence = getCurrentSentence();
+    
+    if (currentSentence?.japaneseAudioPath && !isPlaying) {
+      try {
+        debugLog('Playing Japanese audio', currentSentence.japaneseAudioPath);
+        await play(currentSentence.japaneseAudioPath);
+        debugLog('Japanese audio playback completed');
+      } catch (error) {
+        console.error('Error playing audio:', error);
+        debugLog('Error playing audio:', error);
       }
-      setRandomIndices(indices);
-      setCurrentIndex(0);
-      lastSentenceIdRef.current = null;
-      isAutoPlayingRef.current = false; // Reset auto-playing flag when changing to random mode
+    } else if (isPlaying) {
+      debugLog('Ignoring audio play request - already playing audio');
     }
-  }, [randomMode, currentDeck]);
-  
-  // Reset the current index when the deck changes
-  useEffect(() => {
-    if (currentDeck) {
-      setCurrentIndex(0);
-      setIsAnswerRevealed(showAnswerByDefault);
-      lastSentenceIdRef.current = null;
-      isAutoPlayingRef.current = false; // Reset auto-playing flag when deck changes
-    }
-  }, [currentDeck?.id, showAnswerByDefault]);
+  }, [currentDeck, isPlaying, play, getCurrentSentence]);
   
   // Listen mode sequence
   const startListenModeSequence = useCallback(() => {
@@ -171,7 +196,8 @@ export default function DeckView() {
     audioSettings.pauseDuration, 
     queueSequence,
     getCurrentSentence,
-    listenModePaused
+    listenModePaused,
+    setIsAnswerRevealed
   ]);
   
   // Toggle listen mode on/off
@@ -188,26 +214,6 @@ export default function DeckView() {
       setListenModePaused(false);
     }
   }, [viewMode]);
-  
-  // Play Japanese audio for the current sentence
-  const playJapaneseAudio = useCallback(async () => {
-    if (!currentDeck) return;
-    
-    const currentSentence = getCurrentSentence();
-    
-    if (currentSentence?.japaneseAudioPath && !isPlaying) {
-      try {
-        debugLog('Playing Japanese audio', currentSentence.japaneseAudioPath);
-        await play(currentSentence.japaneseAudioPath);
-        debugLog('Japanese audio playback completed');
-      } catch (error) {
-        console.error('Error playing audio:', error);
-        debugLog('Error playing audio:', error);
-      }
-    } else if (isPlaying) {
-      debugLog('Ignoring audio play request - already playing audio');
-    }
-  }, [currentDeck, isPlaying, play, getCurrentSentence]);
   
   // Auto-play audio when sentence changes if autoPlayJapanese is enabled and not in listen mode
   useEffect(() => {
@@ -292,7 +298,7 @@ export default function DeckView() {
         
         // Wait for the pause duration before advancing
         setTimeout(() => {
-          if (viewMode === 'listen' && !listenModePaused && currentIndex < (currentDeck?.sentences.length || 0) - 1) {
+          if (viewMode === 'listen' && !listenModePaused && !isLastCard) {
             goToNext();
           }
         }, audioSettings.pauseDuration);
@@ -300,36 +306,7 @@ export default function DeckView() {
     });
     
     return unsubscribe;
-  }, [subscribe, viewMode, audioSettings.pauseDuration, currentIndex, currentDeck?.sentences.length, listenModePaused]);
-  
-  // Navigation functions
-  const goToNext = useCallback(() => {
-    if (currentDeck && currentIndex < currentDeck.sentences.length - 1) {
-      debugLog('Going to next card');
-      setCurrentIndex(prev => prev + 1);
-      setIsAnswerRevealed(showAnswerByDefault);
-      
-      // Reset the last sentence ID to allow auto-play to trigger for the new card
-      lastSentenceIdRef.current = null;
-      
-      // Reset auto-playing flag to ensure auto-play works for the new card
-      isAutoPlayingRef.current = false;
-      
-      // If in listen mode, the sequence will be started by the effect that watches currentIndex
-    }
-  }, [currentDeck, currentIndex, showAnswerByDefault]);
-  
-  // New function to reveal the answer
-  const revealAnswer = useCallback(() => {
-    debugLog('Revealing answer');
-    // Use state instead of sessionStorage
-    setUseFlipAnimation(true);
-    setIsAnswerRevealed(true);
-    // Clear the flag after a short delay
-    setTimeout(() => {
-      setUseFlipAnimation(false);
-    }, 300); // Increased timeout to ensure animation completes
-  }, []);
+  }, [subscribe, viewMode, audioSettings.pauseDuration, listenModePaused, goToNext, isLastCard]);
   
   // Effect to start listen mode sequence when currentIndex changes
   useEffect(() => {
@@ -343,82 +320,33 @@ export default function DeckView() {
     }
   }, [viewMode, currentDeck, currentIndex, startListenModeSequence, listenModePaused]);
   
-  const goToPrevious = useCallback(() => {
-    if (currentIndex > 0) {
-      debugLog('Going to previous card');
-      setCurrentIndex(prev => prev - 1);
-      setIsAnswerRevealed(showAnswerByDefault);
-      
-      // Reset the last sentence ID to allow auto-play to trigger for the new card
-      lastSentenceIdRef.current = null;
-      
-      // Reset auto-playing flag to ensure auto-play works for the new card
-      isAutoPlayingRef.current = false;
-      
-      // If in listen mode, the sequence will be started by the effect that watches currentIndex
-    }
-  }, [currentIndex, showAnswerByDefault]);
-  
-  // Add keyboard event handler
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      // Ignore keyboard events if an input element is focused
-      if (document.activeElement?.tagName === 'INPUT' || 
-          document.activeElement?.tagName === 'TEXTAREA' ||
-          document.activeElement?.tagName === 'SELECT') {
-        return;
-      }
-
-      debugLog('Keyboard event', { key: e.key, code: e.code });
-      
-      switch (e.key) {
-        case ' ':  // Space
-          e.preventDefault();
-          // Play audio
-          playJapaneseAudio();
-          break;
-        case 'ArrowRight':
-          e.preventDefault();
-          // If answer is not revealed, reveal it, otherwise go to next card
-          if (!isAnswerRevealed) {
-            revealAnswer();
-          } else {
-            goToNext();
-          }
-          break;
-        case 'ArrowLeft':
-          e.preventDefault();
-          // Go to previous card
-          goToPrevious();
-          break;
-      }
-    };
-
-    // Add event listener
-    window.addEventListener('keydown', handleKeyDown);
-    
-    // Clean up
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [goToNext, goToPrevious, playJapaneseAudio, isAnswerRevealed, revealAnswer]);
-  
-  // Update audio settings
-  const updateAudioSettings = useCallback((updates: Partial<AudioSettings>) => {
-    setAudioSettings(prev => ({ ...prev, ...updates }));
-  }, []);
+  // Use keyboard shortcuts
+  useKeyboardShortcuts({
+    onNext: goToNext,
+    onPrevious: goToPrevious,
+    onPlayAudio: playJapaneseAudio,
+    onRevealAnswer: revealAnswer,
+    isAnswerRevealed
+  });
   
   // Toggle auto-play setting
   const toggleAutoPlay = useCallback(() => {
-    updateAudioSettings({ 
-      autoPlayJapanese: !audioSettings.autoPlayJapanese 
-    });
+    setAudioSettings(prev => ({ 
+      ...prev, 
+      autoPlayJapanese: !prev.autoPlayJapanese 
+    }));
     
     // Reset the last sentence ID to allow auto-play to trigger again
     if (!audioSettings.autoPlayJapanese) {
       lastSentenceIdRef.current = null;
     }
-  }, [audioSettings.autoPlayJapanese, updateAudioSettings]);
+  }, [audioSettings.autoPlayJapanese]);
+  
+  // Adjust pause duration
+  const handlePauseDurationChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = parseInt(e.target.value, 10);
+    setAudioSettings(prev => ({ ...prev, pauseDuration: value }));
+  }, []);
   
   // Cleanup audio when component unmounts
   useEffect(() => {
@@ -445,112 +373,45 @@ export default function DeckView() {
   const totalCards = currentDeck.sentences.length;
   
   // Safety check to ensure currentIndex is within bounds
-  const safeCurrentIndex = Math.min(currentIndex, totalCards - 1);
-  if (safeCurrentIndex !== currentIndex) {
-    setCurrentIndex(safeCurrentIndex);
+  if (currentIndex >= totalCards) {
     return null; // Prevent rendering with invalid index
   }
   
-  const actualIndex = randomMode ? randomIndices[safeCurrentIndex] : safeCurrentIndex;
-  
-  // Safety check to ensure actualIndex is valid
-  if (actualIndex === undefined || actualIndex < 0 || actualIndex >= totalCards) {
-    console.error('Invalid actualIndex:', actualIndex, 'totalCards:', totalCards);
-    return <div className="error">Error displaying flashcard</div>;
-  }
-  
-  const currentSentence = currentDeck.sentences[actualIndex];
+  // Get the current sentence
+  const currentSentence = getCurrentSentence();
   
   // Safety check to ensure currentSentence exists
   if (!currentSentence) {
-    console.error('Sentence not found at index:', actualIndex);
+    console.error('Sentence not found');
     return <div className="error">Error displaying flashcard</div>;
   }
-  
-  const progress = ((safeCurrentIndex + 1) / totalCards) * 100;
-  
-  const toggleRandomMode = () => {
-    setRandomMode(!randomMode);
-  };
-  
-  const toggleShowAnswerByDefault = () => {
-    setShowAnswerByDefault(!showAnswerByDefault);
-    setIsAnswerRevealed(!showAnswerByDefault);
-  };
-  
-  // Adjust pause duration
-  const handlePauseDurationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = parseInt(e.target.value, 10);
-    updateAudioSettings({ pauseDuration: value });
-  };
   
   // Convert milliseconds to seconds for display
   const pauseDurationInSeconds = audioSettings.pauseDuration / 1000;
   
   return (
     <div className="container flashcard-container">
-      <div className="controls">
-        <Link to="/" className="btn btn-secondary">
-          &larr; Back to Decks
-        </Link>
-        
-        <div className="controls-group">
-          <button 
-            className={`btn ${randomMode ? '' : 'btn-secondary'}`}
-            onClick={toggleRandomMode}
-          >
-            {randomMode ? 'Random Order' : 'Sequential Order'}
-          </button>
-          
-          <button 
-            className={`btn ${showAnswerByDefault ? '' : 'btn-secondary'}`}
-            onClick={toggleShowAnswerByDefault}
-          >
-            {showAnswerByDefault ? 'Show All' : 'Tap to Reveal'}
-          </button>
-          
-          <button 
-            className={`btn ${audioSettings.autoPlayJapanese ? '' : 'btn-secondary'}`}
-            onClick={toggleAutoPlay}
-          >
-            {audioSettings.autoPlayJapanese ? 'Auto-Play On' : 'Auto-Play Off'}
-          </button>
-          
-          <button 
-            className={`btn ${viewMode === 'listen' ? '' : 'btn-secondary'}`}
-            onClick={toggleListenMode}
-          >
-            {viewMode === 'listen' ? '🎧 Exit Listen Mode' : '🎧 Listen Mode'}
-          </button>
-        </div>
-      </div>
+      <StudyModeControls
+        randomMode={randomMode}
+        showAnswerByDefault={showAnswerByDefault}
+        autoPlayJapanese={audioSettings.autoPlayJapanese}
+        viewMode={viewMode}
+        onToggleRandomMode={toggleRandomMode}
+        onToggleShowAnswerByDefault={toggleShowAnswerByDefault}
+        onToggleAutoPlay={toggleAutoPlay}
+        onToggleListenMode={toggleListenMode}
+      />
       
-      {viewMode === 'listen' && (
-        <div className="audio-settings">
-          <label>
-            Delay: {pauseDurationInSeconds.toFixed(1)} seconds
-            <input 
-              type="range" 
-              min="1000" 
-              max="5000" 
-              step="500" 
-              value={audioSettings.pauseDuration} 
-              onChange={handlePauseDurationChange}
-            />
-          </label>
-        </div>
-      )}
+      <AudioSettings
+        pauseDuration={audioSettings.pauseDuration}
+        onPauseDurationChange={handlePauseDurationChange}
+        isListenMode={viewMode === 'listen'}
+      />
       
-      <div className="progress">
-        <span>{safeCurrentIndex + 1}</span>
-        <div className="progress-bar">
-          <div 
-            className="progress-bar-fill" 
-            style={{ width: `${progress}%` }}
-          ></div>
-        </div>
-        <span>{totalCards}</span>
-      </div>
+      <ProgressBar
+        currentIndex={currentIndex}
+        totalCards={totalCards}
+      />
       
       <div className="flashcard-wrapper">
         <Flashcard 
@@ -566,37 +427,18 @@ export default function DeckView() {
         />
       </div>
       
-      <div className="navigation-buttons">
-        <button 
-          className="nav-button prev-button" 
-          onClick={goToPrevious}
-          disabled={safeCurrentIndex === 0}
-        >
-          &larr; Previous
-        </button>
-        
-        {!isAnswerRevealed ? (
-          <button 
-            className="nav-button flip-button" 
-            onClick={revealAnswer}
-          >
-            Flip
-          </button>
-        ) : (
-          <button 
-            className="nav-button next-button" 
-            onClick={goToNext}
-            disabled={safeCurrentIndex === totalCards - 1}
-          >
-            Next &rarr;
-          </button>
-        )}
-      </div>
+      <NavigationButtons
+        onPrevious={goToPrevious}
+        onNext={goToNext}
+        onReveal={revealAnswer}
+        isAnswerRevealed={isAnswerRevealed}
+        isFirstCard={isFirstCard}
+        isLastCard={isLastCard}
+      />
       
-      <div className="keyboard-shortcuts">
-        <p>Keyboard shortcuts: Space = Play Audio, Right Arrow = {isAnswerRevealed ? 'Next' : 'Flip'}, Left Arrow = Previous</p>
-        <p>Mobile: Tap card to play audio, swipe right for previous, swipe left to {isAnswerRevealed ? 'next' : 'flip'}</p>
-      </div>
+      <KeyboardShortcutsInfo
+        isAnswerRevealed={isAnswerRevealed}
+      />
     </div>
   );
 }
