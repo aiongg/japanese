@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-interface KeyboardShortcutsInfoProps {
-  isAnswerRevealed: boolean;
-}
-
-export default function KeyboardShortcutsInfo({ isAnswerRevealed }: KeyboardShortcutsInfoProps) {
+export default function KeyboardShortcutsInfo() {
   const [isMobile, setIsMobile] = useState(false);
   
   useEffect(() => {
@@ -33,14 +29,14 @@ export default function KeyboardShortcutsInfo({ isAnswerRevealed }: KeyboardShor
           // Mobile instructions
           <>
             <li><strong>Tap card</strong>: Play audio</li>
-            <li><strong>Swipe left</strong>: {isAnswerRevealed ? 'Next card' : 'Flip card'}</li>
+            <li><strong>Swipe left</strong>: Next card</li>
             <li><strong>Swipe right</strong>: Previous card</li>
           </>
         ) : (
           // Keyboard shortcuts
           <>
             <li><strong>Space</strong>: Play audio</li>
-            <li><strong>Right Arrow</strong>: {isAnswerRevealed ? 'Next card' : 'Flip card'}</li>
+            <li><strong>Right Arrow</strong>: Next card</li>
             <li><strong>Left Arrow</strong>: Previous card</li>
           </>
         )}

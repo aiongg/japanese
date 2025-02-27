@@ -2,13 +2,15 @@ import React from 'react';
 
 interface AudioSettingsProps {
   pauseDuration: number;
-  onPauseDurationChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onIncrement: () => void;
+  onDecrement: () => void;
   isListenMode: boolean;
 }
 
 export default function AudioSettings({
   pauseDuration,
-  onPauseDurationChange,
+  onIncrement,
+  onDecrement,
   isListenMode
 }: AudioSettingsProps) {
   // Only show audio settings in listen mode
@@ -19,17 +21,26 @@ export default function AudioSettings({
   
   return (
     <div className="audio-settings">
-      <label>
-        Delay: {pauseDurationInSeconds.toFixed(1)} seconds
-        <input 
-          type="range" 
-          min="1000" 
-          max="5000" 
-          step="500" 
-          value={pauseDuration} 
-          onChange={onPauseDurationChange}
-        />
-      </label>
+      <div className="delay-control">
+        <span className="delay-label">Delay between audio:</span>
+        <div className="delay-stepper">
+          <button 
+            className="delay-btn decrement-btn"
+            onClick={onDecrement}
+            disabled={pauseDurationInSeconds <= 1} // Disable if at minimum
+          >
+            -1
+          </button>
+          <span className="delay-value">{pauseDurationInSeconds.toFixed(0)} sec</span>
+          <button 
+            className="delay-btn increment-btn"
+            onClick={onIncrement}
+            disabled={pauseDurationInSeconds >= 10} // Disable if at maximum
+          >
+            +1
+          </button>
+        </div>
+      </div>
     </div>
   );
 } 

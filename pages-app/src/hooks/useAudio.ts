@@ -2,7 +2,6 @@ import { useState, useEffect, useCallback } from 'react';
 import { 
   audioService, 
   AudioState, 
-  AudioQueueItem,
   AudioEventType
 } from '../utils/audioService';
 
@@ -69,30 +68,6 @@ export function useAudio() {
     audioService.resume();
   }, []);
 
-  // Queue audio
-  const queueAudio = useCallback((item: AudioQueueItem) => {
-    debugLog('queueAudio() called with item:', item);
-    audioService.queueAudio(item);
-  }, []);
-
-  // Queue a sequence of audio items
-  const queueSequence = useCallback((items: AudioQueueItem[]) => {
-    debugLog('queueSequence() called with items:', items.length);
-    audioService.queueAudioSequence(items);
-  }, []);
-
-  // Clear the audio queue
-  const clearQueue = useCallback(() => {
-    debugLog('clearQueue() called');
-    audioService.clearQueue();
-  }, []);
-
-  // Set listen mode
-  const setListenMode = useCallback((isListenMode: boolean) => {
-    debugLog('setListenMode() called with:', isListenMode);
-    audioService.setListenMode(isListenMode);
-  }, []);
-
   // Wait for a specified duration
   const wait = useCallback((ms: number): Promise<void> => {
     debugLog('wait() called with ms:', ms);
@@ -105,52 +80,6 @@ export function useAudio() {
     return audioService.subscribe(eventType, listener);
   }, []);
 
-  // Create a sequence for listen mode
-  const createListenModeSequence = useCallback((
-    japaneseAudioSrc: string | undefined,
-    englishAudioSrc: string | undefined,
-    pauseDuration: number,
-    onJapaneseComplete?: () => void,
-    onEnglishComplete?: () => void
-  ): AudioQueueItem[] => {
-    debugLog('createListenModeSequence() called with:', { 
-      japaneseAudioSrc, 
-      englishAudioSrc, 
-      pauseDuration 
-    });
-    
-    const sequence: AudioQueueItem[] = [];
-    
-    // Add Japanese audio if available
-    if (japaneseAudioSrc) {
-      sequence.push({
-        src: japaneseAudioSrc,
-        pauseAfter: pauseDuration,
-        onComplete: () => {
-          setTimeout(() => {
-            debugLog('Japanese audio onComplete callback executing');
-            if (onJapaneseComplete) onJapaneseComplete();
-          }, pauseDuration);
-        }
-      });
-    }
-    
-    // Add English audio if available
-    if (englishAudioSrc) {
-      sequence.push({
-        src: englishAudioSrc,
-        pauseAfter: pauseDuration,
-        onComplete: () => {
-          debugLog('English audio onComplete callback executing');
-          if (onEnglishComplete) onEnglishComplete();
-        }
-      });
-    }
-    
-    debugLog('Created listen mode sequence with', sequence.length, 'items');
-    return sequence;
-  }, []);
-
   debugLog('useAudio hook returning functions and state');
   
   return {
@@ -159,13 +88,8 @@ export function useAudio() {
     stop,
     pause,
     resume,
-    queueAudio,
-    queueSequence,
-    clearQueue,
-    setListenMode,
     wait,
     subscribe,
-    createListenModeSequence,
     isPlaying: audioState.isPlaying,
     isPaused: audioState.isPaused,
     isListenMode: audioState.isListenMode,
