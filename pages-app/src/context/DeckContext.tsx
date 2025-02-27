@@ -1,17 +1,9 @@
-import { createContext, useContext, useState, useEffect, ReactNode, useCallback } from 'react';
+import { useState, useEffect, ReactNode, useCallback } from 'react';
 import { Deck, DeckMetadata } from '../types';
 import { fetchDeckList, fetchDeck } from '../utils/parseMarkdown';
+import { DeckContext } from './DeckContextType';
 
-interface DeckContextType {
-  decks: DeckMetadata[];
-  currentDeck: Deck | null;
-  loading: boolean;
-  error: string | null;
-  loadDeck: (deckId: string) => Promise<void>;
-}
-
-const DeckContext = createContext<DeckContextType | undefined>(undefined);
-
+// Provider component
 export function DeckProvider({ children }: { children: ReactNode }) {
   const [decks, setDecks] = useState<DeckMetadata[]>([]);
   const [currentDeck, setCurrentDeck] = useState<Deck | null>(null);
@@ -102,12 +94,4 @@ export function DeckProvider({ children }: { children: ReactNode }) {
       {children}
     </DeckContext.Provider>
   );
-}
-
-export function useDeck() {
-  const context = useContext(DeckContext);
-  if (context === undefined) {
-    throw new Error('useDeck must be used within a DeckProvider');
-  }
-  return context;
 } 

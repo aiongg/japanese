@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { useParams } from 'react-router-dom';
-import { useDeck } from '../context/DeckContext';
+import { useDeck } from '../hooks/useDeck';
 import Flashcard from './Flashcard';
 import ProgressBar from './ProgressBar';
 import NavigationButtons from './NavigationButtons';
@@ -18,7 +18,7 @@ import { useListenMode } from '../hooks/useListenMode';
 const DEBUG = true;
 
 // Function to log debug messages
-function debugLog(...args: any[]) {
+function debugLog(...args: unknown[]) {
   if (DEBUG) {
     console.log('[DECKVIEW DEBUG]', ...args);
   }
@@ -90,7 +90,6 @@ export default function DeckView() {
   // Use listen mode hook
   const {
     listenModeState,
-    startListenModeSequence,
     resetListenMode,
     restartCurrentPhase
   } = useListenMode({

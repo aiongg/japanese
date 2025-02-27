@@ -1,12 +1,12 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { useAudio } from './useAudio';
-import { Deck } from '../types';
+import { Deck, Sentence } from '../types';
 
 // Debug flag - set to true to enable debug logs
 const DEBUG = true;
 
 // Function to log debug messages
-function debugLog(...args: any[]) {
+function debugLog(...args: unknown[]) {
   if (DEBUG) {
     console.log('[LISTEN MODE]', ...args);
   }
@@ -18,7 +18,7 @@ type ListenModeState = 'idle' | 'japanese' | 'waiting1' | 'english' | 'waiting2'
 interface UseListenModeProps {
   currentDeck: Deck | null;
   viewMode: string;
-  getCurrentSentence: () => any;
+  getCurrentSentence: () => Sentence | null;
   audioSettings: { pauseDuration: number };
   setIsAnswerRevealed: (revealed: boolean) => void;
   goToNext: () => void;

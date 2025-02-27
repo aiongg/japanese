@@ -7,7 +7,7 @@ import {
 
 // Debug flag
 const DEBUG = true;
-function debugLog(...args: any[]) {
+function debugLog(...args: unknown[]) {
   if (DEBUG) {
     console.log('[USE_AUDIO HOOK]', ...args);
   }

@@ -5,7 +5,7 @@ import { Deck, Sentence } from '../types';
 const DEBUG = true;
 
 // Function to log debug messages
-function debugLog(...args: any[]) {
+function debugLog(...args: unknown[]) {
   if (DEBUG) {
     console.log('[DECK NAVIGATION]', ...args);
   }
@@ -76,7 +76,7 @@ export function useDeckNavigation({
       lastSentenceIdRef.current = null;
       isAutoPlayingRef.current = false; // Reset auto-playing flag when deck changes
     }
-  }, [deck?.id, showAnswerByDefault, onAnswerReveal]);
+  }, [deck, deck?.id, showAnswerByDefault, onAnswerReveal]);
   
   // Navigation functions
   const goToNext = useCallback(() => {

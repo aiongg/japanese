@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { useDeck } from '../context/DeckContext';
+import { useDeck } from '../hooks/useDeck';
+import { DeckMetadata } from '../types';
 
 export default function Home() {
   const { decks, loading, error } = useDeck();
@@ -22,7 +23,7 @@ export default function Home() {
       <p>Select a deck to start practicing:</p>
       
       <div className="deck-list">
-        {decks.map((deck) => (
+        {decks.map((deck: DeckMetadata) => (
           <Link 
             to={`/deck/${deck.id}`} 
             key={deck.id}

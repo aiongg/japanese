@@ -28,7 +28,7 @@ export type AudioEventListener = (state: AudioState) => void;
 
 // Debug configuration
 const DEBUG = true;
-function debugLog(...args: any[]) {
+function debugLog(...args: unknown[]) {
   if (DEBUG) {
     console.log('[AUDIO SERVICE]', ...args);
   }

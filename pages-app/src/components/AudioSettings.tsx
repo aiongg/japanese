@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface AudioSettingsProps {
   pauseDuration: number;
   onIncrement: () => void;

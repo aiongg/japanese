@@ -4,7 +4,7 @@ import { useState, useCallback, useEffect } from 'react';
 const DEBUG = true;
 
 // Function to log debug messages
-function debugLog(...args: any[]) {
+function debugLog(...args: unknown[]) {
   if (DEBUG) {
     console.log('[FLASHCARD STATE]', ...args);
   }

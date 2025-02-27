@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 const DEBUG = true;
 
 // Function to log debug messages
-function debugLog(...args: any[]) {
+function debugLog(...args: unknown[]) {
   if (DEBUG) {
     console.log('[KEYBOARD SHORTCUTS]', ...args);
   }
