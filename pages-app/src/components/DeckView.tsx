@@ -34,6 +34,7 @@ export default function DeckView() {
   // State for flashcard display
   const [showAnswerByDefault, setShowAnswerByDefault] = useState(false);
   const [isAnswerRevealed, setIsAnswerRevealed] = useState(false);
+  const [useFlipAnimation, setUseFlipAnimation] = useState(false);
   
   // State for audio and view mode
   const [viewMode, setViewMode] = useState<ViewMode>('normal');
@@ -321,12 +322,12 @@ export default function DeckView() {
   // New function to reveal the answer
   const revealAnswer = useCallback(() => {
     debugLog('Revealing answer');
-    // Set a flag in sessionStorage to indicate we want to use the flip animation
-    sessionStorage.setItem('useFlipAnimation', 'true');
+    // Use state instead of sessionStorage
+    setUseFlipAnimation(true);
     setIsAnswerRevealed(true);
     // Clear the flag after a short delay
     setTimeout(() => {
-      sessionStorage.removeItem('useFlipAnimation');
+      setUseFlipAnimation(false);
     }, 300); // Increased timeout to ensure animation completes
   }, []);
   
@@ -561,6 +562,7 @@ export default function DeckView() {
           onPlayAudio={playJapaneseAudio}
           isPlayingAudio={isPlaying}
           onRevealAnswer={revealAnswer}
+          useFlipAnimation={useFlipAnimation}
         />
       </div>
       

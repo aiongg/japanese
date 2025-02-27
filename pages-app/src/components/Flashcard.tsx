@@ -18,6 +18,7 @@ interface FlashcardProps {
   onPlayAudio?: () => void; // Prop for playing audio
   isPlayingAudio?: boolean; // Prop to indicate if audio is playing
   onRevealAnswer?: () => void; // New prop for revealing the answer
+  useFlipAnimation?: boolean; // Prop to control flip animation
 }
 
 export default function Flashcard({ 
@@ -27,7 +28,8 @@ export default function Flashcard({
   onPrevious,
   onPlayAudio,
   isPlayingAudio = false,
-  onRevealAnswer
+  onRevealAnswer,
+  useFlipAnimation = false
 }: FlashcardProps) {
   const [showAnswer, setShowAnswer] = useState(showAnswerByDefault);
   const [renderedHTML, setRenderedHTML] = useState('');
@@ -42,8 +44,8 @@ export default function Flashcard({
   useEffect(() => {
     setShowAnswer(showAnswerByDefault);
     
-    // Check if we should use the flip animation (set by the DeckView component)
-    if (showAnswerByDefault && sessionStorage.getItem('useFlipAnimation') === 'true') {
+    // Check if we should use the flip animation (controlled by prop)
+    if (showAnswerByDefault && useFlipAnimation) {
       setIsFlipping(true);
       setFlipProgress(-180); // Use negative value for consistent flip direction
       // Reset flip state after animation completes
@@ -51,7 +53,7 @@ export default function Flashcard({
         setIsFlipping(false);
       }, 600);
     }
-  }, [showAnswerByDefault]);
+  }, [showAnswerByDefault, useFlipAnimation]);
   
   // Reset showAnswer when sentence changes
   useEffect(() => {
