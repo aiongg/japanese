@@ -195,20 +195,8 @@ export default function DeckView() {
       setListenModePaused(false);
       debugLog('Resuming listen mode sequence');
       
-      // If nothing is playing, start a new sequence
-      if (!isPlaying) {
-        // We don't want to restart the current card if it was already played
-        // So we'll only start a new sequence if we need to
-        const currentSentence = getCurrentSentence();
-        if (currentSentence && currentSentence.japaneseAudioPath) {
-          // Only start a new sequence if we're not already playing
-          debugLog('Starting new sequence on resume');
-          startListenModeSequence();
-        }
-      } else {
-        // If audio is paused, resume it
-        resume();
-      }
+      // Resume any paused audio
+      resume();
     } else {
       // If we're pausing
       setListenModePaused(true);
@@ -217,7 +205,7 @@ export default function DeckView() {
       // Pause any playing audio but don't clear the queue
       pause();
     }
-  }, [listenModePaused, isPlaying, getCurrentSentence, pause, resume, startListenModeSequence]);
+  }, [listenModePaused, pause, resume]);
   
   // Play Japanese audio for the current sentence
   const playJapaneseAudio = useCallback(async () => {
@@ -374,6 +362,48 @@ export default function DeckView() {
       setIsAnswerRevealed(true);
     }
   }, [showAnswerByDefault, isAnswerRevealed, goToNext, viewMode, toggleListenModePause]);
+  
+  // Add keyboard event handler
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Ignore keyboard events if an input element is focused
+      if (document.activeElement?.tagName === 'INPUT' || 
+          document.activeElement?.tagName === 'TEXTAREA' ||
+          document.activeElement?.tagName === 'SELECT') {
+        return;
+      }
+
+      debugLog('Keyboard event', { key: e.key, code: e.code });
+      
+      switch (e.key) {
+        case ' ':  // Space
+          e.preventDefault();
+          // Play audio instead of advancing card
+          playJapaneseAudio();
+          break;
+        case 'ArrowRight':
+          e.preventDefault();
+          if (showAnswerByDefault || isAnswerRevealed) {
+            goToNext();
+          } else {
+            setIsAnswerRevealed(true);
+          }
+          break;
+        case 'ArrowLeft':
+          e.preventDefault();
+          goToPrevious();
+          break;
+      }
+    };
+
+    // Add event listener
+    window.addEventListener('keydown', handleKeyDown);
+    
+    // Clean up
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [goToNext, goToPrevious, isAnswerRevealed, showAnswerByDefault, playJapaneseAudio]);
   
   // Update audio settings
   const updateAudioSettings = useCallback((updates: Partial<AudioSettings>) => {
@@ -563,7 +593,7 @@ export default function DeckView() {
       </div>
       
       <div className="keyboard-shortcuts">
-        <p>Keyboard shortcuts: Space/Right Arrow = Next, Left Arrow = Previous</p>
+        <p>Keyboard shortcuts: Space = Play Audio, Right Arrow = Next, Left Arrow = Previous</p>
       </div>
     </div>
   );
