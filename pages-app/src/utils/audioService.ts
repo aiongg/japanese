@@ -49,7 +49,12 @@ class AudioService {
   private safetyTimeoutId: number | null = null;
 
   constructor() {
-    debugLog('Audio service initialized');
+    debugLog('Audio service initialized', {
+      initialState: this.state,
+      audio: this.audio ? 'exists' : 'null',
+      timeoutId: this.timeoutId,
+      safetyTimeoutId: this.safetyTimeoutId
+    });
   }
 
   // Get current state (immutable copy)
@@ -110,23 +115,32 @@ class AudioService {
 
   // Play audio
   play(src: string, options?: { onStart?: () => void, onComplete?: () => void }): Promise<void> {
-    debugLog('Play requested:', src);
+    debugLog('Play requested:', src, 'Current audio object:', this.audio ? 'exists' : 'null', 'Current state:', JSON.stringify(this.state));
     
     // If already playing something, stop it first
     if (this.state.isPlaying) {
+      debugLog('Already playing, stopping first');
       this.stop();
     }
     
     return new Promise((resolve, reject) => {
       try {
         // Create new audio element
-        this.audio = new Audio(src);
+        debugLog('Creating new Audio element for src:', src);
+        const newAudio = new Audio(src);
+        debugLog('New Audio element created:', newAudio ? 'success' : 'failed');
+        
+        // Store reference to audio element before setting up event listeners
+        this.audio = newAudio;
+        debugLog('Assigned this.audio =', this.audio ? 'Audio object' : 'null');
         
         // Set up event handlers
+        debugLog('Setting up canplaythrough event listener');
         this.audio.addEventListener('canplaythrough', () => {
-          debugLog('Audio can play through, starting playback');
+          debugLog('canplaythrough event fired, this.audio is:', this.audio ? 'exists' : 'null');
           
           if (this.audio) {
+            debugLog('Starting playback, this.audio exists');
             this.setState({ 
               isPlaying: true, 
               currentSrc: src,
@@ -134,12 +148,18 @@ class AudioService {
             });
             
             if (options?.onStart) {
+              debugLog('Calling onStart callback');
               options.onStart();
             }
             
+            debugLog('Notifying play event');
             this.notify('play');
             
+            debugLog('Calling this.audio.play()');
             this.audio.play()
+              .then(() => {
+                debugLog('play() promise resolved successfully');
+              })
               .catch(error => {
                 debugLog('Error starting playback:', error);
                 this.setState({ 
@@ -152,12 +172,17 @@ class AudioService {
               });
             
             // Set safety timeout
+            debugLog('Setting safety timeout');
             this.setSafetyTimeout();
+          } else {
+            debugLog('ERROR: this.audio is null in canplaythrough handler');
+            reject(new Error('Audio object is null in canplaythrough handler'));
           }
         }, { once: true });
         
+        debugLog('Setting up ended event listener');
         this.audio.addEventListener('ended', () => {
-          debugLog('Audio playback ended');
+          debugLog('ended event fired, this.audio is:', this.audio ? 'exists' : 'null');
           this.clearSafetyTimeout();
           
           this.setState({ 
@@ -167,19 +192,23 @@ class AudioService {
           });
           
           if (options?.onComplete) {
+            debugLog('Calling onComplete callback');
             options.onComplete();
           }
           
+          debugLog('Notifying complete event');
           this.notify('complete');
           resolve();
           
           // Process next item in queue if any
+          debugLog('Processing next item in queue');
           this.processQueue();
         }, { once: true });
         
+        debugLog('Setting up error event listener');
         this.audio.addEventListener('error', () => {
           const error = new Error('Audio playback error');
-          debugLog('Audio error:', error);
+          debugLog('error event fired, this.audio is:', this.audio ? 'exists' : 'null', 'Error:', error);
           this.clearSafetyTimeout();
           
           this.setState({ 
@@ -192,14 +221,16 @@ class AudioService {
           reject(error);
           
           // Process next item in queue even if there was an error
+          debugLog('Processing next item in queue after error');
           this.processQueue();
         }, { once: true });
         
         // Start loading the audio
+        debugLog('Calling this.audio.load()');
         this.audio.load();
         
       } catch (error) {
-        debugLog('Unexpected error in play:', error);
+        debugLog('Unexpected error in play method:', error);
         this.setState({ 
           isPlaying: false, 
           currentSrc: null,
@@ -239,32 +270,41 @@ class AudioService {
 
   // Stop audio
   stop(): void {
+    debugLog('Stop called, this.audio is:', this.audio ? 'exists' : 'null', 'Current state:', JSON.stringify(this.state));
     this.clearSafetyTimeout();
     
     if (this.audio) {
-      debugLog('Stopping audio');
+      debugLog('Stopping audio, this.audio exists');
       
       try {
+        debugLog('Calling this.audio.pause()');
         this.audio.pause();
+        debugLog('Setting this.audio.currentTime = 0');
         this.audio.currentTime = 0;
         
         // Remove event listeners
+        debugLog('Removing event listeners');
         this.audio.oncanplaythrough = null;
         this.audio.onerror = null;
         this.audio.onended = null;
         
+        debugLog('Updating state to stopped');
         this.setState({ 
           isPlaying: false, 
           currentSrc: null,
           isPaused: false
         });
         
+        debugLog('Notifying stop event');
         this.notify('stop');
       } catch (error) {
         debugLog('Error stopping audio:', error);
       }
       
+      debugLog('Setting this.audio = null');
       this.audio = null;
+    } else {
+      debugLog('No audio to stop, this.audio is null');
     }
   }
 
@@ -346,20 +386,28 @@ class AudioService {
 
   // Set a safety timeout to prevent hanging if audio never completes
   private setSafetyTimeout(): void {
+    debugLog('setSafetyTimeout called, current safetyTimeoutId:', this.safetyTimeoutId);
     this.clearSafetyTimeout();
     
+    debugLog('Setting new safety timeout');
     this.safetyTimeoutId = window.setTimeout(() => {
       debugLog('Safety timeout triggered - audio never completed');
       this.stop();
       this.processQueue(); // Continue with the next item
     }, 30000); // 30 second timeout
+    debugLog('New safetyTimeoutId set:', this.safetyTimeoutId);
   }
 
   // Clear the safety timeout
   private clearSafetyTimeout(): void {
+    debugLog('clearSafetyTimeout called, current safetyTimeoutId:', this.safetyTimeoutId);
     if (this.safetyTimeoutId !== null) {
+      debugLog('Clearing timeout with ID:', this.safetyTimeoutId);
       window.clearTimeout(this.safetyTimeoutId);
       this.safetyTimeoutId = null;
+      debugLog('safetyTimeoutId reset to null');
+    } else {
+      debugLog('No safety timeout to clear');
     }
   }
 

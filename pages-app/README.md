@@ -9,6 +9,8 @@ A responsive web application for studying Japanese sentences using flashcards wi
 - Toggle between "tap to reveal" and "show all" modes
 - Audio playback for Japanese sentences with auto-play option
 - Listen Mode for hands-free studying with automatic card advancement
+- Interactive swipe gestures for navigation on mobile devices
+- Animated card transitions with subtle rotation effects
 - Keyboard shortcuts for easy navigation
 - Responsive design that works on desktop, tablet, and mobile devices
 - Automatic deployment to GitHub Pages
@@ -18,9 +20,11 @@ A responsive web application for studying Japanese sentences using flashcards wi
 1. Visit the [Shiba Study](https://aiongg.github.io/japanese/) website
 2. Select a deck of sentences to study
 3. Use the controls to navigate through the flashcards
-4. Tap on a flashcard to reveal the English translation and vocabulary breakdown (in "tap to reveal" mode)
-5. Use the audio button to hear the Japanese pronunciation
-6. Enable Listen Mode for hands-free studying with automatic audio playback and card advancement
+4. Tap on a flashcard to play the Japanese audio
+5. Swipe left to reveal the answer or go to the next card
+6. Swipe right to go to the previous card
+7. Use the navigation buttons for advancing cards or revealing answers
+8. Enable Listen Mode for hands-free studying with automatic audio playback and card advancement
 
 ### Keyboard Shortcuts
 
@@ -34,6 +38,40 @@ A responsive web application for studying Japanese sentences using flashcards wi
 - **Listen Mode**: Automatically plays Japanese audio, reveals the answer, plays English audio, then advances to the next card
 - **Pause/Resume**: Pause and resume the Listen Mode sequence without restarting the current card
 - **Adjustable Delay**: Control the pause duration between cards in Listen Mode
+- **Safety Timeout**: Prevents hanging if audio playback never completes
+
+### Touch Interaction
+
+- **Tap**: Play the Japanese audio for the current card
+- **Swipe Left**: Reveal answer (if hidden) or advance to next card
+- **Swipe Right**: Go to previous card
+- **Resistance Effect**: Cards have a natural resistance when swiped beyond a certain distance
+- **Animation**: Cards follow your finger with a subtle rotation effect for a physical feel
+
+## Recent Improvements
+
+### Audio System Enhancements
+- Robust queue system for sequential audio playback
+- Detailed debug logging for troubleshooting audio issues
+- Enhanced error handling and recovery mechanisms
+- Safety timeout system to prevent hanging if audio never completes
+
+### Interaction Model Redesign
+- Changed from "tap to advance" to "tap to play audio" for more intuitive use
+- Implemented fluid swipe gestures with natural physics for navigation
+- Improved visual feedback during interactions
+- Enhanced navigation buttons for better usability
+
+### Animation Refinements
+- Cards now follow the user's finger during swipe gestures
+- Added resistance effect when swiping beyond a certain distance
+- Implemented smooth transitions for card movements
+- Added subtle rotation during swipe for a more physical feel
+
+### Performance Optimizations
+- Updated CSS with `will-change: transform` for smoother animations
+- Configured `touch-action: pan-y` to allow vertical scrolling while handling horizontal swipes
+- Improved rendering efficiency for better mobile performance
 
 ## Development
 
@@ -93,6 +131,8 @@ npm run deploy
     - `useAudio.ts` - Hook for managing audio playback and listen mode
   - `types/` - TypeScript type definitions
   - `utils/` - Utility functions
+    - `audioService.ts` - Singleton service for audio playback management
+    - `parseMarkdown.ts` - Utility for parsing sentence markdown files
 - `public/` - Static assets
   - `sentences/` - Sentence files (copied from the root `sentences/` directory)
     - `audio/` - Audio files for Japanese and English sentences
@@ -102,12 +142,24 @@ npm run deploy
 
 ## Audio Implementation Details
 
-The application uses a custom `useAudio` hook to manage audio playback:
+The application uses a sophisticated audio system:
 
+- Core `audioService.ts` singleton for centralized audio management
+- Custom `useAudio` hook for React component integration
 - Audio files are stored in the `public/sentences/audio` directory
-- The `useAudio` hook provides functions for playing, pausing, and resuming audio
+- Queue system for sequential playback of multiple audio files
+- Safety timeout mechanism to prevent hanging if audio never completes
+- Debug logging system for troubleshooting playback issues
 - Listen Mode uses a queue system to play sequences of audio files
 - Audio playback is synchronized with UI state changes (e.g., revealing answers)
+
+## Core Architecture
+
+- React application with TypeScript for type safety
+- State management through React Context
+- Custom hooks for encapsulating complex functionality
+- Responsive design with mobile-first approach
+- Singleton services for global functionality like audio playback
 
 ## Build Process
 
@@ -117,6 +169,16 @@ The build process includes:
 2. Compiling TypeScript files
 3. Building the application with Vite
 4. Deploying to GitHub Pages
+
+## Future Improvements
+
+Planned enhancements for future development:
+
+1. Continue refining the swipe animation for more natural feel
+2. Enhance error handling in the audio service
+3. Improve accessibility features
+4. Consider adding more study modes or customization options
+5. Implement offline support with service workers
 
 ## License
 

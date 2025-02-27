@@ -86,7 +86,11 @@ export function useAudio() {
       sequence.push({
         src: japaneseAudioSrc,
         pauseAfter: pauseDuration,
-        onComplete: onJapaneseComplete
+        onComplete: () => {
+          setTimeout(() => {
+            if (onJapaneseComplete) onJapaneseComplete();
+          }, pauseDuration);
+        }
       });
     }
     
