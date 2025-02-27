@@ -50,6 +50,27 @@ A responsive web application for studying Japanese sentences using flashcards wi
 
 ## Recent Improvements
 
+### Code Refactoring
+- Modularized the `DeckView` component into smaller, reusable components
+- Created custom hooks for specific functionality:
+  - `useDeckNavigation` - Manages deck navigation and card progression
+  - `useFlashcardState` - Handles flashcard state and animations
+  - `useKeyboardShortcuts` - Manages keyboard interactions
+  - `useAudio` - Controls audio playback and listen mode
+- Extracted UI components for better separation of concerns:
+  - `ProgressBar` - Shows study progress
+  - `NavigationButtons` - Controls for card navigation
+  - `StudyModeControls` - Settings for study mode preferences
+  - `AudioSettings` - Controls for audio playback options
+  - `KeyboardShortcutsInfo` - Displays available keyboard shortcuts
+- Improved state management with proper prop passing and callbacks
+- Replaced sessionStorage with React state for better performance
+
+### Animation Improvements
+- Enhanced flip animation for more intuitive card interaction
+- Improved animation consistency across different interaction methods
+- Fixed animation direction for swipe gestures
+
 ### Audio System Enhancements
 - Robust queue system for sequential audio playback
 - Detailed debug logging for troubleshooting audio issues
@@ -72,6 +93,7 @@ A responsive web application for studying Japanese sentences using flashcards wi
 - Updated CSS with `will-change: transform` for smoother animations
 - Configured `touch-action: pan-y` to allow vertical scrolling while handling horizontal swipes
 - Improved rendering efficiency for better mobile performance
+- Reduced component re-renders through proper state management
 
 ## Development
 
@@ -125,10 +147,18 @@ npm run deploy
     - `Flashcard.tsx` - Component for rendering individual flashcards
     - `Header.tsx` - Application header with logo and navigation
     - `DeckList.tsx` - Component for displaying available decks
+    - `ProgressBar.tsx` - Component for displaying study progress
+    - `NavigationButtons.tsx` - Component for card navigation controls
+    - `StudyModeControls.tsx` - Component for study mode settings
+    - `AudioSettings.tsx` - Component for audio playback options
+    - `KeyboardShortcutsInfo.tsx` - Component for displaying keyboard shortcuts
   - `context/` - React context for state management
     - `DeckContext.tsx` - Context for managing deck data and state
   - `hooks/` - Custom React hooks
     - `useAudio.ts` - Hook for managing audio playback and listen mode
+    - `useDeckNavigation.ts` - Hook for managing deck navigation
+    - `useFlashcardState.ts` - Hook for managing flashcard state
+    - `useKeyboardShortcuts.ts` - Hook for managing keyboard interactions
   - `types/` - TypeScript type definitions
   - `utils/` - Utility functions
     - `audioService.ts` - Singleton service for audio playback management
@@ -156,7 +186,8 @@ The application uses a sophisticated audio system:
 ## Core Architecture
 
 - React application with TypeScript for type safety
-- State management through React Context
+- State management through React Context and custom hooks
+- Component-based architecture with clear separation of concerns
 - Custom hooks for encapsulating complex functionality
 - Responsive design with mobile-first approach
 - Singleton services for global functionality like audio playback
@@ -174,12 +205,14 @@ The build process includes:
 
 Planned enhancements for future development:
 
-1. Continue refining the swipe animation for more natural feel
-2. Enhance error handling in the audio service
-3. Improve accessibility features
-4. Consider adding more study modes or customization options
-5. Implement offline support with service workers
+1. Extract touch gesture handling into a custom hook
+2. Implement a reducer for audio state management
+3. Continue refining the swipe animation for more natural feel
+4. Enhance error handling in the audio service
+5. Improve accessibility features
+6. Consider adding more study modes or customization options
+7. Implement offline support with service workers
 
-## License
+## LLM Notes
 
-MIT
+1. Do not run the program using `npm run dev` or `npm run preview`. The developer will keep the application running on their local machine.

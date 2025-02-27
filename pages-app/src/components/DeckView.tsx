@@ -85,7 +85,6 @@ export default function DeckView() {
     toggleRandomMode,
     isFirstCard,
     isLastCard,
-    progress,
     actualIndex
   } = useDeckNavigation({
     deck: currentDeck,
@@ -108,21 +107,40 @@ export default function DeckView() {
   
   // Play Japanese audio for the current sentence
   const playJapaneseAudio = useCallback(async () => {
-    if (!currentDeck) return;
+    debugLog('playJapaneseAudio called', {
+      hasDeck: !!currentDeck,
+      isPlaying
+    });
+    
+    if (!currentDeck) {
+      debugLog('playJapaneseAudio - no current deck, returning false');
+      return false;
+    }
     
     const currentSentence = getCurrentSentence();
+    debugLog('playJapaneseAudio - got current sentence', {
+      hasSentence: !!currentSentence,
+      hasAudioPath: currentSentence?.japaneseAudioPath ? true : false,
+      audioPath: currentSentence?.japaneseAudioPath
+    });
     
     if (currentSentence?.japaneseAudioPath && !isPlaying) {
       try {
         debugLog('Playing Japanese audio', currentSentence.japaneseAudioPath);
         await play(currentSentence.japaneseAudioPath);
-        debugLog('Japanese audio playback completed');
+        debugLog('Japanese audio playback completed successfully');
+        return true; // Indicate successful playback
       } catch (error) {
         console.error('Error playing audio:', error);
         debugLog('Error playing audio:', error);
+        return false; // Indicate failed playback
       }
     } else if (isPlaying) {
       debugLog('Ignoring audio play request - already playing audio');
+      return false; // Indicate no playback attempted
+    } else {
+      debugLog('No audio path available for current sentence');
+      return false; // Indicate no playback attempted
     }
   }, [currentDeck, isPlaying, play, getCurrentSentence]);
   
@@ -218,27 +236,42 @@ export default function DeckView() {
   // Auto-play audio when sentence changes if autoPlayJapanese is enabled and not in listen mode
   useEffect(() => {
     if (!currentDeck || viewMode !== 'normal' || !audioSettings.autoPlayJapanese) {
+      debugLog('Auto-play skipped - conditions not met', {
+        hasDeck: !!currentDeck,
+        viewMode,
+        autoPlayEnabled: audioSettings.autoPlayJapanese
+      });
       return;
     }
     
     const currentSentence = getCurrentSentence();
-    if (!currentSentence || !currentSentence.japaneseAudioPath) return;
+    if (!currentSentence || !currentSentence.japaneseAudioPath) {
+      debugLog('Auto-play skipped - no sentence or audio path', {
+        hasSentence: !!currentSentence,
+        hasAudioPath: currentSentence?.japaneseAudioPath ? true : false
+      });
+      return;
+    }
     
     // When currentIndex changes, play the audio once
     debugLog('Auto-play check', {
       currentIndex,
       sentenceId: currentSentence.id,
-      lastSentenceId: lastSentenceIdRef.current
+      lastSentenceId: lastSentenceIdRef.current,
+      isAutoPlaying: isAutoPlayingRef.current
     });
     
-    // Only play audio when the sentence changes (not on every render)
-    // Also explicitly handle the case when lastSentenceIdRef.current is null (first load)
-    if (lastSentenceIdRef.current === null || lastSentenceIdRef.current !== currentSentence.id) {
-      debugLog('Auto-playing Japanese audio for new card', {
+    // Add a special case for initial load (when lastSentenceIdRef.current is null)
+    // or when the sentence changes
+    const isInitialLoad = lastSentenceIdRef.current === null;
+    const isSentenceChanged = lastSentenceIdRef.current !== currentSentence.id;
+    
+    if (isInitialLoad || isSentenceChanged) {
+      debugLog('Auto-playing Japanese audio', {
+        reason: isInitialLoad ? 'initial load' : 'sentence changed',
         sentenceId: currentSentence.id,
         audioPath: currentSentence.japaneseAudioPath,
-        lastSentenceId: lastSentenceIdRef.current,
-        isFirstLoad: lastSentenceIdRef.current === null
+        lastSentenceId: lastSentenceIdRef.current
       });
       
       // Update the last sentence ID
@@ -246,19 +279,28 @@ export default function DeckView() {
       
       // Prevent multiple auto-plays
       if (!isAutoPlayingRef.current) {
+        debugLog('Setting isAutoPlayingRef.current = true');
         isAutoPlayingRef.current = true;
         
-        // Use a small timeout to ensure we don't conflict with other audio operations
-        const timeoutId = setTimeout(() => {
-          debugLog('Executing auto-play timeout callback');
-          playJapaneseAudio().finally(() => {
+        // Directly call playJapaneseAudio
+        debugLog('Directly calling playJapaneseAudio');
+        playJapaneseAudio()
+          .then((success) => {
+            debugLog('Auto-play completed', { success });
+            isAutoPlayingRef.current = false;
+          })
+          .catch(error => {
+            debugLog('Auto-play failed with error', error);
             isAutoPlayingRef.current = false;
           });
-        }, 50);
-        
-        // Clean up timeout if component unmounts or dependencies change
-        return () => clearTimeout(timeoutId);
+      } else {
+        debugLog('Auto-play skipped - already auto-playing');
       }
+    } else {
+      debugLog('Auto-play skipped - same sentence', {
+        currentSentenceId: currentSentence.id,
+        lastSentenceId: lastSentenceIdRef.current
+      });
     }
   }, [currentDeck, currentIndex, viewMode, audioSettings.autoPlayJapanese, playJapaneseAudio, getCurrentSentence]);
   
@@ -311,6 +353,11 @@ export default function DeckView() {
   // Effect to start listen mode sequence when currentIndex changes
   useEffect(() => {
     if (viewMode === 'listen' && currentDeck && !listenModePaused) {
+      debugLog('Listen mode sequence triggered by currentIndex change', {
+        currentIndex,
+        currentSentenceId: getCurrentSentence()?.id
+      });
+      
       // We need a small delay to ensure state updates before starting the sequence
       const timeoutId = setTimeout(() => {
         startListenModeSequence();
@@ -318,7 +365,7 @@ export default function DeckView() {
       
       return () => clearTimeout(timeoutId);
     }
-  }, [viewMode, currentDeck, currentIndex, startListenModeSequence, listenModePaused]);
+  }, [viewMode, currentDeck, currentIndex, startListenModeSequence, listenModePaused, getCurrentSentence]);
   
   // Use keyboard shortcuts
   useKeyboardShortcuts({
@@ -385,9 +432,6 @@ export default function DeckView() {
     console.error('Sentence not found');
     return <div className="error">Error displaying flashcard</div>;
   }
-  
-  // Convert milliseconds to seconds for display
-  const pauseDurationInSeconds = audioSettings.pauseDuration / 1000;
   
   return (
     <div className="container flashcard-container">

@@ -1,14 +1,50 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 interface KeyboardShortcutsInfoProps {
   isAnswerRevealed: boolean;
 }
 
 export default function KeyboardShortcutsInfo({ isAnswerRevealed }: KeyboardShortcutsInfoProps) {
+  const [isMobile, setIsMobile] = useState(false);
+  
+  useEffect(() => {
+    // Simple mobile detection based on screen width and touch capability
+    const checkIfMobile = () => {
+      const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      const isSmallScreen = window.innerWidth <= 768;
+      setIsMobile(isTouchDevice && isSmallScreen);
+    };
+    
+    // Check on initial render
+    checkIfMobile();
+    
+    // Add listener for window resize
+    window.addEventListener('resize', checkIfMobile);
+    
+    // Cleanup
+    return () => window.removeEventListener('resize', checkIfMobile);
+  }, []);
+
   return (
     <div className="keyboard-shortcuts">
-      <p>Keyboard shortcuts: Space = Play Audio, Right Arrow = {isAnswerRevealed ? 'Next' : 'Flip'}, Left Arrow = Previous</p>
-      <p>Mobile: Tap card to play audio, swipe right for previous, swipe left to {isAnswerRevealed ? 'next' : 'flip'}</p>
+      <h4>{isMobile ? 'Mobile Controls' : 'Keyboard Shortcuts'}</h4>
+      <ul className="no-bullets">
+        {isMobile ? (
+          // Mobile instructions
+          <>
+            <li><strong>Tap card</strong>: Play audio</li>
+            <li><strong>Swipe left</strong>: {isAnswerRevealed ? 'Next card' : 'Flip card'}</li>
+            <li><strong>Swipe right</strong>: Previous card</li>
+          </>
+        ) : (
+          // Keyboard shortcuts
+          <>
+            <li><strong>Space</strong>: Play audio</li>
+            <li><strong>Right Arrow</strong>: {isAnswerRevealed ? 'Next card' : 'Flip card'}</li>
+            <li><strong>Left Arrow</strong>: Previous card</li>
+          </>
+        )}
+      </ul>
     </div>
   );
 } 
