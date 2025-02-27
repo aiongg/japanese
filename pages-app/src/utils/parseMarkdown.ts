@@ -18,6 +18,17 @@ export async function fetchDeckList(): Promise<string[]> {
   }
 }
 
+// Function to check if an audio file exists
+async function checkAudioFileExists(path: string): Promise<boolean> {
+  try {
+    const response = await fetch(path, { method: 'HEAD' });
+    return response.ok;
+  } catch (error) {
+    console.error(`Error checking audio file at ${path}:`, error);
+    return false;
+  }
+}
+
 export async function fetchDeck(deckId: string): Promise<Deck | null> {
   try {
     const response = await fetch(`/japanese/sentences/${deckId}`);
@@ -46,6 +57,9 @@ export async function fetchDeck(deckId: string): Promise<Deck | null> {
       return null;
     }
     
+    // Add audio paths to sentences
+    await addAudioPaths(sentences);
+    
     return {
       id: deckId,
       title: formatDeckTitle(deckId),
@@ -55,6 +69,29 @@ export async function fetchDeck(deckId: string): Promise<Deck | null> {
     console.error(`Error fetching deck ${deckId}:`, error);
     return null;
   }
+}
+
+// Function to add audio paths to sentences
+async function addAudioPaths(sentences: Sentence[]): Promise<void> {
+  const audioCheckPromises = sentences.map(async (sentence) => {
+    const japaneseAudioPath = `/japanese/sentences/audio/${sentence.id.toString().padStart(4, '0')}A.mp3`;
+    const englishAudioPath = `/japanese/sentences/audio/${sentence.id.toString().padStart(4, '0')}B.mp3`;
+    
+    const [japaneseExists, englishExists] = await Promise.all([
+      checkAudioFileExists(japaneseAudioPath),
+      checkAudioFileExists(englishAudioPath)
+    ]);
+    
+    if (japaneseExists) {
+      sentence.japaneseAudioPath = japaneseAudioPath;
+    }
+    
+    if (englishExists) {
+      sentence.englishAudioPath = englishAudioPath;
+    }
+  });
+  
+  await Promise.all(audioCheckPromises);
 }
 
 function formatDeckTitle(filename: string): string {

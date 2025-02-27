@@ -1,0 +1,31 @@
+
+You are generating a batch of 50 unique Japanese sentences for beginner learners. Follow these rules:
+
+- Sentences must be natural, colloquial Japanese, avoiding textbook-like expressions.
+- Include both statements (e.g., "I am a student.") and question-answer patterns (e.g., "What’s your name? It’s Tom.").
+- Format each sentence as follows:
+  - Japanese sentence on its own line.
+  - English translation in parentheses and italicized on the next line (e.g., (*I am a student.*)).
+  - Optional bullet points (between translation and gloss table) for additional context on grammar, vocabulary, or culture—add these only when helpful for learners. Do not prefix these bullet points with any label like "Note:", just write the contents directly.
+  - Gloss Table with columns: 単語 (vocabulary), 読み (kana for kanji words, - for others), 英語 (English gloss), ローマ字 (romanization).
+- Ensure sentences progress from N5 to N3 difficulty across the full set of 1,000 sentences.
+- Do not duplicate sentences from previous batches. All previously generated sentences will be provided as context either following this prompt or as a separate file. Use this context to ensure that the new sentences are unique.
+- Output the complete result in a code block using markdown formatting.
+
+**For this prompt:**
+- Generate sentences 601 to 650.
+- Difficulty level: N4.
+- Theme: emotions and feelings.
+
+**Example format:**
+1. 私は学生です。  
+(*I am a student.*)
+
+| 単語 | 読み     | 英語          | ローマ字  |  
+|------|----------|---------------|-----------|  
+| 私   | わたし   | I             | watashi   |  
+| は   | -        | topic marker  | wa        |  
+| 学生 | がくせい | student       | gakusei   |  
+| です | -        | is (copula)     | desu      |
+
+Now, generate 50 unique sentences following the rules above.

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, MouseEvent } from 'react';
 import { Sentence } from '../types';
 import { marked } from 'marked';
 
@@ -14,48 +14,42 @@ interface FlashcardProps {
   sentence: Sentence;
   showAnswerByDefault: boolean;
   onNext: () => void;
+  onPlayAudio?: () => void; // New prop for playing audio
+  isPlayingAudio?: boolean; // New prop to indicate if audio is playing
 }
 
-export default function Flashcard({ sentence, showAnswerByDefault, onNext }: FlashcardProps) {
+export default function Flashcard({ 
+  sentence, 
+  showAnswerByDefault, 
+  onNext,
+  onPlayAudio,
+  isPlayingAudio = false
+}: FlashcardProps) {
   const [showAnswer, setShowAnswer] = useState(showAnswerByDefault);
   const [renderedHTML, setRenderedHTML] = useState('');
-  
-  // Debug counter to track taps
-  const [tapCount, setTapCount] = useState(0);
+  const [isSelecting, setIsSelecting] = useState(false);
   
   // Update showAnswer when showAnswerByDefault changes
   useEffect(() => {
-    console.log('showAnswerByDefault changed:', showAnswerByDefault);
     setShowAnswer(showAnswerByDefault);
   }, [showAnswerByDefault]);
   
   // Reset showAnswer when sentence changes
   useEffect(() => {
-    console.log('Sentence changed, resetting state. showAnswerByDefault:', showAnswerByDefault);
     setShowAnswer(showAnswerByDefault);
-    setTapCount(0);
   }, [sentence, showAnswerByDefault]);
 
   // Render markdown when sentence changes
   useEffect(() => {
-    console.log('Sentence changed:', sentence.id);
-    console.log('Raw gloss table:', sentence.glossTable);
-    
-    // Check if the gloss table contains a table
-    const hasTable = sentence.glossTable.includes('|') && sentence.glossTable.includes('---');
-    console.log('Contains table:', hasTable);
-    
     // Ensure the markdown is properly formatted for tables
     try {
       const result = marked(sentence.glossTable);
       // Handle both string and Promise results
       if (typeof result === 'string') {
-        console.log('Rendered HTML preview:', result.substring(0, 100) + '...');
         setRenderedHTML(result);
       } else {
         // Handle Promise result
         result.then(html => {
-          console.log('Rendered HTML preview (from promise):', html.substring(0, 100) + '...');
           setRenderedHTML(html);
         });
       }
@@ -66,24 +60,58 @@ export default function Flashcard({ sentence, showAnswerByDefault, onNext }: Fla
   }, [sentence]);
 
   const handleClick = () => {
-    setTapCount(prev => prev + 1);
-    console.log('Tap detected:', tapCount + 1);
-    console.log('Current state - showAnswer:', showAnswer, 'showAnswerByDefault:', showAnswerByDefault);
-    
-    // The key issue: we need to call onNext() directly instead of setting local state
-    // This ensures the parent component (DeckView) handles the state properly
-    onNext();
+    // Only handle click if not in text selection mode
+    if (!isSelecting) {
+      onNext();
+    }
+    // Reset selection state
+    setIsSelecting(false);
+  };
+
+  // Track mouse events for text selection
+  const handleMouseDown = () => {
+    setIsSelecting(false);
+  };
+
+  const handleMouseMove = (e: MouseEvent) => {
+    // If mouse is moved with button pressed, user is selecting text
+    if (e.buttons === 1) {
+      setIsSelecting(true);
+    }
+  };
+
+  // Handle audio button click without propagating to parent
+  const handleAudioButtonClick = (e: MouseEvent) => {
+    e.stopPropagation(); // Prevent triggering card interaction
+    if (onPlayAudio) {
+      onPlayAudio();
+    }
   };
 
   return (
     <div 
       className="flashcard"
       onClick={handleClick}
+      onMouseDown={handleMouseDown}
+      onMouseMove={handleMouseMove}
       style={{ cursor: 'pointer' }}
     >
       <div className="japanese-text">
         {sentence.japanese}
       </div>
+      
+      {/* Play button underneath the Japanese text */}
+      {sentence.japaneseAudioPath && onPlayAudio && (
+        <div className="audio-button-container">
+          <button 
+            className={`audio-button-inline ${isPlayingAudio ? 'playing' : ''}`}
+            onClick={handleAudioButtonClick}
+            disabled={isPlayingAudio}
+          >
+            {isPlayingAudio ? '🔊 Playing...' : '🔊 Play'}
+          </button>
+        </div>
+      )}
       
       <div className={`answer ${showAnswer ? '' : 'hidden'}`}>
         <div className="english-text">{sentence.english}</div>
@@ -95,10 +123,6 @@ export default function Flashcard({ sentence, showAnswerByDefault, onNext }: Fla
         <div 
           className="gloss-table-container"
           dangerouslySetInnerHTML={{ __html: renderedHTML }}
-          onClick={(e) => {
-            console.log('Table clicked, stopping propagation');
-            e.stopPropagation();
-          }}
         />
       </div>
     </div>
