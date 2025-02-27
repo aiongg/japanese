@@ -1,0 +1,109 @@
+{
+  "name": "GitHub Pages Shiba Study App",
+  "description": "Rules and guidelines for developing and maintaining the Shiba Study React application deployed on GitHub Pages",
+  "version": "1.0.0",
+  "rules": [
+    {
+      "name": "Project Structure",
+      "description": "The application is structured with the main code in the pages-app directory",
+      "patterns": [
+        {
+          "pattern": "pages-app/",
+          "description": "Main application directory containing the React app"
+        },
+        {
+          "pattern": "sentences/",
+          "description": "Source markdown files for Japanese sentences"
+        },
+        {
+          "pattern": "pages-app/public/sentences/",
+          "description": "Copied markdown files for deployment"
+        }
+      ]
+    },
+    {
+      "name": "Build and Deployment",
+      "description": "Guidelines for building and deploying the application",
+      "patterns": [
+        {
+          "pattern": ".github/workflows/deploy.yml",
+          "description": "GitHub Actions workflow for automatic deployment to GitHub Pages"
+        },
+        {
+          "pattern": "pages-app/scripts/copy-sentences.js",
+          "description": "Script to copy sentence files to the public directory during build"
+        }
+      ],
+      "notes": [
+        "The build process includes copying sentences from the root sentences/ directory to pages-app/public/sentences/",
+        "Deployment is handled automatically via GitHub Actions when changes are pushed to main",
+        "The app is deployed to the gh-pages branch and served from GitHub Pages"
+      ]
+    },
+    {
+      "name": "Component Guidelines",
+      "description": "Guidelines for React components",
+      "patterns": [
+        {
+          "pattern": "pages-app/src/components/",
+          "description": "React components directory"
+        },
+        {
+          "pattern": "pages-app/src/context/",
+          "description": "React context providers"
+        }
+      ],
+      "notes": [
+        "Components should be functional and use React hooks",
+        "State management is primarily handled through React Context",
+        "Flashcard component should ensure the entire card is tappable",
+        "Keyboard navigation should match tap behavior (first reveal answer, then advance)"
+      ]
+    },
+    {
+      "name": "Data Handling",
+      "description": "Guidelines for data handling and parsing",
+      "patterns": [
+        {
+          "pattern": "pages-app/src/utils/parseMarkdown.ts",
+          "description": "Utility for parsing markdown sentence files"
+        },
+        {
+          "pattern": "pages-app/src/types/index.ts",
+          "description": "TypeScript interfaces for data structures"
+        }
+      ],
+      "notes": [
+        "Markdown parsing should correctly handle section separators (lines with only '---')",
+        "Tables should be parsed correctly with all rows including headers and separators",
+        "Deck metadata should be preloaded to show sentence counts on the home page"
+      ]
+    },
+    {
+      "name": "Styling Guidelines",
+      "description": "Guidelines for CSS and styling",
+      "patterns": [
+        {
+          "pattern": "pages-app/src/index.css",
+          "description": "Global CSS styles"
+        },
+        {
+          "pattern": "pages-app/src/App.css",
+          "description": "App-specific CSS styles"
+        }
+      ],
+      "notes": [
+        "The app should be responsive and work well on both desktop and mobile devices",
+        "Use CSS variables for consistent theming",
+        "Ensure sufficient contrast for readability"
+      ]
+    }
+  ],
+  "recommendations": [
+    "Always test changes on both desktop and mobile before committing",
+    "Ensure keyboard navigation works correctly for accessibility",
+    "When modifying the parseMarkdown.ts file, test with actual markdown files to verify parsing",
+    "Check the GitHub Actions workflow logs if deployment issues occur",
+    "Remember to update sentence counts when adding new sentences"
+  ]
+} 
