@@ -1,9 +1,9 @@
 @import "tailwindcss";
- 
+
 @plugin 'tailwindcss-animate';
- 
+
 @custom-variant dark (&:is(.dark *));
- 
+
 :root {
   /* Base colors converted to OKLCH */
   --matcha: oklch(0.75 0.06 126.93);      /* #A9BA9D */
@@ -14,32 +14,32 @@
   /* System colors mapped to our palette */
   --background: var(--rice-paper);
   --foreground: var(--charcoal);
-  
+
   --card: var(--rice-paper);
   --card-foreground: var(--charcoal);
-  
+
   --popover: var(--rice-paper);
   --popover-foreground: var(--charcoal);
-  
+
   --primary: var(--matcha);
   --primary-foreground: var(--charcoal);
-  
+
   --secondary: oklch(0.85 0.03 126.93);  /* Lighter matcha */
   --secondary-foreground: var(--charcoal);
-  
+
   --muted: oklch(0.9 0 0);
   --muted-foreground: oklch(0.45 0 0);
-  
+
   --accent: var(--koi);
   --accent-foreground: oklch(0.98 0 0);
-  
+
   --destructive: oklch(0.65 0.18 29.23);
   --destructive-foreground: oklch(0.98 0 0);
-  
+
   --border: oklch(0.87 0 0);
   --input: oklch(0.87 0 0);
   --ring: var(--matcha);
-  
+
   --radius: 0.625rem;
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
@@ -50,32 +50,32 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
 }
- 
+
 .dark {
   --background: var(--charcoal);
   --foreground: var(--rice-paper);
-  
+
   --card: oklch(0.25 0.02 213.39);  /* Slightly lighter charcoal */
   --card-foreground: var(--rice-paper);
-  
+
   --popover: oklch(0.25 0.02 213.39);
   --popover-foreground: var(--rice-paper);
-  
+
   --primary: var(--matcha);
   --primary-foreground: var(--charcoal);
-  
+
   --secondary: oklch(0.28 0.02 213.39);  /* Darker charcoal */
   --secondary-foreground: var(--rice-paper);
-  
+
   --muted: oklch(0.35 0.02 213.39);
   --muted-foreground: oklch(0.75 0 0);
-  
+
   --accent: var(--koi);
   --accent-foreground: oklch(0.98 0 0);
-  
+
   --destructive: oklch(0.65 0.18 29.23);
   --destructive-foreground: oklch(0.98 0 0);
-  
+
   --border: oklch(0.35 0.02 213.39);
   --input: oklch(0.35 0.02 213.39);
   --ring: var(--matcha);
@@ -93,7 +93,7 @@
   --sidebar-border: oklch(0.269 0 0);
   --sidebar-ring: oklch(0.439 0 0);
 }
- 
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -132,7 +132,7 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 }
- 
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

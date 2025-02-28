@@ -13,12 +13,6 @@
   --light-gray: #f0f0f0;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 body {
   font-family: 'Helvetica Neue', Arial, sans-serif;
   line-height: 1.6;

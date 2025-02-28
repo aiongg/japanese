@@ -5,6 +5,7 @@ interface SwipeGesturesOptions {
   onSwipeRight?: () => void;
   onTap?: () => void;
   onFlipProgress?: (progress: number) => void;
+  onFlipComplete?: () => void;
   shouldFlip?: boolean; // Whether to use flip animation for left swipe
   flipSensitivity?: number; // Controls how responsive the flip is to finger movement
   minSwipeDistance?: number; // Minimum distance to trigger a swipe action
@@ -39,6 +40,7 @@ export function useSwipeGestures(options: SwipeGesturesOptions): [SwipeGesturesS
     onSwipeRight,
     onTap,
     onFlipProgress,
+    onFlipComplete,
     shouldFlip = false,
     flipSensitivity = 0.8, // Lower default value for more gradual flip
     minSwipeDistance = 50,
@@ -148,20 +150,17 @@ export function useSwipeGestures(options: SwipeGesturesOptions): [SwipeGesturesS
         // Complete the flip animation with a slightly longer duration
         setFlipProgress(-180);
         setIsAnimating(true);
-        
-        // Wait for animation to complete before action
-        // Use a longer timeout to ensure the card back is visible
-        setTimeout(() => {
+       
+        const handleTransitionEnd = () => {
+          if (onFlipComplete) onFlipComplete();
           if (onSwipeLeft) onSwipeLeft();
-          
-          // Keep the card in flipped state for a moment to show the back
-          // before resetting the flip state
-          setTimeout(() => {
-            setIsFlipping(false);
-            setFlipProgress(0);
-            setIsAnimating(false);
-          }, 300); // Delay reset to allow for content transition
-        }, 300); // Time to complete the flip
+
+          setIsFlipping(false);
+          setFlipProgress(0);
+          setIsAnimating(false);
+        }
+
+        document.addEventListener('transitionend', handleTransitionEnd);
       } else {
         // Cancel the flip animation
         setFlipProgress(0);

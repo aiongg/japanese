@@ -2,6 +2,11 @@ import { useState, useEffect, MouseEvent } from 'react';
 import { Sentence } from '../types';
 import { marked } from 'marked';
 import { useSwipeGestures } from '../hooks/useSwipeGestures';
+import { Card, CardContent } from './ui/card';
+import { cn } from '@/lib/utils';
+import { Volume2, VolumeX } from 'lucide-react';
+import { Icon } from './ui/icon';
+import { Japanese, P } from './ui/typography';
 
 // Configure marked for better table rendering
 marked.setOptions({
@@ -47,6 +52,10 @@ export default function Flashcard({
     onSwipeLeft: showAnswer ? onNext : onRevealAnswer,
     onSwipeRight: onPrevious,
     onTap: onPlayAudio,
+    onFlipComplete: () => {
+      setShowAnswer(true);
+      setAnswerVisible(true);
+    },
     shouldFlip: !showAnswer, // Only use flip animation when answer is hidden
     flipSensitivity: 0.8, // Lower value for more gradual flip
     minSwipeDistance: 50,
@@ -103,15 +112,6 @@ export default function Flashcard({
       if (Math.abs(flipProgress) >= 90) {
         setShowRealContent(false);
         setShowCardBack(true);
-        
-        // If we're revealing the answer, delay showing it until after the flip
-        if (!showAnswer && Math.abs(flipProgress) >= 175) {
-          // Set showAnswer first, but delay the visibility for a smooth transition
-          setShowAnswer(true);
-          setTimeout(() => {
-            setAnswerVisible(true);
-          }, 150); // Delay to allow the card back to be visible briefly
-        }
       } else if (Math.abs(flipProgress) < 90) {
         setShowRealContent(true);
         setShowCardBack(false);
@@ -159,12 +159,16 @@ export default function Flashcard({
       ? `transform 0.3s ${isFlipping ? 'ease-in-out' : 'ease-out'}` 
       : 'none',
     cursor: isPlayingAudio ? 'default' : 'pointer',
-    transformStyle: 'preserve-3d' as const
+    transformStyle: 'preserve-3d' as const,
+    perspective: '1000px'
   };
 
   return (
-    <div 
-      className={`flashcard ${isFlipping ? 'flipping' : ''}`}
+    <Card 
+      className={cn(
+        "w-full overflow-hidden bg-card min-h-[300px]",
+        isFlipping && "flipping"
+      )}
       onClick={handleClick}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
@@ -173,38 +177,60 @@ export default function Flashcard({
       onTouchEnd={handleTouchEnd}
       style={cardStyle}
     >
-      {/* Front content - visible when not flipped */}
-      <div className={`card-content front ${showRealContent ? '' : 'hidden'}`}>
-        <div className="japanese-text">
-          {sentence.japanese}
+      <CardContent className="relative p-6">
+        {/* Front content - visible when not flipped */}
+        <div className={cn(
+          "card-content front",
+          !showRealContent && "hidden"
+        )}>
+          <Japanese className="text-2xl leading-relaxed">
+            {sentence.japanese}
+          </Japanese>
+          
+          {/* Audio icon */}
+          {sentence.japaneseAudioPath && (
+            <div className="absolute right-6 top-6">
+              <Icon 
+                icon={isPlayingAudio ? Volume2 : VolumeX} 
+                className="text-primary transition-colors"
+              />
+            </div>
+          )}
         </div>
         
-        {/* Audio icon */}
-        {sentence.japaneseAudioPath && (
-          <div className="audio-icon">
-            {isPlayingAudio ? '🔊' : '🔈'}
-          </div>
-        )}
-      </div>
-      
-      {/* Card back - visible during flip transition */}
-      <div className={`card-back ${showCardBack ? 'visible' : ''}`}>
-        <div className="loading-text">Loading...</div>
-      </div>
-      
-      {/* Answer content - visible after flip is complete */}
-      <div className={`answer ${showAnswer ? '' : 'hidden'} ${answerVisible ? 'visible' : ''}`}>
-        <div className="english-text">{sentence.english}</div>
+        {/* Card back - visible during flip transition */}
+        <div
+          className={cn(
+            "card-back absolute inset-0 flex items-center justify-center bg-card p-6",
+            showCardBack && "visible"
+          )}
+          style={{
+            backfaceVisibility: 'visible',
+            transform: 'rotateY(180deg)',
+            zIndex: showCardBack ? 1 : -1
+          }}
+        >
+          <P className="text-muted-foreground">Loading...</P>
+        </div>
         
-        {sentence.notes && (
-          <div className="notes">{sentence.notes}</div>
-        )}
-        
-        <div 
-          className="gloss-table-container"
-          dangerouslySetInnerHTML={{ __html: renderedHTML }}
-        />
-      </div>
-    </div>
+        {/* Answer content - visible after flip is complete */}
+        <div className={cn(
+          "answer space-y-6",
+          !showAnswer && "hidden",
+          answerVisible && "visible"
+        )}>
+          <P className="text-lg">{sentence.english}</P>
+          
+          {sentence.notes && (
+            <P className="text-sm text-muted-foreground">{sentence.notes}</P>
+          )}
+          
+          <div 
+            className="gloss-table-container prose prose-sm dark:prose-invert"
+            dangerouslySetInnerHTML={{ __html: renderedHTML }}
+          />
+        </div>
+      </CardContent>
+    </Card>
   );
 } 
