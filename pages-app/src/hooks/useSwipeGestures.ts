@@ -10,7 +10,6 @@ interface SwipeGesturesOptions {
   minSwipeDistance?: number; // Minimum distance to trigger a swipe action
   maxSwipeDistance?: number; // Maximum swipe distance before resistance
   resistance?: number; // Resistance factor for swipes beyond maxSwipeDistance
-  isPlayingAudio?: boolean; // Whether audio is currently playing (to prevent interactions)
   useFlipAnimation?: boolean; // Whether to use flip animation (from useFlashcardState)
 }
 
@@ -45,7 +44,6 @@ export function useSwipeGestures(options: SwipeGesturesOptions): [SwipeGesturesS
     minSwipeDistance = 50,
     maxSwipeDistance = 150,
     resistance = 0.5,
-    isPlayingAudio = false,
     useFlipAnimation = false
   } = options;
 
@@ -83,14 +81,14 @@ export function useSwipeGestures(options: SwipeGesturesOptions): [SwipeGesturesS
   }, []);
 
   const handleTouchStart = useCallback((e: TouchEvent) => {
-    if (isPlayingAudio || useFlipAnimation) return; // Prevent interaction while audio is playing or during programmatic flip
+    if (useFlipAnimation) return; // Prevent interaction during programmatic flip
     
     setTouchStartX(e.touches[0].clientX);
     setIsAnimating(false);
-  }, [isPlayingAudio, useFlipAnimation]);
+  }, [useFlipAnimation]);
 
   const handleTouchMove = useCallback((e: TouchEvent) => {
-    if (touchStartX === null || (isFlipping && isAnimating) || isPlayingAudio || useFlipAnimation) return;
+    if (touchStartX === null || (isFlipping && isAnimating) || useFlipAnimation) return;
     
     const touchCurrentX = e.touches[0].clientX;
     const diff = touchCurrentX - touchStartX;
@@ -135,12 +133,11 @@ export function useSwipeGestures(options: SwipeGesturesOptions): [SwipeGesturesS
     maxSwipeDistance, 
     resistance, 
     screenWidth,
-    isPlayingAudio,
     useFlipAnimation
   ]);
 
   const handleTouchEnd = useCallback((e: TouchEvent) => {
-    if (touchStartX === null || isPlayingAudio || useFlipAnimation) return;
+    if (touchStartX === null || useFlipAnimation) return;
     
     const touchEndX = e.changedTouches[0].clientX;
     const diff = touchEndX - touchStartX;
@@ -228,7 +225,6 @@ export function useSwipeGestures(options: SwipeGesturesOptions): [SwipeGesturesS
     onSwipeRight, 
     onTap, 
     screenWidth,
-    isPlayingAudio,
     useFlipAnimation
   ]);
 

@@ -52,7 +52,6 @@ export default function Flashcard({
     minSwipeDistance: 50,
     maxSwipeDistance: 150,
     resistance: 0.5,
-    isPlayingAudio,
     useFlipAnimation
   });
   
@@ -132,7 +131,7 @@ export default function Flashcard({
   // Handle click to play audio
   const handleClick = () => {
     // Only handle click if not in text selection mode and not swiping
-    if (!isSelecting && onPlayAudio && !isPlayingAudio && swipeOffset === 0 && !isFlipping) {
+    if (!isSelecting && onPlayAudio && swipeOffset === 0 && !isFlipping) {
       onPlayAudio();
     }
     // Reset selection state

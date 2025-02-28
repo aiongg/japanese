@@ -213,6 +213,6 @@ Planned enhancements for future development:
 6. Consider adding more study modes or customization options
 7. Implement offline support with service workers
 
-## LLM Notes
+## **Important** Notes for LLM Code Generator Agent
 
-1. Do not run the program using `npm run dev` or `npm run preview`. The developer will keep the application running on their local machine.
+1. Do not use the LLM Code Generator Agent to run `npm run dev` or `npm run preview` or `npm run deploy`. The developer will keep the application running on their local machine and deploy manually.

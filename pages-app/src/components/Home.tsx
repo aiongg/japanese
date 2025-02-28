@@ -1,39 +1,41 @@
-import { Link } from 'react-router-dom';
 import { useDeck } from '../hooks/useDeck';
-import { DeckMetadata } from '../types';
+import { Container } from './ui/layout/container';
+import { H1, P } from './ui/typography';
+import { Icon } from './ui/icon';
+import { Loader2 } from 'lucide-react';
+import { DeckGrid } from './DeckGrid';
 
 export default function Home() {
   const { decks, loading, error } = useDeck();
 
   if (loading) {
     return (
-      <div className="loading">
-        <div className="spinner"></div>
-      </div>
+      <Container className="flex h-[50vh] items-center justify-center">
+        <Icon icon={Loader2} className="h-8 w-8 animate-spin text-primary" />
+      </Container>
     );
   }
 
   if (error) {
-    return <div className="error">{error}</div>;
+    return (
+      <Container className="flex h-[50vh] items-center justify-center">
+        <P className="text-destructive">{error}</P>
+      </Container>
+    );
   }
 
   return (
-    <div className="container">
-      <h2>Japanese Flashcard Decks</h2>
-      <p>Select a deck to start practicing:</p>
-      
-      <div className="deck-list">
-        {decks.map((deck: DeckMetadata) => (
-          <Link 
-            to={`/deck/${deck.id}`} 
-            key={deck.id}
-            className="deck-card"
-          >
-            <h3>{deck.title}</h3>
-            <p>{deck.count > 0 ? `${deck.count} sentences` : 'Loading...'}</p>
-          </Link>
-        ))}
-      </div>
-    </div>
+    <main className="flex-1 py-8">
+      <Container className="space-y-8">
+        <div className="space-y-4">
+          <H1>Japanese Flashcard Decks</H1>
+          <P className="text-muted-foreground">
+            Select a deck to start practicing your Japanese sentences
+          </P>
+        </div>
+
+        <DeckGrid decks={decks} />
+      </Container>
+    </main>
   );
 } 
