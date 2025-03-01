@@ -143,6 +143,7 @@ export function useSwipeGestures(options: SwipeGesturesOptions): [SwipeGesturesS
     
     const touchEndX = e.changedTouches[0].clientX;
     const diff = touchEndX - touchStartX;
+    const element = e.currentTarget as HTMLElement;
     
     // Handle flip completion
     if (isFlipping && shouldFlip) {
@@ -160,7 +161,7 @@ export function useSwipeGestures(options: SwipeGesturesOptions): [SwipeGesturesS
           setIsAnimating(false);
         }
 
-        document.addEventListener('transitionend', handleTransitionEnd);
+        element.addEventListener('transitionend', handleTransitionEnd, { once: true });
       } else {
         // Cancel the flip animation
         setFlipProgress(0);
