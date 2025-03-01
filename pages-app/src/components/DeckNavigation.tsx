@@ -50,7 +50,7 @@ export function DeckNavigation({
         variant="default"
         size="lg"
         onClick={isAnswerRevealed ? onNext : onReveal}
-        disabled={isListenMode}
+        disabled={isListenMode || (isAnswerRevealed && isLastCard)}
         className="w-[140px]"
       >
         {isAnswerRevealed ? (

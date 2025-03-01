@@ -66,7 +66,6 @@ export default function DeckView() {
     useFlipAnimation,
     setIsAnswerRevealed,
     revealAnswer,
-    toggleShowAnswerByDefault
   } = useFlashcardState({
     showAnswerByDefault,
     onToggleShowAnswerByDefault: handleToggleShowAnswerByDefault
@@ -91,9 +90,7 @@ export default function DeckView() {
   
   // Use listen mode hook
   const {
-    listenModeState,
-    resetListenMode,
-    restartCurrentPhase
+    resetListenMode
   } = useListenMode({
     currentDeck,
     viewMode,
@@ -154,33 +151,6 @@ export default function DeckView() {
     }));
   }, []);
   
-  // Adjust pause duration with increment/decrement buttons
-  const incrementPauseDuration = useCallback(() => {
-    const currentSeconds = audioSettings.pauseDuration / 1000;
-    if (currentSeconds < 10) {
-      const newSeconds = Math.min(10, currentSeconds + 1); // Max 10 seconds
-      setAudioSettings(prev => ({ ...prev, pauseDuration: newSeconds * 1000 }));
-      
-      // Restart current phase with new delay if in listen mode
-      if (viewMode === 'listen' && (listenModeState === 'waiting1' || listenModeState === 'waiting2')) {
-        restartCurrentPhase();
-      }
-    }
-  }, [viewMode, listenModeState, restartCurrentPhase, audioSettings, setAudioSettings]);
-  
-  const decrementPauseDuration = useCallback(() => {
-    const currentSeconds = audioSettings.pauseDuration / 1000;
-    if (currentSeconds > 1) {
-      const newSeconds = Math.max(1, currentSeconds - 1); // Min 1 second
-      setAudioSettings(prev => ({ ...prev, pauseDuration: newSeconds * 1000 }));
-      
-      // Restart current phase with new delay if in listen mode
-      if (viewMode === 'listen' && (listenModeState === 'waiting1' || listenModeState === 'waiting2')) {
-        restartCurrentPhase();
-      }
-    }
-  }, [viewMode, listenModeState, restartCurrentPhase, audioSettings, setAudioSettings]);
-  
   // Use keyboard shortcuts
   useKeyboardShortcuts({
     onNext: goToNext,
@@ -211,6 +181,15 @@ export default function DeckView() {
       setViewMode('listen');
     }
   }, [viewMode, resetListenMode]);
+  
+  // Handle pause duration change
+  const handlePauseDurationChange = useCallback((newDuration: number) => {
+    debugLog('Setting pause duration to', newDuration);
+    setAudioSettings(prev => ({
+      ...prev,
+      pauseDuration: newDuration
+    }));
+  }, []);
   
   // Loading and error states
   if (loading) {
@@ -293,6 +272,8 @@ export default function DeckView() {
         onAutoPlayChange={toggleAutoPlay}
         randomModeEnabled={randomMode}
         onRandomModeChange={toggleRandomMode}
+        pauseDuration={audioSettings.pauseDuration}
+        onPauseDurationChange={handlePauseDurationChange}
       />
       
       <KeyboardShortcutsInfo />
