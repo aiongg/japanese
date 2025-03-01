@@ -2,10 +2,12 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useDeck } from '../hooks/useDeck';
 import Flashcard from './Flashcard';
-import ProgressBar from './ProgressBar';
-import NavigationButtons from './NavigationButtons';
-import StudyModeControls from './StudyModeControls';
-import AudioSettings from './AudioSettings';
+import { DeckProgress } from './DeckProgress';
+import { DeckSettings } from './DeckSettings';
+import { DeckNavigation } from './DeckNavigation';
+import { Button } from './ui/button';
+import { Icon } from './ui/icon';
+import { ArrowLeft } from 'lucide-react';
 import KeyboardShortcutsInfo from './KeyboardShortcutsInfo';
 import { ViewMode, AudioSettings as AudioSettingsType } from '../types';
 import { useAudio } from '../hooks/useAudio';
@@ -240,17 +242,26 @@ export default function DeckView() {
   }
   
   return (
-    <div className="container flashcard-container">
-      <div className="back-button-container">
-        <Link to="/" className="back-button">
-          &larr; Back to Decks
-        </Link>
+    <div className="container flashcard-container space-y-6">
+      <div className="flex items-start">
+        <Button
+          variant="ghost"
+          size="sm"
+          asChild
+        >
+          <Link to="/">
+            <Icon icon={ArrowLeft} className="mr-2" />
+            Back to Decks
+          </Link>
+        </Button>
       </div>
       
-      <ProgressBar
-        currentIndex={currentIndex}
-        totalCards={totalCards}
-      />
+      <div className="flex-1">
+        <DeckProgress
+          current={currentIndex + 1}
+          total={totalCards}
+        />
+      </div>
       
       <div className="flashcard-wrapper">
         <Flashcard 
@@ -265,32 +276,23 @@ export default function DeckView() {
           useFlipAnimation={useFlipAnimation}
         />
       </div>
-      
-      <NavigationButtons
+
+      <DeckNavigation
         onPrevious={goToPrevious}
         onNext={goToNext}
         onReveal={revealAnswer}
         isAnswerRevealed={isAnswerRevealed}
         isFirstCard={isFirstCard}
         isLastCard={isLastCard}
-      />
-
-      <StudyModeControls
-        randomMode={randomMode}
-        showAnswerByDefault={showAnswerByDefault}
-        autoPlayJapanese={audioSettings.autoPlayJapanese}
-        viewMode={viewMode}
-        onToggleRandomMode={toggleRandomMode}
-        onToggleShowAnswerByDefault={toggleShowAnswerByDefault}
-        onToggleAutoPlay={toggleAutoPlay}
-        onToggleListenMode={toggleListenMode}
+        isListenMode={viewMode === 'listen'}
+        onListenModeToggle={toggleListenMode}
       />
       
-      <AudioSettings
-        pauseDuration={audioSettings.pauseDuration}
-        onIncrement={incrementPauseDuration}
-        onDecrement={decrementPauseDuration}
-        isListenMode={viewMode === 'listen'}
+      <DeckSettings
+        autoPlayEnabled={audioSettings.autoPlayJapanese}
+        onAutoPlayChange={toggleAutoPlay}
+        randomModeEnabled={randomMode}
+        onRandomModeChange={toggleRandomMode}
       />
       
       <KeyboardShortcutsInfo />

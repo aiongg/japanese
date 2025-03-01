@@ -11,12 +11,9 @@ export function DeckProgress({ current, total }: DeckProgressProps) {
 
   return (
     <div className="space-y-2">
-      <div className="flex justify-between">
-        <P className="text-sm text-muted-foreground">
-          Card {current} of {total}
-        </P>
+      <div className="flex justify-center">
         <P className="text-sm font-medium">
-          {progress}%
+          {current}/{total}
         </P>
       </div>
       <Progress value={progress} className="h-2" />
