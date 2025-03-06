@@ -29,7 +29,7 @@ export function SRSDebugTable({ sentences }: SRSDebugTableProps) {
               <TableCell className="font-japanese">{sentence.sentence.text}</TableCell>
               <TableCell>{sentence.srs.interval}</TableCell>
               <TableCell>{sentence.srs.easeFactor.toFixed(2)}</TableCell>
-              <TableCell>{sentence.srs.dueDate || 'New'}</TableCell>
+              <TableCell>{sentence.srs.dueDate ? new Date(sentence.srs.dueDate).toISOString().split('T')[0] : 'New'}</TableCell>
               <TableCell>{sentence.srs.repetitions}</TableCell>
               <TableCell>{sentence.srs.timesSeen}</TableCell>
               <TableCell>{sentence.srs.lastResponse || 'None'}</TableCell>

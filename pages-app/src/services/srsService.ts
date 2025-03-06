@@ -117,6 +117,28 @@ class SRSService {
     return new Date(srs.dueDate) <= now;
   }
 
+  // Initialize a new card with default SRS data
+  initializeCard(): SRSData {
+    return {
+      interval: 0,
+      easeFactor: 2.5,
+      dueDate: null,
+      repetitions: 0,
+      timesSeen: 0,
+      lastResponse: 'unseen'
+    };
+  }
+
+  // Fisher-Yates shuffle algorithm
+  private shuffleArray<T>(array: T[]): T[] {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  }
+
   // Session management
   createSession(deck: Sentence[], maxNewCards: number = 20): StudySession {
     debugLog('Creating new session with deck:', deck);
@@ -131,12 +153,18 @@ class SRSService {
     const [dueCards, newCards] = this.partitionCards(initializedDeck);
     debugLog('Partitioned cards:', { dueCards, newCards });
     
+    // Combine due cards and new cards up to maxNewCards
+    const upcomingCards = this.shuffleArray([
+      ...dueCards.map(c => c.id),
+      ...newCards.slice(0, maxNewCards).map(c => c.id)
+    ]);
+
     const session = {
       deckId: deck[0]?.id.split('/')[0] ?? '', // Assuming deck ID is first part of sentence ID
-      dueCards: dueCards.map(c => c.id),
-      newCards: newCards.slice(0, maxNewCards).map(c => c.id),
-      failedCards: [],
+      upcomingCards,
+      doneCards: [],
       currentCardIndex: 0,
+      totalCardsInSession: upcomingCards.length,
       startTime: now,
       lastStudied: now
     };
@@ -144,6 +172,46 @@ class SRSService {
     // Save the session
     storageService.saveSession(session.deckId, session);
     return session;
+  }
+
+  // Continue session with additional cards
+  continueSession(deck: Sentence[], session: StudySession, additionalCards: number): StudySession {
+    debugLog('Continuing session with additional cards:', additionalCards);
+    
+    // Move all done cards back to upcoming cards
+    let upcomingCards = [...session.doneCards];
+    session.doneCards = [];
+
+    // Get new cards if needed
+    const [dueCards, newCards] = this.partitionCards(
+      deck.filter(card => !upcomingCards.includes(card.id))
+    );
+
+    // Add new cards up to the requested amount
+    const remainingSlots = additionalCards - upcomingCards.length;
+    if (remainingSlots > 0) {
+      const additionalCardIds = [
+        ...dueCards.map(c => c.id),
+        ...newCards.map(c => c.id)
+      ].slice(0, remainingSlots);
+      
+      upcomingCards = [...upcomingCards, ...additionalCardIds];
+    }
+
+    // Shuffle the upcoming cards
+    upcomingCards = this.shuffleArray(upcomingCards);
+
+    const updatedSession = {
+      ...session,
+      upcomingCards,
+      currentCardIndex: 0,
+      totalCardsInSession: upcomingCards.length,
+      lastStudied: new Date().toISOString()
+    };
+
+    // Save the updated session
+    storageService.saveSession(updatedSession.deckId, updatedSession);
+    return updatedSession;
   }
 
   private partitionCards(deck: Sentence[]): [Sentence[], Sentence[]] {
@@ -158,18 +226,6 @@ class SRSService {
       },
       [[], []]
     );
-  }
-
-  // Initialize a new card with default SRS data
-  initializeCard(): SRSData {
-    return {
-      interval: 0,
-      easeFactor: 2.5,
-      dueDate: null,
-      repetitions: 0,
-      timesSeen: 0,
-      lastResponse: null
-    };
   }
 
   // Load and save progress using storage service

@@ -11,7 +11,7 @@ interface SentenceText {
 }
 
 // SRS-related types
-export type SRSResponse = 'failed' | 'passed' | 'easy';
+export type SRSResponse = 'unseen' | 'failed' | 'passed' | 'easy';
 
 export interface SRSData {
   interval: number;          // Days until next review
@@ -19,7 +19,7 @@ export interface SRSData {
   dueDate: string | null;   // ISO string for date comparison
   repetitions: number;      // Consecutive successful reviews
   timesSeen: number;        // Total number of reviews
-  lastResponse: SRSResponse | null;
+  lastResponse: SRSResponse;
 }
 
 export interface Sentence {
@@ -40,12 +40,25 @@ export interface Deck {
 // Session management types
 export interface StudySession {
   deckId: string;
-  dueCards: string[];      // Array of sentence IDs
-  newCards: string[];      // Array of sentence IDs
-  failedCards: string[];   // Array of sentence IDs
+  upcomingCards: string[];  // Cards to be reviewed next, in order
+  doneCards: string[];      // Cards marked as done (passed/easy)
   currentCardIndex: number;
+  totalCardsInSession: number;  // Total cards when session started
   startTime: string;       // ISO string
   lastStudied: string;     // ISO string
+}
+
+export interface SessionStats {
+  cardsReviewed: number;
+  correctCount: number;
+  failedCount: number;
+  completedAt: string;
+}
+
+export interface StudySessionProgress {
+  current: number;    // Number of cards completed (passed/easy)
+  total: number;      // Total cards in session
+  remaining: number;  // Cards still to review
 }
 
 export interface DeckStats {

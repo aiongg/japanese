@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Sentence, SRSResponse, StudySession } from '../types';
+import { Sentence, SRSResponse, StudySession, SessionStats } from '../types';
 import { srsService } from '../services/srsService';
 
 // Debug configuration
@@ -24,6 +24,13 @@ export function useSRS({ deckId, deck, maxNewCards = 20, enabled = true }: UseSR
   const [currentAttempt, setCurrentAttempt] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [sessionStats, setSessionStats] = useState<SessionStats | null>(null);
+
+  // Get current card ID from session
+  const getCurrentCardId = useCallback((currentSession: StudySession): string | null => {
+    const { upcomingCards, currentCardIndex } = currentSession;
+    return upcomingCards[currentCardIndex] ?? null;
+  }, []);
 
   // Initialize or load existing session
   useEffect(() => {
@@ -50,6 +57,7 @@ export function useSRS({ deckId, deck, maxNewCards = 20, enabled = true }: UseSR
       
       setSession(existingSession);
       setCurrentAttempt(0);
+      setSessionStats(null);
       
       // Load current card
       if (existingSession) {
@@ -65,14 +73,7 @@ export function useSRS({ deckId, deck, maxNewCards = 20, enabled = true }: UseSR
     } finally {
       setIsLoading(false);
     }
-  }, [deckId, deck, maxNewCards, enabled]);
-
-  // Helper to get current card ID from session
-  const getCurrentCardId = useCallback((currentSession: StudySession): string | null => {
-    const { dueCards, newCards, failedCards, currentCardIndex } = currentSession;
-    const allCards = [...failedCards, ...dueCards, ...newCards];
-    return allCards[currentCardIndex] ?? null;
-  }, []);
+  }, [deckId, deck, maxNewCards, enabled, getCurrentCardId]);
 
   // Handle SRS response
   const handleResponse = useCallback((response: SRSResponse) => {
@@ -88,29 +89,31 @@ export function useSRS({ deckId, deck, maxNewCards = 20, enabled = true }: UseSR
       const updatedSession = { ...session };
       const currentId = getCurrentCardId(session);
       
-      // Remove current card from its current list
-      ['dueCards', 'newCards', 'failedCards'].forEach(listKey => {
-        const list = updatedSession[listKey as keyof StudySession] as string[];
-        const index = list.indexOf(currentId!);
-        if (index !== -1) {
-          list.splice(index, 1);
-        }
-      });
-
-      // If failed, add to failed cards
       if (response === 'failed') {
-        // Add to failed cards, 3-10 cards ahead or at the end
-        const insertPosition = Math.min(
-          session.currentCardIndex + 3 + Math.floor(Math.random() * 8),
-          updatedSession.failedCards.length
-        );
-        updatedSession.failedCards.splice(insertPosition, 0, currentId!);
-        setCurrentAttempt(prev => prev + 1);
+        // For failed cards, reinsert 3-10 cards ahead
+        const currentIndex = updatedSession.upcomingCards.indexOf(currentId!);
+        if (currentIndex !== -1) {
+          // Remove from current position
+          updatedSession.upcomingCards.splice(currentIndex, 1);
+          
+          // Calculate new position (3-10 cards ahead)
+          const reinsertPosition = Math.min(
+            currentIndex + 3 + Math.floor(Math.random() * 8),
+            updatedSession.upcomingCards.length
+          );
+          
+          // Reinsert at new position
+          updatedSession.upcomingCards.splice(reinsertPosition, 0, currentId!);
+        }
         
-        // Move to next card (increment index since we're keeping this card)
-        updatedSession.currentCardIndex = session.currentCardIndex + 1;
+        setCurrentAttempt(prev => prev + 1);
       } else {
-        // For passed/easy, don't increment index since we removed the current card
+        // For passed/easy responses, move to doneCards
+        const currentIndex = updatedSession.upcomingCards.indexOf(currentId!);
+        if (currentIndex !== -1) {
+          updatedSession.upcomingCards.splice(currentIndex, 1);
+          updatedSession.doneCards.push(currentId!);
+        }
         setCurrentAttempt(0);
       }
 
@@ -118,18 +121,21 @@ export function useSRS({ deckId, deck, maxNewCards = 20, enabled = true }: UseSR
       srsService.saveDeckProgress(deckId, [updatedCard]);
       
       // Check if session is complete
-      const totalCards = [
-        ...updatedSession.failedCards,
-        ...updatedSession.dueCards,
-        ...updatedSession.newCards
-      ].length;
-
-      if (totalCards === 0 || updatedSession.currentCardIndex >= totalCards) {
+      if (updatedSession.upcomingCards.length === 0) {
+        // Create session stats
+        const stats: SessionStats = {
+          cardsReviewed: session.totalCardsInSession,
+          correctCount: updatedSession.doneCards.length,
+          failedCount: session.totalCardsInSession - updatedSession.doneCards.length,
+          completedAt: new Date().toISOString()
+        };
+        
         // Session complete
         srsService.clearSession(deckId);
         setSession(null);
         setCurrentCard(null);
         setCurrentAttempt(0);
+        setSessionStats(stats);
       } else {
         // Update session
         updatedSession.lastStudied = new Date().toISOString();
@@ -156,16 +162,12 @@ export function useSRS({ deckId, deck, maxNewCards = 20, enabled = true }: UseSR
 
   // Get session progress
   const getProgress = useCallback(() => {
-    if (!session) return { current: 0, total: 0 };
-    
-    const total = session.dueCards.length + 
-                 session.newCards.length + 
-                 session.failedCards.length;
+    if (!session) return { current: 0, total: 0, remaining: 0 };
     
     return {
-      current: session.currentCardIndex + 1,
-      total,
-      isComplete: session.currentCardIndex >= total
+      current: session.doneCards.length,
+      total: session.totalCardsInSession,
+      remaining: session.upcomingCards.length
     };
   }, [session]);
 
@@ -175,9 +177,8 @@ export function useSRS({ deckId, deck, maxNewCards = 20, enabled = true }: UseSR
 
     // Get all card IDs in order
     const orderedIds = [
-      ...session.failedCards,
-      ...session.dueCards,
-      ...session.newCards
+      ...session.upcomingCards,
+      ...session.doneCards
     ];
 
     // Map IDs to full sentence objects
@@ -190,6 +191,23 @@ export function useSRS({ deckId, deck, maxNewCards = 20, enabled = true }: UseSR
       return sentence;
     }).filter((s): s is Sentence => s !== null);
   }, [session, deck]);
+
+  // Start next session
+  const startNextSession = useCallback(() => {
+    if (!session || !deck) return;
+    
+    debugLog('Starting next session');
+    const newSession = srsService.continueSession(deck, session, 20);
+    setSession(newSession);
+    setSessionStats(null);
+    
+    const firstCardId = getCurrentCardId(newSession);
+    if (firstCardId) {
+      const firstCard = deck.find(c => c.id === firstCardId);
+      setCurrentCard(firstCard ?? null);
+    }
+    setCurrentAttempt(0);
+  }, [session, deck, getCurrentCardId]);
 
   // Reset session
   const resetSession = useCallback(() => {
@@ -232,6 +250,8 @@ export function useSRS({ deckId, deck, maxNewCards = 20, enabled = true }: UseSR
     getProgress,
     resetSession,
     updateSentenceSRS,
-    getSessionCards
+    getSessionCards,
+    sessionStats,
+    startNextSession
   };
 } 

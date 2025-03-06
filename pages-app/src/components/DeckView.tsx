@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useDeck } from '../hooks/useDeck';
 import { useSRS } from '../hooks/useSRS';
 import Flashcard from './Flashcard';
@@ -8,6 +8,7 @@ import { DeckSettings } from './DeckSettings';
 import { DeckNavigation } from './DeckNavigation';
 import { SRSControls } from './SRSControls';
 import { SRSDebugTable } from './SRSDebugTable';
+import { SessionComplete } from './SessionComplete';
 import { Button } from './ui/button';
 import { Icon } from './ui/icon';
 import { ArrowLeft, Settings, Bug } from 'lucide-react';
@@ -37,6 +38,7 @@ const DEFAULT_AUDIO_SETTINGS: AudioSettingsType = {
 };
 
 export default function DeckView() {
+  const navigate = useNavigate();
   const { deckId } = useParams<{ deckId: string }>();
   const { currentDeck, loading, error, loadDeck, updateDeckSRS } = useDeck();
   
@@ -67,7 +69,9 @@ export default function DeckView() {
     getProgress,
     resetSession,
     currentAttempt,
-    getSessionCards
+    getSessionCards,
+    sessionStats,
+    startNextSession
   } = useSRS({
     deckId: deckId!,
     deck: currentDeck?.sentences ?? [],
@@ -214,8 +218,39 @@ export default function DeckView() {
     return <div className="error">Error loading deck: {error || srsError}</div>;
   }
   
-  if (!currentDeck || !currentCard) {
+  if (!currentDeck) {
     return <div className="error">Deck not found</div>;
+  }
+
+  // Show session complete screen if session is finished
+  if (sessionStats) {
+    return (
+      <div className="container flashcard-container">
+        <div className="flex items-start mb-8">
+          <Button
+            variant="ghost"
+            size="sm"
+            asChild
+          >
+            <Link to="/">
+              <Icon icon={ArrowLeft} className="mr-2" />
+              Back to Decks
+            </Link>
+          </Button>
+        </div>
+
+        <SessionComplete
+          stats={sessionStats}
+          onContinue={startNextSession}
+          onReturn={() => navigate('/')}
+          nextSessionSize={20}
+        />
+      </div>
+    );
+  }
+
+  if (!currentCard) {
+    return <div className="error">No cards available</div>;
   }
   
   const progress = getProgress();
