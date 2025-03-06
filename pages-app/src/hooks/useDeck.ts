@@ -50,10 +50,30 @@ export function useDeck() {
     }
   }, []);
 
+  // Function to update the entire deck's SRS data
+  const updateDeckSRS = useCallback(() => {
+    if (!currentDeck) return;
+
+    const srsData = srsService.loadDeckProgress(currentDeck.id);
+    debugLog('Updating entire deck with new SRS data:', srsData);
+
+    setCurrentDeck(prevDeck => {
+      if (!prevDeck) return null;
+      return {
+        ...prevDeck,
+        sentences: prevDeck.sentences.map(sentence => ({
+          ...sentence,
+          srs: srsData[sentence.id] || sentence.srs
+        }))
+      };
+    });
+  }, [currentDeck]);
+
   return {
     currentDeck,
     loading,
     error,
-    loadDeck
+    loadDeck,
+    updateDeckSRS
   };
 } 

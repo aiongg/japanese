@@ -12,7 +12,7 @@ import { Button } from './ui/button';
 import { Icon } from './ui/icon';
 import { ArrowLeft, Settings, Bug } from 'lucide-react';
 import KeyboardShortcutsInfo from './KeyboardShortcutsInfo';
-import { ViewMode, AudioSettings as AudioSettingsType } from '../types';
+import { ViewMode, AudioSettings as AudioSettingsType, SRSResponse } from '../types';
 import { useAudio } from '../hooks/useAudio';
 import { useFlashcardState } from '../hooks/useFlashcardState';
 import { useKeyboardShortcuts } from '../hooks/useKeyboardShortcuts';
@@ -38,7 +38,7 @@ const DEFAULT_AUDIO_SETTINGS: AudioSettingsType = {
 
 export default function DeckView() {
   const { deckId } = useParams<{ deckId: string }>();
-  const { currentDeck, loading, error, loadDeck } = useDeck();
+  const { currentDeck, loading, error, loadDeck, updateDeckSRS } = useDeck();
   
   // State for audio and view mode
   const [viewMode, setViewMode] = useState<ViewMode>('normal');
@@ -65,7 +65,9 @@ export default function DeckView() {
     error: srsError,
     handleResponse,
     getProgress,
-    resetSession
+    resetSession,
+    currentAttempt,
+    getSessionCards
   } = useSRS({
     deckId: deckId!,
     deck: currentDeck?.sentences ?? [],
@@ -102,6 +104,17 @@ export default function DeckView() {
     goToNext: () => handleResponse('passed'),
     isLastCard: false,
   });
+  
+  // Handle SRS response and update the debug table
+  const handleSRSResponse = useCallback((response: SRSResponse) => {
+    // Reset answer revealed state before handling response
+    setIsAnswerRevealed(false);
+    handleResponse(response);
+    // Update the deck's SRS data after a short delay to ensure storage is updated
+    setTimeout(() => {
+      updateDeckSRS();
+    }, 100);
+  }, [handleResponse, updateDeckSRS, setIsAnswerRevealed]);
   
   // Load the deck when the component mounts or when the deckId changes
   useEffect(() => {
@@ -262,7 +275,7 @@ export default function DeckView() {
       
       <div className="flashcard-wrapper">
         <Flashcard 
-          key={currentCard.id}
+          key={`${currentCard.id}-${currentAttempt}`}
           sentence={currentCard} 
           showAnswerByDefault={showAnswerByDefault || isAnswerRevealed}
           onNext={() => handleResponse('passed')}
@@ -276,14 +289,14 @@ export default function DeckView() {
 
       <div className="space-y-4">
         <SRSControls
-          onResponse={handleResponse}
+          onResponse={handleSRSResponse}
           disabled={!isAnswerRevealed}
           className="mb-4"
         />
 
         <DeckNavigation
           onPrevious={resetSession}
-          onNext={() => handleResponse('passed')}
+          onNext={() => handleSRSResponse('passed')}
           onReveal={revealAnswer}
           isAnswerRevealed={isAnswerRevealed}
           isFirstCard={false}
@@ -293,8 +306,8 @@ export default function DeckView() {
         />
       </div>
       
-      {showDebug && currentDeck && (
-        <SRSDebugTable sentences={currentDeck.sentences} />
+      {showDebug && (
+        <SRSDebugTable sentences={getSessionCards()} />
       )}
       
       <KeyboardShortcutsInfo />

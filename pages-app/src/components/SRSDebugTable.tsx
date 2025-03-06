@@ -13,6 +13,7 @@ export function SRSDebugTable({ sentences }: SRSDebugTableProps) {
         <TableHeader>
           <TableRow>
             <TableHead>ID</TableHead>
+            <TableHead>Front</TableHead>
             <TableHead>Interval</TableHead>
             <TableHead>Ease Factor</TableHead>
             <TableHead>Due Date</TableHead>
@@ -25,6 +26,7 @@ export function SRSDebugTable({ sentences }: SRSDebugTableProps) {
           {sentences.map((sentence) => (
             <TableRow key={sentence.id}>
               <TableCell>{sentence.id}</TableCell>
+              <TableCell className="font-japanese">{sentence.sentence.text}</TableCell>
               <TableCell>{sentence.srs.interval}</TableCell>
               <TableCell>{sentence.srs.easeFactor.toFixed(2)}</TableCell>
               <TableCell>{sentence.srs.dueDate || 'New'}</TableCell>
