@@ -3,7 +3,7 @@ import {
   audioService, 
   AudioState, 
   AudioEventType
-} from '../utils/audioService';
+} from '../services/audioService';
 
 // Debug flag
 const DEBUG = true;
@@ -15,8 +15,6 @@ function debugLog(...args: unknown[]) {
 
 // Custom hook for using the audio service in React components
 export function useAudio() {
-  debugLog('useAudio hook initializing');
-  
   // Track audio state in React state
   const [audioState, setAudioState] = useState<AudioState>(() => {
     const initialState = audioService.getState();
@@ -80,8 +78,6 @@ export function useAudio() {
     return audioService.subscribe(eventType, listener);
   }, []);
 
-  debugLog('useAudio hook returning functions and state');
-  
   return {
     audioState,
     play,

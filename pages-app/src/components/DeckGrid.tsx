@@ -14,7 +14,7 @@ export function DeckGrid({ decks }: DeckGridProps) {
     <Grid cols={3} gap="lg">
       {decks.map((deck) => (
         <Link
-          to={`/deck/${deck.id}`}
+          to={`/deck/${deck.id.replace('.json', '')}`}
           key={deck.id}
           className="group relative overflow-hidden rounded-lg border bg-card p-8 text-card-foreground shadow-sm transition-all hover:shadow-md hover:ring-2 hover:ring-primary/50"
         >

@@ -1,20 +1,23 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useDeck } from '../hooks/useDeck';
+import { useSRS } from '../hooks/useSRS';
 import Flashcard from './Flashcard';
 import { DeckProgress } from './DeckProgress';
 import { DeckSettings } from './DeckSettings';
 import { DeckNavigation } from './DeckNavigation';
+import { SRSControls } from './SRSControls';
+import { SRSDebugTable } from './SRSDebugTable';
 import { Button } from './ui/button';
 import { Icon } from './ui/icon';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Settings, Bug } from 'lucide-react';
 import KeyboardShortcutsInfo from './KeyboardShortcutsInfo';
 import { ViewMode, AudioSettings as AudioSettingsType } from '../types';
 import { useAudio } from '../hooks/useAudio';
-import { useDeckNavigation } from '../hooks/useDeckNavigation';
 import { useFlashcardState } from '../hooks/useFlashcardState';
 import { useKeyboardShortcuts } from '../hooks/useKeyboardShortcuts';
 import { useListenMode } from '../hooks/useListenMode';
+import { Popover, PopoverContent, PopoverTrigger } from './ui/popover';
 
 // Debug flag - set to true to enable debug logs
 const DEBUG = true;
@@ -43,6 +46,7 @@ export default function DeckView() {
   
   // State for flashcard display
   const [showAnswerByDefault, setShowAnswerByDefault] = useState(false);
+  const [showDebug, setShowDebug] = useState(false);
   
   // Refs to track view mode changes
   const prevViewModeRef = useRef<ViewMode>('normal');
@@ -53,6 +57,21 @@ export default function DeckView() {
     play,
     stop
   } = useAudio();
+  
+  // Use SRS hook
+  const {
+    currentCard,
+    isLoading: isSRSLoading,
+    error: srsError,
+    handleResponse,
+    getProgress,
+    resetSession
+  } = useSRS({
+    deckId: deckId!,
+    deck: currentDeck?.sentences ?? [],
+    maxNewCards: 20,
+    enabled: currentDeck !== null // Only enable when deck is loaded
+  });
   
   // Handle toggling showAnswerByDefault
   const handleToggleShowAnswerByDefault = useCallback((newValue: boolean) => {
@@ -71,34 +90,17 @@ export default function DeckView() {
     onToggleShowAnswerByDefault: handleToggleShowAnswerByDefault
   });
   
-  // Use deck navigation hook
-  const {
-    currentIndex,
-    randomMode,
-    getCurrentSentence,
-    goToNext,
-    goToPrevious,
-    toggleRandomMode,
-    isFirstCard,
-    isLastCard,
-    actualIndex
-  } = useDeckNavigation({
-    deck: currentDeck,
-    showAnswerByDefault,
-    onAnswerReveal: setIsAnswerRevealed
-  });
-  
   // Use listen mode hook
   const {
     resetListenMode
   } = useListenMode({
     currentDeck,
     viewMode,
-    getCurrentSentence,
+    getCurrentSentence: () => currentCard,
     audioSettings,
     setIsAnswerRevealed,
-    goToNext,
-    isLastCard: currentIndex === (currentDeck?.sentences.length || 0) - 1,
+    goToNext: () => handleResponse('passed'),
+    isLastCard: false,
   });
   
   // Load the deck when the component mounts or when the deckId changes
@@ -111,24 +113,23 @@ export default function DeckView() {
   
   // Play Japanese audio
   const playJapaneseAudio = useCallback(() => {
-    const currentSentence = getCurrentSentence();
-    if (currentSentence?.japaneseAudioPath) {
+    if (currentCard?.sentence.audio) {
       debugLog('Playing Japanese audio');
-      play(currentSentence.japaneseAudioPath);
+      play(currentCard.sentence.audio);
     }
-  }, [getCurrentSentence, play]);
+  }, [currentCard, play]);
   
   // Auto-play audio when sentence changes if autoPlayJapanese is enabled and not in listen mode
   useEffect(() => {
     if (
       viewMode === 'normal' && 
-      currentDeck && 
+      currentCard && 
       audioSettings.autoPlayJapanese && 
-      getCurrentSentence()?.japaneseAudioPath
+      currentCard.sentence.audio
     ) {
       playJapaneseAudio();
     }
-  }, [currentDeck, currentIndex, viewMode, audioSettings.autoPlayJapanese, playJapaneseAudio, getCurrentSentence]);
+  }, [currentCard, viewMode, audioSettings.autoPlayJapanese, playJapaneseAudio]);
   
   // Handle view mode changes
   useEffect(() => {
@@ -153,8 +154,8 @@ export default function DeckView() {
   
   // Use keyboard shortcuts
   useKeyboardShortcuts({
-    onNext: goToNext,
-    onPrevious: goToPrevious,
+    onNext: () => handleResponse('passed'),
+    onPrevious: resetSession,
     onPlayAudio: playJapaneseAudio,
     onRevealAnswer: revealAnswer,
     isAnswerRevealed
@@ -192,37 +193,23 @@ export default function DeckView() {
   }, []);
   
   // Loading and error states
-  if (loading) {
+  if (loading || isSRSLoading) {
     return <div className="loading">Loading deck...</div>;
   }
   
-  if (error) {
-    return <div className="error">Error loading deck: {error}</div>;
+  if (error || srsError) {
+    return <div className="error">Error loading deck: {error || srsError}</div>;
   }
   
-  if (!currentDeck) {
+  if (!currentDeck || !currentCard) {
     return <div className="error">Deck not found</div>;
   }
   
-  const totalCards = currentDeck.sentences.length;
-  
-  // Safety check to ensure currentIndex is within bounds
-  if (currentIndex >= totalCards) {
-    return null; // Prevent rendering with invalid index
-  }
-  
-  // Get the current sentence
-  const currentSentence = getCurrentSentence();
-  
-  // Safety check to ensure currentSentence exists
-  if (!currentSentence) {
-    console.error('Sentence not found');
-    return <div className="error">Error displaying flashcard</div>;
-  }
+  const progress = getProgress();
   
   return (
     <div className="container flashcard-container space-y-6">
-      <div className="flex items-start">
+      <div className="flex items-start justify-between">
         <Button
           variant="ghost"
           size="sm"
@@ -233,22 +220,53 @@ export default function DeckView() {
             Back to Decks
           </Link>
         </Button>
+
+        <div className="flex items-center gap-2">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setShowDebug(!showDebug)}
+            className="w-9 p-0"
+            title="Toggle debug info"
+          >
+            <Icon icon={Bug} className={showDebug ? "text-primary" : ""} />
+          </Button>
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button
+                variant="ghost"
+                size="sm"
+                className="w-9 p-0"
+              >
+                <Icon icon={Settings} />
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-80">
+              <DeckSettings
+                autoPlayEnabled={audioSettings.autoPlayJapanese}
+                onAutoPlayChange={toggleAutoPlay}
+                pauseDuration={audioSettings.pauseDuration}
+                onPauseDurationChange={handlePauseDurationChange}
+              />
+            </PopoverContent>
+          </Popover>
+        </div>
       </div>
       
       <div className="flex-1">
         <DeckProgress
-          current={currentIndex + 1}
-          total={totalCards}
+          current={progress.current}
+          total={progress.total}
         />
       </div>
       
       <div className="flashcard-wrapper">
         <Flashcard 
-          key={`${currentDeck.id}-${actualIndex}`}
-          sentence={currentSentence} 
+          key={currentCard.id}
+          sentence={currentCard} 
           showAnswerByDefault={showAnswerByDefault || isAnswerRevealed}
-          onNext={goToNext}
-          onPrevious={goToPrevious}
+          onNext={() => handleResponse('passed')}
+          onPrevious={resetSession}
           onPlayAudio={playJapaneseAudio}
           isPlayingAudio={isPlaying}
           onRevealAnswer={revealAnswer}
@@ -256,25 +274,28 @@ export default function DeckView() {
         />
       </div>
 
-      <DeckNavigation
-        onPrevious={goToPrevious}
-        onNext={goToNext}
-        onReveal={revealAnswer}
-        isAnswerRevealed={isAnswerRevealed}
-        isFirstCard={isFirstCard}
-        isLastCard={isLastCard}
-        isListenMode={viewMode === 'listen'}
-        onListenModeToggle={toggleListenMode}
-      />
+      <div className="space-y-4">
+        <SRSControls
+          onResponse={handleResponse}
+          disabled={!isAnswerRevealed}
+          className="mb-4"
+        />
+
+        <DeckNavigation
+          onPrevious={resetSession}
+          onNext={() => handleResponse('passed')}
+          onReveal={revealAnswer}
+          isAnswerRevealed={isAnswerRevealed}
+          isFirstCard={false}
+          isLastCard={false}
+          isListenMode={viewMode === 'listen'}
+          onListenModeToggle={toggleListenMode}
+        />
+      </div>
       
-      <DeckSettings
-        autoPlayEnabled={audioSettings.autoPlayJapanese}
-        onAutoPlayChange={toggleAutoPlay}
-        randomModeEnabled={randomMode}
-        onRandomModeChange={toggleRandomMode}
-        pauseDuration={audioSettings.pauseDuration}
-        onPauseDurationChange={handlePauseDurationChange}
-      />
+      {showDebug && currentDeck && (
+        <SRSDebugTable sentences={currentDeck.sentences} />
+      )}
       
       <KeyboardShortcutsInfo />
     </div>

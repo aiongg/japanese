@@ -54,17 +54,14 @@ function filesAreDifferent(sourceFile, destFile) {
       return true;
     }
     
-    // For small files, we could do a content comparison, but
-    // for simplicity and performance, we'll just use size and mtime
     return false;
   } catch (error) {
     console.error(`Error comparing files ${sourceFile} and ${destFile}:`, error);
-    // If there's an error, assume they're different to be safe
     return true;
   }
 }
 
-// Copy all markdown files from sentences directory
+// Copy all JSON files from sentences directory
 try {
   const files = fs.readdirSync(sourcePath);
   console.log('Found files in source directory:', files);
@@ -73,7 +70,7 @@ try {
   let skippedCount = 0;
   
   files.forEach(file => {
-    if (file.endsWith('.md')) {
+    if (file.endsWith('.json')) {
       const sourceFile = path.join(sourcePath, file);
       const destFile = path.join(destPath, file);
       
@@ -90,7 +87,7 @@ try {
   
   console.log(`Sentence files: ${copiedCount} copied, ${skippedCount} skipped (unchanged)`);
 } catch (error) {
-  console.error('Error copying markdown files:', error);
+  console.error('Error copying JSON files:', error);
   process.exit(1);
 }
 
@@ -113,7 +110,6 @@ if (fs.existsSync(sourceAudioPath)) {
           console.log(`Copied audio file ${file} to public/sentences/audio/`);
           copiedCount++;
         } else {
-          // Don't log each skipped file to avoid console spam
           skippedCount++;
         }
       }
@@ -122,7 +118,6 @@ if (fs.existsSync(sourceAudioPath)) {
     console.log(`Audio files: ${copiedCount} copied, ${skippedCount} skipped (unchanged)`);
   } catch (error) {
     console.error('Error copying audio files:', error);
-    // Don't exit process if audio files fail, just log the error
     console.log('Continuing without audio files...');
   }
 } else {

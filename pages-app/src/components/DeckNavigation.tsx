@@ -1,6 +1,7 @@
 import { Button } from './ui/button'
-import { ChevronLeft, ChevronRight, RotateCw, Headphones } from 'lucide-react'
 import { Icon } from './ui/icon'
+import { ArrowLeft, ArrowRight, Eye, Headphones } from 'lucide-react'
+import { cn } from '@/lib/utils'
 
 interface DeckNavigationProps {
   onPrevious: () => void
@@ -21,49 +22,48 @@ export function DeckNavigation({
   isFirstCard,
   isLastCard,
   isListenMode,
-  onListenModeToggle,
+  onListenModeToggle
 }: DeckNavigationProps) {
   return (
-    <div className="flex items-center justify-center gap-3">
+    <div className="flex items-center justify-center gap-2">
       <Button
         variant="outline"
-        size="lg"
+        size="icon"
         onClick={onPrevious}
-        disabled={isFirstCard || isListenMode}
-        className="w-[140px]"
+        disabled={isFirstCard}
+        title="Previous card"
       >
-        <Icon icon={ChevronLeft} className="mr-2" />
-        Previous
+        <Icon icon={ArrowLeft} />
       </Button>
 
       <Button
-        variant={isListenMode ? "default" : "outline"}
-        size="lg"
+        variant="outline"
+        size="icon"
+        onClick={onReveal}
+        disabled={isAnswerRevealed}
+        title="Reveal answer"
+      >
+        <Icon icon={Eye} />
+      </Button>
+
+      <Button
+        variant="outline"
+        size="icon"
+        onClick={onNext}
+        disabled={isLastCard}
+        title="Next card"
+      >
+        <Icon icon={ArrowRight} />
+      </Button>
+
+      <Button
+        variant="outline"
+        size="icon"
         onClick={onListenModeToggle}
-        className="w-[140px]"
+        className={cn(isListenMode && "bg-primary text-primary-foreground")}
+        title={isListenMode ? "Stop listen mode" : "Start listen mode"}
       >
-        <Icon icon={Headphones} className="mr-2" />
-        {isListenMode ? 'Stop' : 'Listen'}
-      </Button>
-
-      <Button
-        variant="default"
-        size="lg"
-        onClick={isAnswerRevealed ? onNext : onReveal}
-        disabled={isListenMode || (isAnswerRevealed && isLastCard)}
-        className="w-[140px]"
-      >
-        {isAnswerRevealed ? (
-          <>
-            Next
-            <Icon icon={ChevronRight} className="ml-2" />
-          </>
-        ) : (
-          <>
-            Flip
-            <Icon icon={RotateCw} className="ml-2" />
-          </>
-        )}
+        <Icon icon={Headphones} />
       </Button>
     </div>
   )

@@ -10,12 +10,12 @@ function debugLog(...args: unknown[]) {
   }
 }
 
-interface UseKeyboardShortcutsProps {
-  onNext: () => void;
-  onPrevious: () => void;
-  onPlayAudio: () => void;
-  onRevealAnswer: () => void;
-  isAnswerRevealed: boolean;
+export interface UseKeyboardShortcutsProps {
+  onNext?: () => void;
+  onPrevious?: () => void;
+  onPlayAudio?: () => void;
+  onRevealAnswer?: () => void;
+  isAnswerRevealed?: boolean;
 }
 
 export function useKeyboardShortcuts({
@@ -24,47 +24,36 @@ export function useKeyboardShortcuts({
   onPlayAudio,
   onRevealAnswer,
   isAnswerRevealed
-}: UseKeyboardShortcutsProps): void {
+}: UseKeyboardShortcutsProps) {
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      // Ignore keyboard events if an input element is focused
-      if (document.activeElement?.tagName === 'INPUT' || 
-          document.activeElement?.tagName === 'TEXTAREA' ||
-          document.activeElement?.tagName === 'SELECT') {
+    function handleKeyDown(event: KeyboardEvent) {
+      // Ignore key events when typing in input fields
+      if (event.target instanceof HTMLInputElement || 
+          event.target instanceof HTMLTextAreaElement) {
         return;
       }
 
-      debugLog('Keyboard event', { key: e.key, code: e.code });
-      
-      switch (e.key) {
-        case ' ':  // Space
-          e.preventDefault();
-          // Play audio
-          onPlayAudio();
+      switch (event.code) {
+        case 'Space':
+          event.preventDefault();
+          onPlayAudio?.();
           break;
         case 'ArrowRight':
-          e.preventDefault();
-          // If answer is not revealed, reveal it, otherwise go to next card
-          if (!isAnswerRevealed) {
+          event.preventDefault();
+          if (!isAnswerRevealed && onRevealAnswer) {
             onRevealAnswer();
-          } else {
+          } else if (onNext) {
             onNext();
           }
           break;
         case 'ArrowLeft':
-          e.preventDefault();
-          // Go to previous card
-          onPrevious();
+          event.preventDefault();
+          onPrevious?.();
           break;
       }
-    };
+    }
 
-    // Add event listener
     window.addEventListener('keydown', handleKeyDown);
-    
-    // Clean up
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [onNext, onPrevious, onPlayAudio, isAnswerRevealed, onRevealAnswer]);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [onNext, onPrevious, onPlayAudio, onRevealAnswer, isAnswerRevealed]);
 } 

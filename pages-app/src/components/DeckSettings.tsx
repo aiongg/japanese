@@ -6,11 +6,11 @@ import { Slider } from './ui/slider'
 
 interface DeckSettingsProps {
   autoPlayEnabled: boolean
-  onAutoPlayChange: (enabled: boolean) => void
-  randomModeEnabled: boolean
-  onRandomModeChange: (enabled: boolean) => void
+  onAutoPlayChange: () => void
+  randomModeEnabled?: boolean
+  onRandomModeChange?: () => void
   pauseDuration: number
-  onPauseDurationChange: (value: number) => void
+  onPauseDurationChange: (newDuration: number) => void
 }
 
 export function DeckSettings({
@@ -19,10 +19,14 @@ export function DeckSettings({
   randomModeEnabled,
   onRandomModeChange,
   pauseDuration,
-  onPauseDurationChange,
+  onPauseDurationChange
 }: DeckSettingsProps) {
   return (
     <div className="space-y-6">
+      <div>
+        <P className="font-medium mb-4">Deck Settings</P>
+      </div>
+
       <div className="flex items-center justify-between">
         <div className="space-y-0.5">
           <div className="flex items-center gap-2">
@@ -39,21 +43,23 @@ export function DeckSettings({
         />
       </div>
 
-      <div className="flex items-center justify-between">
-        <div className="space-y-0.5">
-          <div className="flex items-center gap-2">
-            <Icon icon={Shuffle} className="text-muted-foreground" />
-            <P>Random mode</P>
+      {randomModeEnabled !== undefined && onRandomModeChange && (
+        <div className="flex items-center justify-between">
+          <div className="space-y-0.5">
+            <div className="flex items-center gap-2">
+              <Icon icon={Shuffle} className="text-muted-foreground" />
+              <P>Random mode</P>
+            </div>
+            <P className="text-sm text-muted-foreground">
+              Show cards in random order
+            </P>
           </div>
-          <P className="text-sm text-muted-foreground">
-            Show cards in random order
-          </P>
+          <Switch
+            checked={randomModeEnabled}
+            onCheckedChange={onRandomModeChange}
+          />
         </div>
-        <Switch
-          checked={randomModeEnabled}
-          onCheckedChange={onRandomModeChange}
-        />
-      </div>
+      )}
 
       <div className="space-y-3">
         <div className="space-y-0.5">

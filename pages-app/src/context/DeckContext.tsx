@@ -1,6 +1,6 @@
 import { useState, useEffect, ReactNode, useCallback } from 'react';
 import { Deck, DeckMetadata } from '../types';
-import { fetchDeckList, fetchDeck } from '../utils/parseMarkdown';
+import { fetchDeckList, fetchDeck } from '../utils/loadDeck';
 import { DeckContext } from './DeckContextType';
 
 // Provider component
@@ -20,7 +20,7 @@ export function DeckProvider({ children }: { children: ReactNode }) {
         // Create initial metadata with placeholder counts
         const initialDeckMetadata: DeckMetadata[] = deckFiles.map(file => ({
           id: file,
-          title: file.replace('sentences_', 'Sentences ').replace('.md', '').replace('-', ' to '),
+          title: file.replace('sentences_', 'Sentences ').replace('-', ' to '),
           count: 0 // Placeholder count
         }));
         

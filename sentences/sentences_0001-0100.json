@@ -1,0 +1,3532 @@
+[
+  {
+    "id": "1",
+    "sentence": {
+      "text": "おはようございます。",
+      "audio": "0001A.mp3"
+    },
+    "translation": {
+      "text": "Good morning.",
+      "audio": "0001B.mp3"
+    },
+    "notes": [
+      "This is a formal morning greeting used in Japan."
+    ],
+    "gloss": [
+      {
+        "word": "おはようございます",
+        "reading": "-",
+        "english": "good morning (formal)",
+        "romaji": "ohayō gozaimasu"
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "sentence": {
+      "text": "こんにちは。",
+      "audio": "0002A.mp3"
+    },
+    "translation": {
+      "text": "Hello.",
+      "audio": "0002B.mp3"
+    },
+    "notes": [
+      "Standard daytime greeting used from late morning until evening."
+    ],
+    "gloss": [
+      {
+        "word": "こんにちは",
+        "reading": "-",
+        "english": "hello",
+        "romaji": "konnichiwa"
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "sentence": {
+      "text": "こんばんは。",
+      "audio": "0003A.mp3"
+    },
+    "translation": {
+      "text": "Good evening.",
+      "audio": "0003B.mp3"
+    },
+    "notes": [
+      "Evening greeting used after sunset."
+    ],
+    "gloss": [
+      {
+        "word": "こんばんは",
+        "reading": "-",
+        "english": "good evening",
+        "romaji": "konbanwa"
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "sentence": {
+      "text": "さようなら。",
+      "audio": "0004A.mp3"
+    },
+    "translation": {
+      "text": "Goodbye.",
+      "audio": "0004B.mp3"
+    },
+    "notes": [
+      "Used when parting for a longer period."
+    ],
+    "gloss": [
+      {
+        "word": "さようなら",
+        "reading": "-",
+        "english": "goodbye",
+        "romaji": "sayōnara"
+      }
+    ]
+  },
+  {
+    "id": "5",
+    "sentence": {
+      "text": "はじめまして。",
+      "audio": "0005A.mp3"
+    },
+    "translation": {
+      "text": "Nice to meet you.",
+      "audio": "0005B.mp3"
+    },
+    "notes": [
+      "Used when meeting someone for the first time."
+    ],
+    "gloss": [
+      {
+        "word": "はじめまして",
+        "reading": "-",
+        "english": "nice to meet you",
+        "romaji": "hajimemashite"
+      }
+    ]
+  },
+  {
+    "id": "6",
+    "sentence": {
+      "text": "私の名前は田中です。",
+      "audio": "0006A.mp3"
+    },
+    "translation": {
+      "text": "My name's Tanaka.",
+      "audio": "0006B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "私",
+        "reading": "わたし",
+        "english": "I",
+        "romaji": "watashi"
+      },
+      {
+        "word": "の",
+        "reading": "-",
+        "english": "possessive particle",
+        "romaji": "no"
+      },
+      {
+        "word": "名前",
+        "reading": "なまえ",
+        "english": "name",
+        "romaji": "namae"
+      },
+      {
+        "word": "は",
+        "reading": "-",
+        "english": "topic marker",
+        "romaji": "wa"
+      },
+      {
+        "word": "田中",
+        "reading": "たなか",
+        "english": "Tanaka (surname)",
+        "romaji": "Tanaka"
+      },
+      {
+        "word": "です",
+        "reading": "-",
+        "english": "is (copula)",
+        "romaji": "desu"
+      }
+    ]
+  },
+  {
+    "id": "7",
+    "sentence": {
+      "text": "お元気ですか？",
+      "audio": "0007A.mp3"
+    },
+    "translation": {
+      "text": "How are you?",
+      "audio": "0007B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "お元気",
+        "reading": "おげんき",
+        "english": "well-being",
+        "romaji": "ogenki"
+      },
+      {
+        "word": "ですか",
+        "reading": "-",
+        "english": "are you? (question form)",
+        "romaji": "desu ka"
+      }
+    ]
+  },
+  {
+    "id": "8",
+    "sentence": {
+      "text": "はい、元気です。",
+      "audio": "0008A.mp3"
+    },
+    "translation": {
+      "text": "Yes, I'm fine.",
+      "audio": "0008B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "はい",
+        "reading": "-",
+        "english": "yes",
+        "romaji": "hai"
+      },
+      {
+        "word": "元気",
+        "reading": "げんき",
+        "english": "fine, healthy",
+        "romaji": "genki"
+      },
+      {
+        "word": "です",
+        "reading": "-",
+        "english": "am (copula)",
+        "romaji": "desu"
+      }
+    ]
+  },
+  {
+    "id": "9",
+    "sentence": {
+      "text": "お名前は何ですか？",
+      "audio": "0009A.mp3"
+    },
+    "translation": {
+      "text": "What's your name?",
+      "audio": "0009B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "お名前",
+        "reading": "おなまえ",
+        "english": "name (polite)",
+        "romaji": "onamae"
+      },
+      {
+        "word": "は",
+        "reading": "-",
+        "english": "topic marker",
+        "romaji": "wa"
+      },
+      {
+        "word": "何",
+        "reading": "なに",
+        "english": "what",
+        "romaji": "nani"
+      },
+      {
+        "word": "ですか",
+        "reading": "-",
+        "english": "is? (question form)",
+        "romaji": "desu ka"
+      }
+    ]
+  },
+  {
+    "id": "10",
+    "sentence": {
+      "text": "佐藤と申します。",
+      "audio": "0010A.mp3"
+    },
+    "translation": {
+      "text": "I'm Sato.",
+      "audio": "0010B.mp3"
+    },
+    "notes": [
+      "申します is a humble form of \"to say/to be called\" used when introducing oneself."
+    ],
+    "gloss": [
+      {
+        "word": "佐藤",
+        "reading": "さとう",
+        "english": "Sato (surname)",
+        "romaji": "Satō"
+      },
+      {
+        "word": "と",
+        "reading": "-",
+        "english": "quotation particle",
+        "romaji": "to"
+      },
+      {
+        "word": "申します",
+        "reading": "もうします",
+        "english": "I am called (humble)",
+        "romaji": "mōshimasu"
+      }
+    ]
+  },
+  {
+    "id": "11",
+    "sentence": {
+      "text": "どうぞよろしくお願いします。",
+      "audio": "0011A.mp3"
+    },
+    "translation": {
+      "text": "Nice to meet you.",
+      "audio": "0011B.mp3"
+    },
+    "notes": [
+      "A common phrase used after introductions, expressing hope for a good relationship."
+    ],
+    "gloss": [
+      {
+        "word": "どうぞ",
+        "reading": "-",
+        "english": "please",
+        "romaji": "dōzo"
+      },
+      {
+        "word": "よろしく",
+        "reading": "-",
+        "english": "favorably",
+        "romaji": "yoroshiku"
+      },
+      {
+        "word": "お願いします",
+        "reading": "おねがいします",
+        "english": "I request (polite)",
+        "romaji": "onegaishimasu"
+      }
+    ]
+  },
+  {
+    "id": "12",
+    "sentence": {
+      "text": "お仕事は何ですか？",
+      "audio": "0012A.mp3"
+    },
+    "translation": {
+      "text": "What do you do for work?",
+      "audio": "0012B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "お仕事",
+        "reading": "おしごと",
+        "english": "job (polite)",
+        "romaji": "oshigoto"
+      },
+      {
+        "word": "は",
+        "reading": "-",
+        "english": "topic marker",
+        "romaji": "wa"
+      },
+      {
+        "word": "何",
+        "reading": "なに",
+        "english": "what",
+        "romaji": "nani"
+      },
+      {
+        "word": "ですか",
+        "reading": "-",
+        "english": "is? (question form)",
+        "romaji": "desu ka"
+      }
+    ]
+  },
+  {
+    "id": "13",
+    "sentence": {
+      "text": "私は教師です。",
+      "audio": "0013A.mp3"
+    },
+    "translation": {
+      "text": "I'm a teacher.",
+      "audio": "0013B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "私",
+        "reading": "わたし",
+        "english": "I",
+        "romaji": "watashi"
+      },
+      {
+        "word": "は",
+        "reading": "-",
+        "english": "topic marker",
+        "romaji": "wa"
+      },
+      {
+        "word": "教師",
+        "reading": "きょうし",
+        "english": "teacher",
+        "romaji": "kyōshi"
+      },
+      {
+        "word": "です",
+        "reading": "-",
+        "english": "am (copula)",
+        "romaji": "desu"
+      }
+    ]
+  },
+  {
+    "id": "14",
+    "sentence": {
+      "text": "出身はどこですか？",
+      "audio": "0014A.mp3"
+    },
+    "translation": {
+      "text": "Where are you from?",
+      "audio": "0014B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "出身",
+        "reading": "しゅっしん",
+        "english": "origin, hometown",
+        "romaji": "shusshin"
+      },
+      {
+        "word": "は",
+        "reading": "-",
+        "english": "topic marker",
+        "romaji": "wa"
+      },
+      {
+        "word": "どこ",
+        "reading": "-",
+        "english": "where",
+        "romaji": "doko"
+      },
+      {
+        "word": "ですか",
+        "reading": "-",
+        "english": "is? (question form)",
+        "romaji": "desu ka"
+      }
+    ]
+  },
+  {
+    "id": "15",
+    "sentence": {
+      "text": "東京出身です。",
+      "audio": "0015A.mp3"
+    },
+    "translation": {
+      "text": "I'm from Tokyo.",
+      "audio": "0015B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "東京",
+        "reading": "とうきょう",
+        "english": "Tokyo",
+        "romaji": "Tōkyō"
+      },
+      {
+        "word": "出身",
+        "reading": "しゅっしん",
+        "english": "from (origin)",
+        "romaji": "shusshin"
+      },
+      {
+        "word": "です",
+        "reading": "-",
+        "english": "am (copula)",
+        "romaji": "desu"
+      }
+    ]
+  },
+  {
+    "id": "16",
+    "sentence": {
+      "text": "何歳ですか？",
+      "audio": "0016A.mp3"
+    },
+    "translation": {
+      "text": "How old are you?",
+      "audio": "0016B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "何歳",
+        "reading": "なんさい",
+        "english": "how old",
+        "romaji": "nansai"
+      },
+      {
+        "word": "ですか",
+        "reading": "-",
+        "english": "are? (question form)",
+        "romaji": "desu ka"
+      }
+    ]
+  },
+  {
+    "id": "17",
+    "sentence": {
+      "text": "私は25歳です。",
+      "audio": "0017A.mp3"
+    },
+    "translation": {
+      "text": "I'm 25 years old.",
+      "audio": "0017B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "私",
+        "reading": "わたし",
+        "english": "I",
+        "romaji": "watashi"
+      },
+      {
+        "word": "は",
+        "reading": "-",
+        "english": "topic marker",
+        "romaji": "wa"
+      },
+      {
+        "word": "25歳",
+        "reading": "にじゅうごさい",
+        "english": "25 years old",
+        "romaji": "nijūgosai"
+      },
+      {
+        "word": "です",
+        "reading": "-",
+        "english": "am (copula)",
+        "romaji": "desu"
+      }
+    ]
+  },
+  {
+    "id": "18",
+    "sentence": {
+      "text": "日本語を勉強しています。",
+      "audio": "0018A.mp3"
+    },
+    "translation": {
+      "text": "I'm studying Japanese.",
+      "audio": "0018B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "日本語",
+        "reading": "にほんご",
+        "english": "Japanese language",
+        "romaji": "nihongo"
+      },
+      {
+        "word": "を",
+        "reading": "-",
+        "english": "object marker",
+        "romaji": "o"
+      },
+      {
+        "word": "勉強",
+        "reading": "べんきょう",
+        "english": "study",
+        "romaji": "benkyō"
+      },
+      {
+        "word": "しています",
+        "reading": "-",
+        "english": "am doing",
+        "romaji": "shite imasu"
+      }
+    ]
+  },
+  {
+    "id": "19",
+    "sentence": {
+      "text": "どこに住んでいますか？",
+      "audio": "0019A.mp3"
+    },
+    "translation": {
+      "text": "Where do you live?",
+      "audio": "0019B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "どこ",
+        "reading": "-",
+        "english": "where",
+        "romaji": "doko"
+      },
+      {
+        "word": "に",
+        "reading": "-",
+        "english": "location particle",
+        "romaji": "ni"
+      },
+      {
+        "word": "住んでいます",
+        "reading": "すんでいます",
+        "english": "live, reside",
+        "romaji": "sunde imasu"
+      },
+      {
+        "word": "か",
+        "reading": "-",
+        "english": "question marker",
+        "romaji": "ka"
+      }
+    ]
+  },
+  {
+    "id": "20",
+    "sentence": {
+      "text": "大阪に住んでいます。",
+      "audio": "0020A.mp3"
+    },
+    "translation": {
+      "text": "I live in Osaka.",
+      "audio": "0020B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "大阪",
+        "reading": "おおさか",
+        "english": "Osaka",
+        "romaji": "Ōsaka"
+      },
+      {
+        "word": "に",
+        "reading": "-",
+        "english": "location particle",
+        "romaji": "ni"
+      },
+      {
+        "word": "住んでいます",
+        "reading": "すんでいます",
+        "english": "live, reside",
+        "romaji": "sunde imasu"
+      }
+    ]
+  },
+  {
+    "id": "21",
+    "sentence": {
+      "text": "お疲れ様です。",
+      "audio": "0021A.mp3"
+    },
+    "translation": {
+      "text": "Good work.",
+      "audio": "0021B.mp3"
+    },
+    "notes": [
+      "A greeting acknowledging someone's work or effort, commonly used in workplaces."
+    ],
+    "gloss": [
+      {
+        "word": "お疲れ様です",
+        "reading": "おつかれさまです",
+        "english": "good work/thank you for your effort",
+        "romaji": "otsukaresama desu"
+      }
+    ]
+  },
+  {
+    "id": "22",
+    "sentence": {
+      "text": "ただいま。",
+      "audio": "0022A.mp3"
+    },
+    "translation": {
+      "text": "I'm home.",
+      "audio": "0022B.mp3"
+    },
+    "notes": [
+      "Said when returning home."
+    ],
+    "gloss": [
+      {
+        "word": "ただいま",
+        "reading": "-",
+        "english": "I'm home",
+        "romaji": "tadaima"
+      }
+    ]
+  },
+  {
+    "id": "23",
+    "sentence": {
+      "text": "おかえりなさい。",
+      "audio": "0023A.mp3"
+    },
+    "translation": {
+      "text": "Welcome back.",
+      "audio": "0023B.mp3"
+    },
+    "notes": [
+      "Response to \"tadaima\" when someone returns home."
+    ],
+    "gloss": [
+      {
+        "word": "おかえりなさい",
+        "reading": "-",
+        "english": "welcome back",
+        "romaji": "okaerinasai"
+      }
+    ]
+  },
+  {
+    "id": "24",
+    "sentence": {
+      "text": "いってきます。",
+      "audio": "0024A.mp3"
+    },
+    "translation": {
+      "text": "I'm off.",
+      "audio": "0024B.mp3"
+    },
+    "notes": [
+      "Said when leaving home, implying \"I'll go and come back.\""
+    ],
+    "gloss": [
+      {
+        "word": "いってきます",
+        "reading": "-",
+        "english": "I'm leaving (and will return)",
+        "romaji": "ittekimasu"
+      }
+    ]
+  },
+  {
+    "id": "25",
+    "sentence": {
+      "text": "いってらっしゃい。",
+      "audio": "0025A.mp3"
+    },
+    "translation": {
+      "text": "Take care.",
+      "audio": "0025B.mp3"
+    },
+    "notes": [
+      "Response to \"ittekimasu,\" wishing someone well as they leave."
+    ],
+    "gloss": [
+      {
+        "word": "いってらっしゃい",
+        "reading": "-",
+        "english": "have a good day/see you later",
+        "romaji": "itterasshai"
+      }
+    ]
+  },
+  {
+    "id": "26",
+    "sentence": {
+      "text": "お久しぶりです。",
+      "audio": "0026A.mp3"
+    },
+    "translation": {
+      "text": "Long time no see.",
+      "audio": "0026B.mp3"
+    },
+    "notes": [
+      "Used when meeting someone after a long time."
+    ],
+    "gloss": [
+      {
+        "word": "お久しぶりです",
+        "reading": "おひさしぶりです",
+        "english": "it's been a long time",
+        "romaji": "ohisashiburi desu"
+      }
+    ]
+  },
+  {
+    "id": "27",
+    "sentence": {
+      "text": "お会いできて嬉しいです。",
+      "audio": "0027A.mp3"
+    },
+    "translation": {
+      "text": "Nice to meet you.",
+      "audio": "0027B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "お会い",
+        "reading": "おあい",
+        "english": "meeting (honorific)",
+        "romaji": "oai"
+      },
+      {
+        "word": "できて",
+        "reading": "-",
+        "english": "can do",
+        "romaji": "dekite"
+      },
+      {
+        "word": "嬉しい",
+        "reading": "うれしい",
+        "english": "happy",
+        "romaji": "ureshii"
+      },
+      {
+        "word": "です",
+        "reading": "-",
+        "english": "is (copula)",
+        "romaji": "desu"
+      }
+    ]
+  },
+  {
+    "id": "28",
+    "sentence": {
+      "text": "また明日。",
+      "audio": "0028A.mp3"
+    },
+    "translation": {
+      "text": "See you tomorrow.",
+      "audio": "0028B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "また",
+        "reading": "-",
+        "english": "again",
+        "romaji": "mata"
+      },
+      {
+        "word": "明日",
+        "reading": "あした",
+        "english": "tomorrow",
+        "romaji": "ashita"
+      }
+    ]
+  },
+  {
+    "id": "29",
+    "sentence": {
+      "text": "お休みなさい。",
+      "audio": "0029A.mp3"
+    },
+    "translation": {
+      "text": "Good night.",
+      "audio": "0029B.mp3"
+    },
+    "notes": [
+      "Said before going to bed."
+    ],
+    "gloss": [
+      {
+        "word": "お休みなさい",
+        "reading": "おやすみなさい",
+        "english": "good night",
+        "romaji": "oyasuminasai"
+      }
+    ]
+  },
+  {
+    "id": "30",
+    "sentence": {
+      "text": "いただきます。",
+      "audio": "0030A.mp3"
+    },
+    "translation": {
+      "text": "Let's eat.",
+      "audio": "0030B.mp3"
+    },
+    "notes": [
+      "Said before starting a meal, expressing gratitude for the food."
+    ],
+    "gloss": [
+      {
+        "word": "いただきます",
+        "reading": "-",
+        "english": "let's eat/I receive",
+        "romaji": "itadakimasu"
+      }
+    ]
+  },
+  {
+    "id": "31",
+    "sentence": {
+      "text": "ごちそうさまでした。",
+      "audio": "0031A.mp3"
+    },
+    "translation": {
+      "text": "Thanks for the meal.",
+      "audio": "0031B.mp3"
+    },
+    "notes": [
+      "Said after finishing a meal."
+    ],
+    "gloss": [
+      {
+        "word": "ごちそうさまでした",
+        "reading": "-",
+        "english": "thank you for the meal",
+        "romaji": "gochisōsama deshita"
+      }
+    ]
+  },
+  {
+    "id": "32",
+    "sentence": {
+      "text": "すみません。",
+      "audio": "0032A.mp3"
+    },
+    "translation": {
+      "text": "Excuse me/I'm sorry.",
+      "audio": "0032B.mp3"
+    },
+    "notes": [
+      "Used to get attention, apologize, or express gratitude."
+    ],
+    "gloss": [
+      {
+        "word": "すみません",
+        "reading": "-",
+        "english": "excuse me/sorry",
+        "romaji": "sumimasen"
+      }
+    ]
+  },
+  {
+    "id": "33",
+    "sentence": {
+      "text": "ありがとうございます。",
+      "audio": "0033A.mp3"
+    },
+    "translation": {
+      "text": "Thank you.",
+      "audio": "0033B.mp3"
+    },
+    "notes": [
+      "Formal expression of gratitude."
+    ],
+    "gloss": [
+      {
+        "word": "ありがとうございます",
+        "reading": "-",
+        "english": "thank you (formal)",
+        "romaji": "arigatō gozaimasu"
+      }
+    ]
+  },
+  {
+    "id": "34",
+    "sentence": {
+      "text": "どういたしまして。",
+      "audio": "0034A.mp3"
+    },
+    "translation": {
+      "text": "You're welcome.",
+      "audio": "0034B.mp3"
+    },
+    "notes": [
+      "Response to \"thank you.\""
+    ],
+    "gloss": [
+      {
+        "word": "どういたしまして",
+        "reading": "-",
+        "english": "you're welcome",
+        "romaji": "dō itashimashite"
+      }
+    ]
+  },
+  {
+    "id": "35",
+    "sentence": {
+      "text": "失礼します。",
+      "audio": "0035A.mp3"
+    },
+    "translation": {
+      "text": "Excuse me.",
+      "audio": "0035B.mp3"
+    },
+    "notes": [
+      "Said when entering someone's space or leaving a formal situation."
+    ],
+    "gloss": [
+      {
+        "word": "失礼します",
+        "reading": "しつれいします",
+        "english": "excuse me",
+        "romaji": "shitsurei shimasu"
+      }
+    ]
+  },
+  {
+    "id": "36",
+    "sentence": {
+      "text": "お誕生日おめでとうございます。",
+      "audio": "0036A.mp3"
+    },
+    "translation": {
+      "text": "Happy birthday.",
+      "audio": "0036B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "お誕生日",
+        "reading": "おたんじょうび",
+        "english": "birthday",
+        "romaji": "otanjōbi"
+      },
+      {
+        "word": "おめでとうございます",
+        "reading": "-",
+        "english": "congratulations (formal)",
+        "romaji": "omedetō gozaimasu"
+      }
+    ]
+  },
+  {
+    "id": "37",
+    "sentence": {
+      "text": "趣味は何ですか？",
+      "audio": "0037A.mp3"
+    },
+    "translation": {
+      "text": "What are your hobbies?",
+      "audio": "0037B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "趣味",
+        "reading": "しゅみ",
+        "english": "hobby",
+        "romaji": "shumi"
+      },
+      {
+        "word": "は",
+        "reading": "-",
+        "english": "topic marker",
+        "romaji": "wa"
+      },
+      {
+        "word": "何",
+        "reading": "なに",
+        "english": "what",
+        "romaji": "nani"
+      },
+      {
+        "word": "ですか",
+        "reading": "-",
+        "english": "is? (question form)",
+        "romaji": "desu ka"
+      }
+    ]
+  },
+  {
+    "id": "38",
+    "sentence": {
+      "text": "音楽を聴くことが好きです。",
+      "audio": "0038A.mp3"
+    },
+    "translation": {
+      "text": "I like listening to music.",
+      "audio": "0038B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "音楽",
+        "reading": "おんがく",
+        "english": "music",
+        "romaji": "ongaku"
+      },
+      {
+        "word": "を",
+        "reading": "-",
+        "english": "object marker",
+        "romaji": "o"
+      },
+      {
+        "word": "聴く",
+        "reading": "きく",
+        "english": "listen",
+        "romaji": "kiku"
+      },
+      {
+        "word": "こと",
+        "reading": "-",
+        "english": "thing (nominalizer)",
+        "romaji": "koto"
+      },
+      {
+        "word": "が",
+        "reading": "-",
+        "english": "subject marker",
+        "romaji": "ga"
+      },
+      {
+        "word": "好き",
+        "reading": "すき",
+        "english": "like",
+        "romaji": "suki"
+      },
+      {
+        "word": "です",
+        "reading": "-",
+        "english": "is (copula)",
+        "romaji": "desu"
+      }
+    ]
+  },
+  {
+    "id": "39",
+    "sentence": {
+      "text": "お元気でしたか？",
+      "audio": "0039A.mp3"
+    },
+    "translation": {
+      "text": "How've you been?",
+      "audio": "0039B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "お元気",
+        "reading": "おげんき",
+        "english": "well-being",
+        "romaji": "ogenki"
+      },
+      {
+        "word": "でした",
+        "reading": "-",
+        "english": "were",
+        "romaji": "deshita"
+      },
+      {
+        "word": "か",
+        "reading": "-",
+        "english": "question marker",
+        "romaji": "ka"
+      }
+    ]
+  },
+  {
+    "id": "40",
+    "sentence": {
+      "text": "はい、元気でした。あなたは？",
+      "audio": "0040A.mp3"
+    },
+    "translation": {
+      "text": "Yes, I've been good. And you?",
+      "audio": "0040B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "はい",
+        "reading": "-",
+        "english": "yes",
+        "romaji": "hai"
+      },
+      {
+        "word": "元気",
+        "reading": "げんき",
+        "english": "well, fine",
+        "romaji": "genki"
+      },
+      {
+        "word": "でした",
+        "reading": "-",
+        "english": "was",
+        "romaji": "deshita"
+      },
+      {
+        "word": "あなた",
+        "reading": "-",
+        "english": "you",
+        "romaji": "anata"
+      },
+      {
+        "word": "は",
+        "reading": "-",
+        "english": "topic marker",
+        "romaji": "wa"
+      }
+    ]
+  },
+  {
+    "id": "41",
+    "sentence": {
+      "text": "お待たせしました。",
+      "audio": "0041A.mp3"
+    },
+    "translation": {
+      "text": "Sorry to keep you waiting.",
+      "audio": "0041B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "お待たせしました",
+        "reading": "おまたせしました",
+        "english": "sorry to have kept you waiting",
+        "romaji": "omatase shimashita"
+      }
+    ]
+  },
+  {
+    "id": "42",
+    "sentence": {
+      "text": "いいえ、大丈夫です。",
+      "audio": "0042A.mp3"
+    },
+    "translation": {
+      "text": "No, it's fine.",
+      "audio": "0042B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "いいえ",
+        "reading": "-",
+        "english": "no",
+        "romaji": "iie"
+      },
+      {
+        "word": "大丈夫",
+        "reading": "だいじょうぶ",
+        "english": "okay, all right",
+        "romaji": "daijōbu"
+      },
+      {
+        "word": "です",
+        "reading": "-",
+        "english": "is (copula)",
+        "romaji": "desu"
+      }
+    ]
+  },
+  {
+    "id": "43",
+    "sentence": {
+      "text": "お先に失礼します。",
+      "audio": "0043A.mp3"
+    },
+    "translation": {
+      "text": "I'm heading out now.",
+      "audio": "0043B.mp3"
+    },
+    "notes": [
+      "Used when leaving work or a gathering before others."
+    ],
+    "gloss": [
+      {
+        "word": "お先に",
+        "reading": "おさきに",
+        "english": "before (you)",
+        "romaji": "osaki ni"
+      },
+      {
+        "word": "失礼します",
+        "reading": "しつれいします",
+        "english": "excuse me",
+        "romaji": "shitsurei shimasu"
+      }
+    ]
+  },
+  {
+    "id": "44",
+    "sentence": {
+      "text": "お邪魔します。",
+      "audio": "0044A.mp3"
+    },
+    "translation": {
+      "text": "Sorry for intruding.",
+      "audio": "0044B.mp3"
+    },
+    "notes": [
+      "Said when entering someone's home."
+    ],
+    "gloss": [
+      {
+        "word": "お邪魔します",
+        "reading": "おじゃまします",
+        "english": "excuse me for disturbing",
+        "romaji": "ojama shimasu"
+      }
+    ]
+  },
+  {
+    "id": "45",
+    "sentence": {
+      "text": "ようこそ日本へ。",
+      "audio": "0045A.mp3"
+    },
+    "translation": {
+      "text": "Welcome to Japan.",
+      "audio": "0045B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "ようこそ",
+        "reading": "-",
+        "english": "welcome",
+        "romaji": "yōkoso"
+      },
+      {
+        "word": "日本",
+        "reading": "にほん",
+        "english": "Japan",
+        "romaji": "Nihon"
+      },
+      {
+        "word": "へ",
+        "reading": "-",
+        "english": "to (direction particle)",
+        "romaji": "e"
+      }
+    ]
+  },
+  {
+    "id": "46",
+    "sentence": {
+      "text": "日本語が上手ですね。",
+      "audio": "0046A.mp3"
+    },
+    "translation": {
+      "text": "Your Japanese is good.",
+      "audio": "0046B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "日本語",
+        "reading": "にほんご",
+        "english": "Japanese language",
+        "romaji": "nihongo"
+      },
+      {
+        "word": "が",
+        "reading": "-",
+        "english": "subject marker",
+        "romaji": "ga"
+      },
+      {
+        "word": "上手",
+        "reading": "じょうず",
+        "english": "good at, skillful",
+        "romaji": "jōzu"
+      },
+      {
+        "word": "です",
+        "reading": "-",
+        "english": "is (copula)",
+        "romaji": "desu"
+      },
+      {
+        "word": "ね",
+        "reading": "-",
+        "english": "isn't it? (seeking agreement)",
+        "romaji": "ne"
+      }
+    ]
+  },
+  {
+    "id": "47",
+    "sentence": {
+      "text": "いいえ、まだまだです。",
+      "audio": "0047A.mp3"
+    },
+    "translation": {
+      "text": "No, I still have a long way to go.",
+      "audio": "0047B.mp3"
+    },
+    "notes": [
+      "A humble response to a compliment, common in Japanese culture."
+    ],
+    "gloss": [
+      {
+        "word": "いいえ",
+        "reading": "-",
+        "english": "no",
+        "romaji": "iie"
+      },
+      {
+        "word": "まだまだ",
+        "reading": "-",
+        "english": "still have a way to go",
+        "romaji": "madamada"
+      },
+      {
+        "word": "です",
+        "reading": "-",
+        "english": "is (copula)",
+        "romaji": "desu"
+      }
+    ]
+  },
+  {
+    "id": "48",
+    "sentence": {
+      "text": "お時間はありますか？",
+      "audio": "0048A.mp3"
+    },
+    "translation": {
+      "text": "Do you have time?",
+      "audio": "0048B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "お時間",
+        "reading": "おじかん",
+        "english": "time (polite)",
+        "romaji": "ojikan"
+      },
+      {
+        "word": "は",
+        "reading": "-",
+        "english": "topic marker",
+        "romaji": "wa"
+      },
+      {
+        "word": "あります",
+        "reading": "-",
+        "english": "have, exist",
+        "romaji": "arimasu"
+      },
+      {
+        "word": "か",
+        "reading": "-",
+        "english": "question marker",
+        "romaji": "ka"
+      }
+    ]
+  },
+  {
+    "id": "49",
+    "sentence": {
+      "text": "はい、大丈夫です。何ですか？",
+      "audio": "0049A.mp3"
+    },
+    "translation": {
+      "text": "Yeah, I'm free. What's up?",
+      "audio": "0049B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "はい",
+        "reading": "-",
+        "english": "yes",
+        "romaji": "hai"
+      },
+      {
+        "word": "大丈夫",
+        "reading": "だいじょうぶ",
+        "english": "okay, all right",
+        "romaji": "daijōbu"
+      },
+      {
+        "word": "です",
+        "reading": "-",
+        "english": "is (copula)",
+        "romaji": "desu"
+      },
+      {
+        "word": "何",
+        "reading": "なに",
+        "english": "what",
+        "romaji": "nani"
+      },
+      {
+        "word": "ですか",
+        "reading": "-",
+        "english": "is? (question form)",
+        "romaji": "desu ka"
+      }
+    ]
+  },
+  {
+    "id": "50",
+    "sentence": {
+      "text": "お気をつけてください。",
+      "audio": "0050A.mp3"
+    },
+    "translation": {
+      "text": "Take care.",
+      "audio": "0050B.mp3"
+    },
+    "notes": [
+      "Said when someone is leaving, especially for a journey."
+    ],
+    "gloss": [
+      {
+        "word": "お気をつけて",
+        "reading": "おきをつけて",
+        "english": "take care",
+        "romaji": "oki o tsukete"
+      },
+      {
+        "word": "ください",
+        "reading": "-",
+        "english": "please",
+        "romaji": "kudasai"
+      }
+    ]
+  },
+  {
+    "id": "51",
+    "sentence": {
+      "text": "毎朝6時に起きます。",
+      "audio": "0051A.mp3"
+    },
+    "translation": {
+      "text": "I wake up at 6 every morning.",
+      "audio": "0051B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "毎朝",
+        "reading": "まいあさ",
+        "english": "every morning",
+        "romaji": "maiasa"
+      },
+      {
+        "word": "6時",
+        "reading": "ろくじ",
+        "english": "6 o'clock",
+        "romaji": "rokuji"
+      },
+      {
+        "word": "に",
+        "reading": "-",
+        "english": "time particle",
+        "romaji": "ni"
+      },
+      {
+        "word": "起きます",
+        "reading": "おきます",
+        "english": "wake up",
+        "romaji": "okimasu"
+      }
+    ]
+  },
+  {
+    "id": "52",
+    "sentence": {
+      "text": "朝ごはんは何を食べますか？",
+      "audio": "0052A.mp3"
+    },
+    "translation": {
+      "text": "What do you eat for breakfast?",
+      "audio": "0052B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "朝ごはん",
+        "reading": "あさごはん",
+        "english": "breakfast",
+        "romaji": "asagohan"
+      },
+      {
+        "word": "は",
+        "reading": "-",
+        "english": "topic marker",
+        "romaji": "wa"
+      },
+      {
+        "word": "何",
+        "reading": "なに",
+        "english": "what",
+        "romaji": "nani"
+      },
+      {
+        "word": "を",
+        "reading": "-",
+        "english": "object marker",
+        "romaji": "o"
+      },
+      {
+        "word": "食べます",
+        "reading": "たべます",
+        "english": "eat",
+        "romaji": "tabemasu"
+      },
+      {
+        "word": "か",
+        "reading": "-",
+        "english": "question marker",
+        "romaji": "ka"
+      }
+    ]
+  },
+  {
+    "id": "53",
+    "sentence": {
+      "text": "たいていパンとコーヒーです。",
+      "audio": "0053A.mp3"
+    },
+    "translation": {
+      "text": "Usually bread and coffee.",
+      "audio": "0053B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "たいてい",
+        "reading": "-",
+        "english": "usually",
+        "romaji": "taitei"
+      },
+      {
+        "word": "パン",
+        "reading": "-",
+        "english": "bread",
+        "romaji": "pan"
+      },
+      {
+        "word": "と",
+        "reading": "-",
+        "english": "and",
+        "romaji": "to"
+      },
+      {
+        "word": "コーヒー",
+        "reading": "-",
+        "english": "coffee",
+        "romaji": "kōhī"
+      },
+      {
+        "word": "です",
+        "reading": "-",
+        "english": "is (copula)",
+        "romaji": "desu"
+      }
+    ]
+  },
+  {
+    "id": "54",
+    "sentence": {
+      "text": "電車で会社に行きます。",
+      "audio": "0054A.mp3"
+    },
+    "translation": {
+      "text": "I go to work by train.",
+      "audio": "0054B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "電車",
+        "reading": "でんしゃ",
+        "english": "train",
+        "romaji": "densha"
+      },
+      {
+        "word": "で",
+        "reading": "-",
+        "english": "by (means)",
+        "romaji": "de"
+      },
+      {
+        "word": "会社",
+        "reading": "かいしゃ",
+        "english": "company, office",
+        "romaji": "kaisha"
+      },
+      {
+        "word": "に",
+        "reading": "-",
+        "english": "to (direction)",
+        "romaji": "ni"
+      },
+      {
+        "word": "行きます",
+        "reading": "いきます",
+        "english": "go",
+        "romaji": "ikimasu"
+      }
+    ]
+  },
+  {
+    "id": "55",
+    "sentence": {
+      "text": "仕事は9時から始まります。",
+      "audio": "0055A.mp3"
+    },
+    "translation": {
+      "text": "Work starts from 9 o'clock.",
+      "audio": "0055B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "仕事",
+        "reading": "しごと",
+        "english": "work",
+        "romaji": "shigoto"
+      },
+      {
+        "word": "は",
+        "reading": "-",
+        "english": "topic marker",
+        "romaji": "wa"
+      },
+      {
+        "word": "9時",
+        "reading": "くじ",
+        "english": "9 o'clock",
+        "romaji": "kuji"
+      },
+      {
+        "word": "から",
+        "reading": "-",
+        "english": "from",
+        "romaji": "kara"
+      },
+      {
+        "word": "始まります",
+        "reading": "はじまります",
+        "english": "starts",
+        "romaji": "hajimarimasu"
+      }
+    ]
+  },
+  {
+    "id": "56",
+    "sentence": {
+      "text": "お昼休みは12時からです。",
+      "audio": "0056A.mp3"
+    },
+    "translation": {
+      "text": "Lunch break is from 12 o'clock.",
+      "audio": "0056B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "お昼休み",
+        "reading": "おひるやすみ",
+        "english": "lunch break",
+        "romaji": "ohiruyasumi"
+      },
+      {
+        "word": "は",
+        "reading": "-",
+        "english": "topic marker",
+        "romaji": "wa"
+      },
+      {
+        "word": "12時",
+        "reading": "じゅうにじ",
+        "english": "12 o'clock",
+        "romaji": "jūniji"
+      },
+      {
+        "word": "から",
+        "reading": "-",
+        "english": "from",
+        "romaji": "kara"
+      },
+      {
+        "word": "です",
+        "reading": "-",
+        "english": "is (copula)",
+        "romaji": "desu"
+      }
+    ]
+  },
+  {
+    "id": "57",
+    "sentence": {
+      "text": "昼ごはんを食べに行きましょう。",
+      "audio": "0057A.mp3"
+    },
+    "translation": {
+      "text": "Let's go eat lunch.",
+      "audio": "0057B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "昼ごはん",
+        "reading": "ひるごはん",
+        "english": "lunch",
+        "romaji": "hirugohan"
+      },
+      {
+        "word": "を",
+        "reading": "-",
+        "english": "object marker",
+        "romaji": "o"
+      },
+      {
+        "word": "食べに",
+        "reading": "たべに",
+        "english": "to eat",
+        "romaji": "tabe ni"
+      },
+      {
+        "word": "行きましょう",
+        "reading": "いきましょう",
+        "english": "let's go",
+        "romaji": "ikimashō"
+      }
+    ]
+  },
+  {
+    "id": "58",
+    "sentence": {
+      "text": "午後は会議があります。",
+      "audio": "0058A.mp3"
+    },
+    "translation": {
+      "text": "There's a meeting in the afternoon.",
+      "audio": "0058B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "午後",
+        "reading": "ごご",
+        "english": "afternoon",
+        "romaji": "gogo"
+      },
+      {
+        "word": "は",
+        "reading": "-",
+        "english": "topic marker",
+        "romaji": "wa"
+      },
+      {
+        "word": "会議",
+        "reading": "かいぎ",
+        "english": "meeting",
+        "romaji": "kaigi"
+      },
+      {
+        "word": "が",
+        "reading": "-",
+        "english": "subject marker",
+        "romaji": "ga"
+      },
+      {
+        "word": "あります",
+        "reading": "-",
+        "english": "there is",
+        "romaji": "arimasu"
+      }
+    ]
+  },
+  {
+    "id": "59",
+    "sentence": {
+      "text": "5時に仕事が終わります。",
+      "audio": "0059A.mp3"
+    },
+    "translation": {
+      "text": "Work ends at 5 o'clock.",
+      "audio": "0059B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "5時",
+        "reading": "ごじ",
+        "english": "5 o'clock",
+        "romaji": "goji"
+      },
+      {
+        "word": "に",
+        "reading": "-",
+        "english": "time particle",
+        "romaji": "ni"
+      },
+      {
+        "word": "仕事",
+        "reading": "しごと",
+        "english": "work",
+        "romaji": "shigoto"
+      },
+      {
+        "word": "が",
+        "reading": "-",
+        "english": "subject marker",
+        "romaji": "ga"
+      },
+      {
+        "word": "終わります",
+        "reading": "おわります",
+        "english": "ends",
+        "romaji": "owarimasu"
+      }
+    ]
+  },
+  {
+    "id": "60",
+    "sentence": {
+      "text": "晩ごはんは何時に食べますか？",
+      "audio": "0060A.mp3"
+    },
+    "translation": {
+      "text": "What time do you eat dinner?",
+      "audio": "0060B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "晩ごはん",
+        "reading": "ばんごはん",
+        "english": "dinner",
+        "romaji": "bangohan"
+      },
+      {
+        "word": "は",
+        "reading": "-",
+        "english": "topic marker",
+        "romaji": "wa"
+      },
+      {
+        "word": "何時",
+        "reading": "なんじ",
+        "english": "what time",
+        "romaji": "nanji"
+      },
+      {
+        "word": "に",
+        "reading": "-",
+        "english": "time particle",
+        "romaji": "ni"
+      },
+      {
+        "word": "食べます",
+        "reading": "たべます",
+        "english": "eat",
+        "romaji": "tabemasu"
+      },
+      {
+        "word": "か",
+        "reading": "-",
+        "english": "question marker",
+        "romaji": "ka"
+      }
+    ]
+  },
+  {
+    "id": "61",
+    "sentence": {
+      "text": "だいたい7時ごろです。",
+      "audio": "0061A.mp3"
+    },
+    "translation": {
+      "text": "Around 7 o'clock usually.",
+      "audio": "0061B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "だいたい",
+        "reading": "-",
+        "english": "approximately",
+        "romaji": "daitai"
+      },
+      {
+        "word": "7時",
+        "reading": "しちじ",
+        "english": "7 o'clock",
+        "romaji": "shichiji"
+      },
+      {
+        "word": "ごろ",
+        "reading": "-",
+        "english": "around (time)",
+        "romaji": "goro"
+      },
+      {
+        "word": "です",
+        "reading": "-",
+        "english": "is (copula)",
+        "romaji": "desu"
+      }
+    ]
+  },
+  {
+    "id": "62",
+    "sentence": {
+      "text": "テレビを見ながら食べます。",
+      "audio": "0062A.mp3"
+    },
+    "translation": {
+      "text": "I eat while watching TV.",
+      "audio": "0062B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "テレビ",
+        "reading": "-",
+        "english": "television",
+        "romaji": "terebi"
+      },
+      {
+        "word": "を",
+        "reading": "-",
+        "english": "object marker",
+        "romaji": "o"
+      },
+      {
+        "word": "見ながら",
+        "reading": "みながら",
+        "english": "while watching",
+        "romaji": "minagara"
+      },
+      {
+        "word": "食べます",
+        "reading": "たべます",
+        "english": "eat",
+        "romaji": "tabemasu"
+      }
+    ]
+  },
+  {
+    "id": "63",
+    "sentence": {
+      "text": "夜は本を読みます。",
+      "audio": "0063A.mp3"
+    },
+    "translation": {
+      "text": "I read books at night.",
+      "audio": "0063B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "夜",
+        "reading": "よる",
+        "english": "night",
+        "romaji": "yoru"
+      },
+      {
+        "word": "は",
+        "reading": "-",
+        "english": "topic marker",
+        "romaji": "wa"
+      },
+      {
+        "word": "本",
+        "reading": "ほん",
+        "english": "book",
+        "romaji": "hon"
+      },
+      {
+        "word": "を",
+        "reading": "-",
+        "english": "object marker",
+        "romaji": "o"
+      },
+      {
+        "word": "読みます",
+        "reading": "よみます",
+        "english": "read",
+        "romaji": "yomimasu"
+      }
+    ]
+  },
+  {
+    "id": "64",
+    "sentence": {
+      "text": "11時に寝ます。",
+      "audio": "0064A.mp3"
+    },
+    "translation": {
+      "text": "I go to bed at 11 o'clock.",
+      "audio": "0064B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "11時",
+        "reading": "じゅういちじ",
+        "english": "11 o'clock",
+        "romaji": "jūichiji"
+      },
+      {
+        "word": "に",
+        "reading": "-",
+        "english": "time particle",
+        "romaji": "ni"
+      },
+      {
+        "word": "寝ます",
+        "reading": "ねます",
+        "english": "sleep, go to bed",
+        "romaji": "nemasu"
+      }
+    ]
+  },
+  {
+    "id": "65",
+    "sentence": {
+      "text": "週末は何をしますか？",
+      "audio": "0065A.mp3"
+    },
+    "translation": {
+      "text": "What do you do on weekends?",
+      "audio": "0065B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "週末",
+        "reading": "しゅうまつ",
+        "english": "weekend",
+        "romaji": "shūmatsu"
+      },
+      {
+        "word": "は",
+        "reading": "-",
+        "english": "topic marker",
+        "romaji": "wa"
+      },
+      {
+        "word": "何",
+        "reading": "なに",
+        "english": "what",
+        "romaji": "nani"
+      },
+      {
+        "word": "を",
+        "reading": "-",
+        "english": "object marker",
+        "romaji": "o"
+      },
+      {
+        "word": "します",
+        "reading": "-",
+        "english": "do",
+        "romaji": "shimasu"
+      },
+      {
+        "word": "か",
+        "reading": "-",
+        "english": "question marker",
+        "romaji": "ka"
+      }
+    ]
+  },
+  {
+    "id": "66",
+    "sentence": {
+      "text": "友達と映画を見に行きます。",
+      "audio": "0066A.mp3"
+    },
+    "translation": {
+      "text": "I go to see movies with friends.",
+      "audio": "0066B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "友達",
+        "reading": "ともだち",
+        "english": "friend",
+        "romaji": "tomodachi"
+      },
+      {
+        "word": "と",
+        "reading": "-",
+        "english": "with",
+        "romaji": "to"
+      },
+      {
+        "word": "映画",
+        "reading": "えいが",
+        "english": "movie",
+        "romaji": "eiga"
+      },
+      {
+        "word": "を",
+        "reading": "-",
+        "english": "object marker",
+        "romaji": "o"
+      },
+      {
+        "word": "見に",
+        "reading": "みに",
+        "english": "to see",
+        "romaji": "mi ni"
+      },
+      {
+        "word": "行きます",
+        "reading": "いきます",
+        "english": "go",
+        "romaji": "ikimasu"
+      }
+    ]
+  },
+  {
+    "id": "67",
+    "sentence": {
+      "text": "時々公園で走ります。",
+      "audio": "0067A.mp3"
+    },
+    "translation": {
+      "text": "I sometimes run in the park.",
+      "audio": "0067B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "時々",
+        "reading": "ときどき",
+        "english": "sometimes",
+        "romaji": "tokidoki"
+      },
+      {
+        "word": "公園",
+        "reading": "こうえん",
+        "english": "park",
+        "romaji": "kōen"
+      },
+      {
+        "word": "で",
+        "reading": "-",
+        "english": "in, at (location)",
+        "romaji": "de"
+      },
+      {
+        "word": "走ります",
+        "reading": "はしります",
+        "english": "run",
+        "romaji": "hashirimasu"
+      }
+    ]
+  },
+  {
+    "id": "68",
+    "sentence": {
+      "text": "毎週日曜日に掃除をします。",
+      "audio": "0068A.mp3"
+    },
+    "translation": {
+      "text": "I clean every Sunday.",
+      "audio": "0068B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "毎週",
+        "reading": "まいしゅう",
+        "english": "every week",
+        "romaji": "maishū"
+      },
+      {
+        "word": "日曜日",
+        "reading": "にちようび",
+        "english": "Sunday",
+        "romaji": "nichiyōbi"
+      },
+      {
+        "word": "に",
+        "reading": "-",
+        "english": "time particle",
+        "romaji": "ni"
+      },
+      {
+        "word": "掃除",
+        "reading": "そうじ",
+        "english": "cleaning",
+        "romaji": "sōji"
+      },
+      {
+        "word": "を",
+        "reading": "-",
+        "english": "object marker",
+        "romaji": "o"
+      },
+      {
+        "word": "します",
+        "reading": "-",
+        "english": "do",
+        "romaji": "shimasu"
+      }
+    ]
+  },
+  {
+    "id": "69",
+    "sentence": {
+      "text": "洗濯は土曜日にします。",
+      "audio": "0069A.mp3"
+    },
+    "translation": {
+      "text": "I do laundry on Saturday.",
+      "audio": "0069B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "洗濯",
+        "reading": "せんたく",
+        "english": "laundry",
+        "romaji": "sentaku"
+      },
+      {
+        "word": "は",
+        "reading": "-",
+        "english": "topic marker",
+        "romaji": "wa"
+      },
+      {
+        "word": "土曜日",
+        "reading": "どようび",
+        "english": "Saturday",
+        "romaji": "doyōbi"
+      },
+      {
+        "word": "に",
+        "reading": "-",
+        "english": "time particle",
+        "romaji": "ni"
+      },
+      {
+        "word": "します",
+        "reading": "-",
+        "english": "do",
+        "romaji": "shimasu"
+      }
+    ]
+  },
+  {
+    "id": "70",
+    "sentence": {
+      "text": "朝シャワーを浴びます。",
+      "audio": "0070A.mp3"
+    },
+    "translation": {
+      "text": "I take a shower in the morning.",
+      "audio": "0070B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "朝",
+        "reading": "あさ",
+        "english": "morning",
+        "romaji": "asa"
+      },
+      {
+        "word": "シャワー",
+        "reading": "-",
+        "english": "shower",
+        "romaji": "shawā"
+      },
+      {
+        "word": "を",
+        "reading": "-",
+        "english": "object marker",
+        "romaji": "o"
+      },
+      {
+        "word": "浴びます",
+        "reading": "あびます",
+        "english": "take (shower/bath)",
+        "romaji": "abimasu"
+      }
+    ]
+  },
+  {
+    "id": "71",
+    "sentence": {
+      "text": "歯を磨いてから寝ます。",
+      "audio": "0071A.mp3"
+    },
+    "translation": {
+      "text": "I brush my teeth before going to bed.",
+      "audio": "0071B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "歯",
+        "reading": "は",
+        "english": "tooth/teeth",
+        "romaji": "ha"
+      },
+      {
+        "word": "を",
+        "reading": "-",
+        "english": "object marker",
+        "romaji": "o"
+      },
+      {
+        "word": "磨いて",
+        "reading": "みがいて",
+        "english": "brush",
+        "romaji": "migaite"
+      },
+      {
+        "word": "から",
+        "reading": "-",
+        "english": "after, from",
+        "romaji": "kara"
+      },
+      {
+        "word": "寝ます",
+        "reading": "ねます",
+        "english": "sleep, go to bed",
+        "romaji": "nemasu"
+      }
+    ]
+  },
+  {
+    "id": "72",
+    "sentence": {
+      "text": "毎日日本語を勉強しています。",
+      "audio": "0072A.mp3"
+    },
+    "translation": {
+      "text": "I study Japanese every day.",
+      "audio": "0072B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "毎日",
+        "reading": "まいにち",
+        "english": "every day",
+        "romaji": "mainichi"
+      },
+      {
+        "word": "日本語",
+        "reading": "にほんご",
+        "english": "Japanese language",
+        "romaji": "nihongo"
+      },
+      {
+        "word": "を",
+        "reading": "-",
+        "english": "object marker",
+        "romaji": "o"
+      },
+      {
+        "word": "勉強しています",
+        "reading": "べんきょうしています",
+        "english": "am studying",
+        "romaji": "benkyō shite imasu"
+      }
+    ]
+  },
+  {
+    "id": "73",
+    "sentence": {
+      "text": "何時に起きますか？",
+      "audio": "0073A.mp3"
+    },
+    "translation": {
+      "text": "What time do you wake up?",
+      "audio": "0073B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "何時",
+        "reading": "なんじ",
+        "english": "what time",
+        "romaji": "nanji"
+      },
+      {
+        "word": "に",
+        "reading": "-",
+        "english": "time particle",
+        "romaji": "ni"
+      },
+      {
+        "word": "起きます",
+        "reading": "おきます",
+        "english": "wake up",
+        "romaji": "okimasu"
+      },
+      {
+        "word": "か",
+        "reading": "-",
+        "english": "question marker",
+        "romaji": "ka"
+      }
+    ]
+  },
+  {
+    "id": "74",
+    "sentence": {
+      "text": "平日は早く起きます。",
+      "audio": "0074A.mp3"
+    },
+    "translation": {
+      "text": "I wake up early on weekdays.",
+      "audio": "0074B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "平日",
+        "reading": "へいじつ",
+        "english": "weekday",
+        "romaji": "heijitsu"
+      },
+      {
+        "word": "は",
+        "reading": "-",
+        "english": "topic marker",
+        "romaji": "wa"
+      },
+      {
+        "word": "早く",
+        "reading": "はやく",
+        "english": "early",
+        "romaji": "hayaku"
+      },
+      {
+        "word": "起きます",
+        "reading": "おきます",
+        "english": "wake up",
+        "romaji": "okimasu"
+      }
+    ]
+  },
+  {
+    "id": "75",
+    "sentence": {
+      "text": "コーヒーを飲んでから出かけます。",
+      "audio": "0075A.mp3"
+    },
+    "translation": {
+      "text": "I go out after drinking coffee.",
+      "audio": "0075B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "コーヒー",
+        "reading": "-",
+        "english": "coffee",
+        "romaji": "kōhī"
+      },
+      {
+        "word": "を",
+        "reading": "-",
+        "english": "object marker",
+        "romaji": "o"
+      },
+      {
+        "word": "飲んで",
+        "reading": "のんで",
+        "english": "drink",
+        "romaji": "nonde"
+      },
+      {
+        "word": "から",
+        "reading": "-",
+        "english": "after, from",
+        "romaji": "kara"
+      },
+      {
+        "word": "出かけます",
+        "reading": "でかけます",
+        "english": "go out",
+        "romaji": "dekakemasu"
+      }
+    ]
+  },
+  {
+    "id": "76",
+    "sentence": {
+      "text": "駅まで歩きます。",
+      "audio": "0076A.mp3"
+    },
+    "translation": {
+      "text": "I walk to the station.",
+      "audio": "0076B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "駅",
+        "reading": "えき",
+        "english": "station",
+        "romaji": "eki"
+      },
+      {
+        "word": "まで",
+        "reading": "-",
+        "english": "to, until",
+        "romaji": "made"
+      },
+      {
+        "word": "歩きます",
+        "reading": "あるきます",
+        "english": "walk",
+        "romaji": "arukimasu"
+      }
+    ]
+  },
+  {
+    "id": "77",
+    "sentence": {
+      "text": "電車は混んでいます。",
+      "audio": "0077A.mp3"
+    },
+    "translation": {
+      "text": "The train is crowded.",
+      "audio": "0077B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "電車",
+        "reading": "でんしゃ",
+        "english": "train",
+        "romaji": "densha"
+      },
+      {
+        "word": "は",
+        "reading": "-",
+        "english": "topic marker",
+        "romaji": "wa"
+      },
+      {
+        "word": "混んでいます",
+        "reading": "こんでいます",
+        "english": "is crowded",
+        "romaji": "konde imasu"
+      }
+    ]
+  },
+  {
+    "id": "78",
+    "sentence": {
+      "text": "メールをチェックします。",
+      "audio": "0078A.mp3"
+    },
+    "translation": {
+      "text": "I check my email.",
+      "audio": "0078B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "メール",
+        "reading": "-",
+        "english": "email",
+        "romaji": "mēru"
+      },
+      {
+        "word": "を",
+        "reading": "-",
+        "english": "object marker",
+        "romaji": "o"
+      },
+      {
+        "word": "チェックします",
+        "reading": "-",
+        "english": "check",
+        "romaji": "chekku shimasu"
+      }
+    ]
+  },
+  {
+    "id": "79",
+    "sentence": {
+      "text": "会議は何時からですか？",
+      "audio": "0079A.mp3"
+    },
+    "translation": {
+      "text": "What time does the meeting start?",
+      "audio": "0079B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "会議",
+        "reading": "かいぎ",
+        "english": "meeting",
+        "romaji": "kaigi"
+      },
+      {
+        "word": "は",
+        "reading": "-",
+        "english": "topic marker",
+        "romaji": "wa"
+      },
+      {
+        "word": "何時",
+        "reading": "なんじ",
+        "english": "what time",
+        "romaji": "nanji"
+      },
+      {
+        "word": "から",
+        "reading": "-",
+        "english": "from",
+        "romaji": "kara"
+      },
+      {
+        "word": "です",
+        "reading": "-",
+        "english": "is (copula)",
+        "romaji": "desu"
+      },
+      {
+        "word": "か",
+        "reading": "-",
+        "english": "question marker",
+        "romaji": "ka"
+      }
+    ]
+  },
+  {
+    "id": "80",
+    "sentence": {
+      "text": "10時から12時までです。",
+      "audio": "0080A.mp3"
+    },
+    "translation": {
+      "text": "It's from 10 to 12 o'clock.",
+      "audio": "0080B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "10時",
+        "reading": "じゅうじ",
+        "english": "10 o'clock",
+        "romaji": "jūji"
+      },
+      {
+        "word": "から",
+        "reading": "-",
+        "english": "from",
+        "romaji": "kara"
+      },
+      {
+        "word": "12時",
+        "reading": "じゅうにじ",
+        "english": "12 o'clock",
+        "romaji": "jūniji"
+      },
+      {
+        "word": "まで",
+        "reading": "-",
+        "english": "until",
+        "romaji": "made"
+      },
+      {
+        "word": "です",
+        "reading": "-",
+        "english": "is (copula)",
+        "romaji": "desu"
+      }
+    ]
+  },
+  {
+    "id": "81",
+    "sentence": {
+      "text": "お弁当を持ってきました。",
+      "audio": "0081A.mp3"
+    },
+    "translation": {
+      "text": "I brought a bento lunch.",
+      "audio": "0081B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "お弁当",
+        "reading": "おべんとう",
+        "english": "bento, lunch box",
+        "romaji": "obentō"
+      },
+      {
+        "word": "を",
+        "reading": "-",
+        "english": "object marker",
+        "romaji": "o"
+      },
+      {
+        "word": "持ってきました",
+        "reading": "もってきました",
+        "english": "brought",
+        "romaji": "motte kimashita"
+      }
+    ]
+  },
+  {
+    "id": "82",
+    "sentence": {
+      "text": "一緒に食べませんか？",
+      "audio": "0082A.mp3"
+    },
+    "translation": {
+      "text": "Would you like to eat together?",
+      "audio": "0082B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "一緒に",
+        "reading": "いっしょに",
+        "english": "together",
+        "romaji": "issho ni"
+      },
+      {
+        "word": "食べません",
+        "reading": "たべません",
+        "english": "not eat",
+        "romaji": "tabemasen"
+      },
+      {
+        "word": "か",
+        "reading": "-",
+        "english": "question marker (invitation)",
+        "romaji": "ka"
+      }
+    ]
+  },
+  {
+    "id": "83",
+    "sentence": {
+      "text": "はい、喜んで。",
+      "audio": "0083A.mp3"
+    },
+    "translation": {
+      "text": "Yes, with pleasure.",
+      "audio": "0083B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "はい",
+        "reading": "-",
+        "english": "yes",
+        "romaji": "hai"
+      },
+      {
+        "word": "喜んで",
+        "reading": "よろこんで",
+        "english": "with pleasure",
+        "romaji": "yorokonde"
+      }
+    ]
+  },
+  {
+    "id": "84",
+    "sentence": {
+      "text": "今日は残業しますか？",
+      "audio": "0084A.mp3"
+    },
+    "translation": {
+      "text": "Are you working overtime today?",
+      "audio": "0084B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "今日",
+        "reading": "きょう",
+        "english": "today",
+        "romaji": "kyō"
+      },
+      {
+        "word": "は",
+        "reading": "-",
+        "english": "topic marker",
+        "romaji": "wa"
+      },
+      {
+        "word": "残業",
+        "reading": "ざんぎょう",
+        "english": "overtime work",
+        "romaji": "zangyō"
+      },
+      {
+        "word": "します",
+        "reading": "-",
+        "english": "do",
+        "romaji": "shimasu"
+      },
+      {
+        "word": "か",
+        "reading": "-",
+        "english": "question marker",
+        "romaji": "ka"
+      }
+    ]
+  },
+  {
+    "id": "85",
+    "sentence": {
+      "text": "いいえ、今日は早く帰ります。",
+      "audio": "0085A.mp3"
+    },
+    "translation": {
+      "text": "No, I'm going home early today.",
+      "audio": "0085B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "いいえ",
+        "reading": "-",
+        "english": "no",
+        "romaji": "iie"
+      },
+      {
+        "word": "今日",
+        "reading": "きょう",
+        "english": "today",
+        "romaji": "kyō"
+      },
+      {
+        "word": "は",
+        "reading": "-",
+        "english": "topic marker",
+        "romaji": "wa"
+      },
+      {
+        "word": "早く",
+        "reading": "はやく",
+        "english": "early",
+        "romaji": "hayaku"
+      },
+      {
+        "word": "帰ります",
+        "reading": "かえります",
+        "english": "return, go home",
+        "romaji": "kaerimasu"
+      }
+    ]
+  },
+  {
+    "id": "86",
+    "sentence": {
+      "text": "スーパーで買い物をします。",
+      "audio": "0086A.mp3"
+    },
+    "translation": {
+      "text": "I go shopping at the supermarket.",
+      "audio": "0086B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "スーパー",
+        "reading": "-",
+        "english": "supermarket",
+        "romaji": "sūpā"
+      },
+      {
+        "word": "で",
+        "reading": "-",
+        "english": "at (location)",
+        "romaji": "de"
+      },
+      {
+        "word": "買い物",
+        "reading": "かいもの",
+        "english": "shopping",
+        "romaji": "kaimono"
+      },
+      {
+        "word": "を",
+        "reading": "-",
+        "english": "object marker",
+        "romaji": "o"
+      },
+      {
+        "word": "します",
+        "reading": "-",
+        "english": "do",
+        "romaji": "shimasu"
+      }
+    ]
+  },
+  {
+    "id": "87",
+    "sentence": {
+      "text": "夕食を作ります。",
+      "audio": "0087A.mp3"
+    },
+    "translation": {
+      "text": "I make dinner.",
+      "audio": "0087B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "夕食",
+        "reading": "ゆうしょく",
+        "english": "dinner",
+        "romaji": "yūshoku"
+      },
+      {
+        "word": "を",
+        "reading": "-",
+        "english": "object marker",
+        "romaji": "o"
+      },
+      {
+        "word": "作ります",
+        "reading": "つくります",
+        "english": "make",
+        "romaji": "tsukurimasu"
+      }
+    ]
+  },
+  {
+    "id": "88",
+    "sentence": {
+      "text": "何を作りますか？",
+      "audio": "0088A.mp3"
+    },
+    "translation": {
+      "text": "What are you making?",
+      "audio": "0088B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "何",
+        "reading": "なに",
+        "english": "what",
+        "romaji": "nani"
+      },
+      {
+        "word": "を",
+        "reading": "-",
+        "english": "object marker",
+        "romaji": "o"
+      },
+      {
+        "word": "作ります",
+        "reading": "つくります",
+        "english": "make",
+        "romaji": "tsukurimasu"
+      },
+      {
+        "word": "か",
+        "reading": "-",
+        "english": "question marker",
+        "romaji": "ka"
+      }
+    ]
+  },
+  {
+    "id": "89",
+    "sentence": {
+      "text": "カレーを作ります。",
+      "audio": "0089A.mp3"
+    },
+    "translation": {
+      "text": "I'm making curry.",
+      "audio": "0089B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "カレー",
+        "reading": "-",
+        "english": "curry",
+        "romaji": "karē"
+      },
+      {
+        "word": "を",
+        "reading": "-",
+        "english": "object marker",
+        "romaji": "o"
+      },
+      {
+        "word": "作ります",
+        "reading": "つくります",
+        "english": "make",
+        "romaji": "tsukurimasu"
+      }
+    ]
+  },
+  {
+    "id": "90",
+    "sentence": {
+      "text": "お風呂に入ります。",
+      "audio": "0090A.mp3"
+    },
+    "translation": {
+      "text": "I take a bath.",
+      "audio": "0090B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "お風呂",
+        "reading": "おふろ",
+        "english": "bath",
+        "romaji": "ofuro"
+      },
+      {
+        "word": "に",
+        "reading": "-",
+        "english": "in, into",
+        "romaji": "ni"
+      },
+      {
+        "word": "入ります",
+        "reading": "はいります",
+        "english": "enter",
+        "romaji": "hairimasu"
+      }
+    ]
+  },
+  {
+    "id": "91",
+    "sentence": {
+      "text": "明日の準備をします。",
+      "audio": "0091A.mp3"
+    },
+    "translation": {
+      "text": "I prepare for tomorrow.",
+      "audio": "0091B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "明日",
+        "reading": "あした",
+        "english": "tomorrow",
+        "romaji": "ashita"
+      },
+      {
+        "word": "の",
+        "reading": "-",
+        "english": "possessive particle",
+        "romaji": "no"
+      },
+      {
+        "word": "準備",
+        "reading": "じゅんび",
+        "english": "preparation",
+        "romaji": "junbi"
+      },
+      {
+        "word": "を",
+        "reading": "-",
+        "english": "object marker",
+        "romaji": "o"
+      },
+      {
+        "word": "します",
+        "reading": "-",
+        "english": "do",
+        "romaji": "shimasu"
+      }
+    ]
+  },
+  {
+    "id": "92",
+    "sentence": {
+      "text": "アラームをセットします。",
+      "audio": "0092A.mp3"
+    },
+    "translation": {
+      "text": "I set the alarm.",
+      "audio": "0092B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "アラーム",
+        "reading": "-",
+        "english": "alarm",
+        "romaji": "arāmu"
+      },
+      {
+        "word": "を",
+        "reading": "-",
+        "english": "object marker",
+        "romaji": "o"
+      },
+      {
+        "word": "セットします",
+        "reading": "-",
+        "english": "set",
+        "romaji": "setto shimasu"
+      }
+    ]
+  },
+  {
+    "id": "93",
+    "sentence": {
+      "text": "週に何回ジムに行きますか？",
+      "audio": "0093A.mp3"
+    },
+    "translation": {
+      "text": "How many times a week do you go to the gym?",
+      "audio": "0093B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "週",
+        "reading": "しゅう",
+        "english": "week",
+        "romaji": "shū"
+      },
+      {
+        "word": "に",
+        "reading": "-",
+        "english": "time/frequency particle",
+        "romaji": "ni"
+      },
+      {
+        "word": "何回",
+        "reading": "なんかい",
+        "english": "how many times",
+        "romaji": "nankai"
+      },
+      {
+        "word": "ジム",
+        "reading": "-",
+        "english": "gym",
+        "romaji": "jimu"
+      },
+      {
+        "word": "に",
+        "reading": "-",
+        "english": "to (direction)",
+        "romaji": "ni"
+      },
+      {
+        "word": "行きます",
+        "reading": "いきます",
+        "english": "go",
+        "romaji": "ikimasu"
+      },
+      {
+        "word": "か",
+        "reading": "-",
+        "english": "question marker",
+        "romaji": "ka"
+      }
+    ]
+  },
+  {
+    "id": "94",
+    "sentence": {
+      "text": "週に2回行きます。",
+      "audio": "0094A.mp3"
+    },
+    "translation": {
+      "text": "I go twice a week.",
+      "audio": "0094B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "週",
+        "reading": "しゅう",
+        "english": "week",
+        "romaji": "shū"
+      },
+      {
+        "word": "に",
+        "reading": "-",
+        "english": "time/frequency particle",
+        "romaji": "ni"
+      },
+      {
+        "word": "2回",
+        "reading": "にかい",
+        "english": "twice, two times",
+        "romaji": "nikai"
+      },
+      {
+        "word": "行きます",
+        "reading": "いきます",
+        "english": "go",
+        "romaji": "ikimasu"
+      }
+    ]
+  },
+  {
+    "id": "95",
+    "sentence": {
+      "text": "何時間寝ますか？",
+      "audio": "0095A.mp3"
+    },
+    "translation": {
+      "text": "How many hours do you sleep?",
+      "audio": "0095B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "何時間",
+        "reading": "なんじかん",
+        "english": "how many hours",
+        "romaji": "nanjikan"
+      },
+      {
+        "word": "寝ます",
+        "reading": "ねます",
+        "english": "sleep",
+        "romaji": "nemasu"
+      },
+      {
+        "word": "か",
+        "reading": "-",
+        "english": "question marker",
+        "romaji": "ka"
+      }
+    ]
+  },
+  {
+    "id": "96",
+    "sentence": {
+      "text": "だいたい7時間寝ます。",
+      "audio": "0096A.mp3"
+    },
+    "translation": {
+      "text": "I sleep about 7 hours.",
+      "audio": "0096B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "だいたい",
+        "reading": "-",
+        "english": "approximately",
+        "romaji": "daitai"
+      },
+      {
+        "word": "7時間",
+        "reading": "ななじかん",
+        "english": "7 hours",
+        "romaji": "nanajikan"
+      },
+      {
+        "word": "寝ます",
+        "reading": "ねます",
+        "english": "sleep",
+        "romaji": "nemasu"
+      }
+    ]
+  },
+  {
+    "id": "97",
+    "sentence": {
+      "text": "休みの日は何をしますか？",
+      "audio": "0097A.mp3"
+    },
+    "translation": {
+      "text": "What do you do on your day off?",
+      "audio": "0097B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "休み",
+        "reading": "やすみ",
+        "english": "day off, holiday",
+        "romaji": "yasumi"
+      },
+      {
+        "word": "の",
+        "reading": "-",
+        "english": "possessive particle",
+        "romaji": "no"
+      },
+      {
+        "word": "日",
+        "reading": "ひ",
+        "english": "day",
+        "romaji": "hi"
+      },
+      {
+        "word": "は",
+        "reading": "-",
+        "english": "topic marker",
+        "romaji": "wa"
+      },
+      {
+        "word": "何",
+        "reading": "なに",
+        "english": "what",
+        "romaji": "nani"
+      },
+      {
+        "word": "を",
+        "reading": "-",
+        "english": "object marker",
+        "romaji": "o"
+      },
+      {
+        "word": "します",
+        "reading": "-",
+        "english": "do",
+        "romaji": "shimasu"
+      },
+      {
+        "word": "か",
+        "reading": "-",
+        "english": "question marker",
+        "romaji": "ka"
+      }
+    ]
+  },
+  {
+    "id": "98",
+    "sentence": {
+      "text": "よく寝ます。",
+      "audio": "0098A.mp3"
+    },
+    "translation": {
+      "text": "I sleep a lot.",
+      "audio": "0098B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "よく",
+        "reading": "-",
+        "english": "often, well",
+        "romaji": "yoku"
+      },
+      {
+        "word": "寝ます",
+        "reading": "ねます",
+        "english": "sleep",
+        "romaji": "nemasu"
+      }
+    ]
+  },
+  {
+    "id": "99",
+    "sentence": {
+      "text": "毎晩テレビを見ますか？",
+      "audio": "0099A.mp3"
+    },
+    "translation": {
+      "text": "Do you watch TV every night?",
+      "audio": "0099B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "毎晩",
+        "reading": "まいばん",
+        "english": "every night",
+        "romaji": "maiban"
+      },
+      {
+        "word": "テレビ",
+        "reading": "-",
+        "english": "television",
+        "romaji": "terebi"
+      },
+      {
+        "word": "を",
+        "reading": "-",
+        "english": "object marker",
+        "romaji": "o"
+      },
+      {
+        "word": "見ます",
+        "reading": "みます",
+        "english": "watch",
+        "romaji": "mimasu"
+      },
+      {
+        "word": "か",
+        "reading": "-",
+        "english": "question marker",
+        "romaji": "ka"
+      }
+    ]
+  },
+  {
+    "id": "100",
+    "sentence": {
+      "text": "いいえ、時々本を読みます。",
+      "audio": "0100A.mp3"
+    },
+    "translation": {
+      "text": "No, I sometimes read books.",
+      "audio": "0100B.mp3"
+    },
+    "notes": [],
+    "gloss": [
+      {
+        "word": "いいえ",
+        "reading": "-",
+        "english": "no",
+        "romaji": "iie"
+      },
+      {
+        "word": "時々",
+        "reading": "ときどき",
+        "english": "sometimes",
+        "romaji": "tokidoki"
+      },
+      {
+        "word": "本",
+        "reading": "ほん",
+        "english": "book",
+        "romaji": "hon"
+      },
+      {
+        "word": "を",
+        "reading": "-",
+        "english": "object marker",
+        "romaji": "o"
+      },
+      {
+        "word": "読みます",
+        "reading": "よみます",
+        "english": "read",
+        "romaji": "yomimasu"
+      }
+    ]
+  }
+]

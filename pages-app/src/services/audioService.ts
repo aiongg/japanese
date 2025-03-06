@@ -34,6 +34,16 @@ function debugLog(...args: unknown[]) {
   }
 }
 
+// Utility function to get the correct audio URL
+function getAudioUrl(src: string): string {
+  if (src.startsWith('http')) return src;
+  // Ensure the path starts with /japanese/sentences/audio/
+  if (!src.startsWith('/')) {
+    return `/japanese/sentences/audio/${src}`;
+  }
+  return src;
+}
+
 // Singleton audio service instance
 class AudioService {
   private audio: HTMLAudioElement | null = null;
@@ -115,7 +125,8 @@ class AudioService {
 
   // Play audio
   play(src: string, options?: { onStart?: () => void, onComplete?: () => void }): Promise<void> {
-    debugLog('Play requested:', src, 'Current audio object:', this.audio ? 'exists' : 'null', 'Current state:', JSON.stringify(this.state));
+    const audioUrl = getAudioUrl(src);
+    debugLog('Play requested:', audioUrl, 'Current audio object:', this.audio ? 'exists' : 'null', 'Current state:', JSON.stringify(this.state));
     
     // If already playing something, stop it first
     if (this.state.isPlaying) {
@@ -126,8 +137,8 @@ class AudioService {
     return new Promise((resolve, reject) => {
       try {
         // Create new audio element
-        debugLog('Creating new Audio element for src:', src);
-        const newAudio = new Audio(src);
+        debugLog('Creating new Audio element for src:', audioUrl);
+        const newAudio = new Audio(audioUrl);
         debugLog('New Audio element created:', newAudio ? 'success' : 'failed');
         
         // Store reference to audio element before setting up event listeners
@@ -143,7 +154,7 @@ class AudioService {
             debugLog('Starting playback, this.audio exists');
             this.setState({ 
               isPlaying: true, 
-              currentSrc: src,
+              currentSrc: audioUrl,
               isPaused: false
             });
             

@@ -1,6 +1,7 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useRef, useCallback, useEffect } from 'react';
+import { Sentence, ViewMode, AudioSettings } from '../types';
+import { Deck } from '../types';
 import { useAudio } from './useAudio';
-import { Deck, Sentence } from '../types';
 
 // Debug flag - set to true to enable debug logs
 const DEBUG = true;
@@ -12,24 +13,18 @@ function debugLog(...args: unknown[]) {
   }
 }
 
-// Listen mode state type
-type ListenModeState = 'idle' | 'japanese' | 'waiting1' | 'english' | 'waiting2';
-
 interface UseListenModeProps {
   currentDeck: Deck | null;
-  viewMode: string;
+  viewMode: ViewMode;
   getCurrentSentence: () => Sentence | null;
-  audioSettings: { pauseDuration: number };
+  audioSettings: AudioSettings;
   setIsAnswerRevealed: (revealed: boolean) => void;
   goToNext: () => void;
   isLastCard: boolean;
 }
 
 interface UseListenModeReturn {
-  listenModeState: ListenModeState;
-  startListenModeSequence: () => void;
   resetListenMode: () => void;
-  restartCurrentPhase: () => void;
 }
 
 export function useListenMode({
@@ -41,391 +36,214 @@ export function useListenMode({
   goToNext,
   isLastCard
 }: UseListenModeProps): UseListenModeReturn {
-  // State to track the current state of the listen mode sequence
-  const [listenModeState, setListenModeState] = useState<ListenModeState>('idle');
-  const lastSentenceIdRef = useRef<number | null>(null);
-  
-  // Refs to track active timeouts
-  const waiting1TimeoutRef = useRef<number | null>(null);
-  const waiting2TimeoutRef = useRef<number | null>(null);
-  
   // Get audio functions
-  const { play, stop } = useAudio();
+  const { play } = useAudio();
+
+  // Ref to track the last sentence ID we played
+  const lastSentenceIdRef = useRef<string | null>(null);
   
-  // Function to clear all active timeouts
-  const clearAllTimeouts = useCallback(() => {
-    if (waiting1TimeoutRef.current !== null) {
-      debugLog('Clearing waiting1 timeout');
-      window.clearTimeout(waiting1TimeoutRef.current);
-      waiting1TimeoutRef.current = null;
-    }
-    
-    if (waiting2TimeoutRef.current !== null) {
-      debugLog('Clearing waiting2 timeout');
-      window.clearTimeout(waiting2TimeoutRef.current);
-      waiting2TimeoutRef.current = null;
-    }
-  }, []);
+  // Ref to track if we're currently playing audio
+  const isPlayingRef = useRef<boolean>(false);
   
-  // Function to restart the current phase with the new delay
-  const restartCurrentPhase = useCallback(() => {
-    if (viewMode !== 'listen' || !currentDeck) {
+  // Ref to track if we're in the process of revealing the answer
+  const isRevealingRef = useRef<boolean>(false);
+  
+  // Ref to track if we're in the process of advancing to the next card
+  const isAdvancingRef = useRef<boolean>(false);
+  
+  // Ref to track if we're in the process of playing English audio
+  const isPlayingEnglishRef = useRef<boolean>(false);
+  
+  // Ref to track if we're in the process of playing Japanese audio
+  const isPlayingJapaneseRef = useRef<boolean>(false);
+  
+  // Ref to track if we're in the process of pausing
+  const isPausingRef = useRef<boolean>(false);
+  
+  // Ref to track if we're in the process of resetting
+  const isResettingRef = useRef<boolean>(false);
+  
+  // Ref to track if we're in the process of stopping
+  const isStoppingRef = useRef<boolean>(false);
+  
+  // Ref to track if we're in the process of starting
+  const isStartingRef = useRef<boolean>(false);
+  
+  // Ref to track if we're in the process of resuming
+  const isResumingRef = useRef<boolean>(false);
+  
+  // Ref to track if we're in the process of pausing between cards
+  const isPausingBetweenCardsRef = useRef<boolean>(false);
+  
+  // Function to play English audio
+  const playEnglishAudio = useCallback(async (currentSentence: Sentence) => {
+    if (isPlayingEnglishRef.current) {
+      debugLog('Already playing English audio, skipping');
       return;
     }
     
-    const currentSentence = getCurrentSentence();
-    if (!currentSentence) {
-      return;
-    }
-    
-    debugLog('Restarting current phase with new delay:', audioSettings.pauseDuration / 1000, 'seconds');
-    
-    // Clear any existing timeouts
-    clearAllTimeouts();
-    
-    // Restart based on current state
-    if (listenModeState === 'waiting1') {
-      debugLog('Restarting waiting1 phase with new delay');
+    try {
+      isPlayingEnglishRef.current = true;
       
-      // We're in the first waiting phase after Japanese audio
-      waiting1TimeoutRef.current = window.setTimeout(() => {
-        waiting1TimeoutRef.current = null;
+      if (currentSentence.translation.audio) {
+        debugLog('Playing English audio', { src: currentSentence.translation.audio });
         
-        // Check if we're still in listen mode
-        if (viewMode !== 'listen') {
-          debugLog('Listen mode interrupted during waiting1 phase');
-          return;
-        }
-        
-        // Step 3: Reveal the answer
-        debugLog('Revealing answer');
-        setIsAnswerRevealed(true);
-        
-        // Step 4: Play English audio
-        if (currentSentence.englishAudioPath) {
-          debugLog('Playing English audio', { src: currentSentence.englishAudioPath });
-          setListenModeState('english');
+        // Play English audio
+        await play(currentSentence.translation.audio).then(() => {
+          debugLog('English audio finished');
+          isPlayingEnglishRef.current = false;
           
-          play(currentSentence.englishAudioPath).then(() => {
-            // Step 5: Wait for the pause duration again
-            debugLog('English audio completed, waiting before advancing');
-            setListenModeState('waiting2');
-            
-            waiting2TimeoutRef.current = window.setTimeout(() => {
-              waiting2TimeoutRef.current = null;
-              
-              // Check if we're still in listen mode
-              if (viewMode !== 'listen') {
-                debugLog('Listen mode interrupted during waiting2 phase');
-                return;
-              }
-              
-              // Step 6: Advance to the next card if still in listen mode
-              debugLog('Advancing to next card');
-              setListenModeState('idle');
-              
-              if (!isLastCard) {
-                goToNext();
-              } else {
-                debugLog('Reached last card, not advancing');
-              }
+          // After English audio finishes, pause before advancing
+          return new Promise<void>((resolve) => {
+            setTimeout(() => {
+              debugLog('Pause after English audio finished');
+              resolve();
             }, audioSettings.pauseDuration);
-          }).catch(error => {
-            debugLog('Error playing English audio', { error });
-            setListenModeState('idle');
           });
-        } else {
-          // No English audio, just wait and advance
-          debugLog('No English audio, waiting before advancing');
-          setListenModeState('waiting2');
-          
-          waiting2TimeoutRef.current = window.setTimeout(() => {
-            waiting2TimeoutRef.current = null;
-            
-            // Check if we're still in listen mode
-            if (viewMode !== 'listen') {
-              debugLog('Listen mode interrupted during waiting2 phase');
-              return;
-            }
-            
-            debugLog('Advancing to next card');
-            setListenModeState('idle');
-            
-            if (!isLastCard) {
-              goToNext();
-            } else {
-              debugLog('Reached last card, not advancing');
-            }
-          }, audioSettings.pauseDuration);
-        }
-      }, audioSettings.pauseDuration);
-    } else if (listenModeState === 'waiting2') {
-      debugLog('Restarting waiting2 phase with new delay');
-      
-      // We're in the second waiting phase after English audio
-      waiting2TimeoutRef.current = window.setTimeout(() => {
-        waiting2TimeoutRef.current = null;
+        });
         
-        // Check if we're still in listen mode
-        if (viewMode !== 'listen') {
-          debugLog('Listen mode interrupted during waiting2 phase');
-          return;
-        }
-        
-        debugLog('Advancing to next card');
-        setListenModeState('idle');
-        
+        // After pause, advance to next card if not the last card
         if (!isLastCard) {
+          debugLog('Advancing to next card');
           goToNext();
-        } else {
-          debugLog('Reached last card, not advancing');
         }
-      }, audioSettings.pauseDuration);
-    }
-  }, [
-    viewMode,
-    currentDeck,
-    getCurrentSentence,
-    listenModeState,
-    clearAllTimeouts,
-    audioSettings.pauseDuration,
-    setIsAnswerRevealed,
-    play,
-    isLastCard,
-    goToNext
-  ]);
-  
-  // Function to start the listen mode sequence
-  const startListenModeSequence = useCallback(() => {
-    if (!currentDeck || viewMode !== 'listen') {
-      debugLog('Cannot start listen mode sequence', { 
-        hasDeck: !!currentDeck, 
-        viewMode
-      });
-      return;
-    }
-    
-    const currentSentence = getCurrentSentence();
-    if (!currentSentence) {
-      debugLog('No current sentence found');
-      return;
-    }
-    
-    // Only start a new sequence if the sentence has changed
-    if (lastSentenceIdRef.current === currentSentence.id) {
-      debugLog('Skipping listen mode sequence - same sentence', { 
-        currentSentenceId: currentSentence.id 
-      });
-      return;
-    }
-    
-    debugLog('Starting listen mode sequence', { 
-      sentenceId: currentSentence.id,
-      lastSentenceId: lastSentenceIdRef.current
-    });
-    
-    // Clear any existing timeouts
-    clearAllTimeouts();
-    
-    // Update the last sentence ID
-    lastSentenceIdRef.current = currentSentence.id;
-    
-    // Stop any playing audio
-    stop();
-    
-    // Hide the answer initially
-    setIsAnswerRevealed(false);
-    setListenModeState('japanese');
-    
-    // Step 1: Play Japanese audio
-    if (currentSentence.japaneseAudioPath) {
-      debugLog('Playing Japanese audio', { src: currentSentence.japaneseAudioPath });
-      play(currentSentence.japaneseAudioPath).then(() => {
-        // Step 2: Wait for the pause duration
-        debugLog('Japanese audio completed, waiting before revealing answer');
-        setListenModeState('waiting1');
+      } else {
+        debugLog('No English audio available');
+        isPlayingEnglishRef.current = false;
         
-        waiting1TimeoutRef.current = window.setTimeout(() => {
-          waiting1TimeoutRef.current = null;
-          
-          // Check if we're still in listen mode
-          if (viewMode !== 'listen') {
-            debugLog('Listen mode interrupted during waiting1 phase');
-            return;
-          }
-          
-          // Step 3: Reveal the answer
-          debugLog('Revealing answer');
-          setIsAnswerRevealed(true);
-          
-          // Step 4: Play English audio
-          if (currentSentence.englishAudioPath) {
-            debugLog('Playing English audio', { src: currentSentence.englishAudioPath });
-            setListenModeState('english');
-            
-            play(currentSentence.englishAudioPath).then(() => {
-              // Step 5: Wait for the pause duration again
-              debugLog('English audio completed, waiting before advancing');
-              setListenModeState('waiting2');
-              
-              waiting2TimeoutRef.current = window.setTimeout(() => {
-                waiting2TimeoutRef.current = null;
-                
-                // Check if we're still in listen mode
-                if (viewMode !== 'listen') {
-                  debugLog('Listen mode interrupted during waiting2 phase');
-                  return;
-                }
-                
-                // Step 6: Advance to the next card if still in listen mode
-                debugLog('Advancing to next card');
-                setListenModeState('idle');
-                
-                if (!isLastCard) {
-                  goToNext();
-                } else {
-                  debugLog('Reached last card, not advancing');
-                }
-              }, audioSettings.pauseDuration);
-            }).catch(error => {
-              debugLog('Error playing English audio', { error });
-              setListenModeState('idle');
-            });
-          } else {
-            // No English audio, just wait and advance
-            debugLog('No English audio, waiting before advancing');
-            setListenModeState('waiting2');
-            
-            waiting2TimeoutRef.current = window.setTimeout(() => {
-              waiting2TimeoutRef.current = null;
-              
-              // Check if we're still in listen mode
-              if (viewMode !== 'listen') {
-                debugLog('Listen mode interrupted during waiting2 phase');
-                return;
-              }
-              
-              debugLog('Advancing to next card');
-              setListenModeState('idle');
-              
-              if (!isLastCard) {
-                goToNext();
-              } else {
-                debugLog('Reached last card, not advancing');
-              }
-            }, audioSettings.pauseDuration);
-          }
-        }, audioSettings.pauseDuration);
-      }).catch(error => {
-        debugLog('Error playing Japanese audio', { error });
-        setListenModeState('idle');
-      });
-    } else {
-      // No Japanese audio, reveal answer and play English audio
-      debugLog('No Japanese audio, revealing answer immediately');
+        // If no English audio, just pause before advancing
+        await new Promise<void>((resolve) => {
+          setTimeout(() => {
+            debugLog('Pause after no English audio');
+            resolve();
+          }, audioSettings.pauseDuration);
+        });
+        
+        // After pause, advance to next card if not the last card
+        if (!isLastCard) {
+          debugLog('Advancing to next card');
+          goToNext();
+        }
+      }
+    } catch (error) {
+      console.error('Error playing English audio:', error);
+      isPlayingEnglishRef.current = false;
+    }
+  }, [audioSettings.pauseDuration, goToNext, isLastCard]);
+  
+  // Function to reveal answer and play English audio
+  const revealAnswerAndPlayEnglish = useCallback(async (currentSentence: Sentence) => {
+    if (isRevealingRef.current) {
+      debugLog('Already revealing answer, skipping');
+      return;
+    }
+    
+    try {
+      isRevealingRef.current = true;
+      
+      // Reveal the answer
       setIsAnswerRevealed(true);
       
-      if (currentSentence.englishAudioPath) {
-        debugLog('Playing English audio', { src: currentSentence.englishAudioPath });
-        setListenModeState('english');
-        
-        play(currentSentence.englishAudioPath).then(() => {
-          debugLog('English audio completed, waiting before advancing');
-          setListenModeState('waiting2');
-          
-          waiting2TimeoutRef.current = window.setTimeout(() => {
-            waiting2TimeoutRef.current = null;
-            
-            // Check if we're still in listen mode
-            if (viewMode !== 'listen') {
-              debugLog('Listen mode interrupted during waiting2 phase');
-              return;
-            }
-            
-            debugLog('Advancing to next card');
-            setListenModeState('idle');
-            
-            if (!isLastCard) {
-              goToNext();
-            } else {
-              debugLog('Reached last card, not advancing');
-            }
-          }, audioSettings.pauseDuration);
-        }).catch(error => {
-          debugLog('Error playing English audio', { error });
-          setListenModeState('idle');
-        });
-      } else {
-        // No audio at all, just wait and advance
-        debugLog('No audio at all, waiting before advancing');
-        setListenModeState('waiting2');
-        
-        waiting2TimeoutRef.current = window.setTimeout(() => {
-          waiting2TimeoutRef.current = null;
-          
-          // Check if we're still in listen mode
-          if (viewMode !== 'listen') {
-            debugLog('Listen mode interrupted during waiting2 phase');
-            return;
-          }
-          
-          debugLog('Advancing to next card');
-          setListenModeState('idle');
-          
-          if (!isLastCard) {
-            goToNext();
-          } else {
-            debugLog('Reached last card, not advancing');
-          }
+      // Pause briefly after revealing answer
+      await new Promise<void>((resolve) => {
+        setTimeout(() => {
+          debugLog('Pause after revealing answer');
+          resolve();
         }, audioSettings.pauseDuration);
-      }
-    }
-  }, [
-    currentDeck, 
-    viewMode, 
-    getCurrentSentence, 
-    clearAllTimeouts,
-    stop, 
-    setIsAnswerRevealed, 
-    play, 
-    audioSettings.pauseDuration, 
-    goToNext, 
-    isLastCard
-  ]);
-  
-  // Reset listen mode state
-  const resetListenMode = useCallback(() => {
-    debugLog('Resetting listen mode');
-    setListenModeState('idle');
-    lastSentenceIdRef.current = null;
-    clearAllTimeouts();
-    stop();
-  }, [clearAllTimeouts, stop]);
-  
-  // Effect to start listen mode sequence when currentDeck or viewMode changes
-  useEffect(() => {
-    if (viewMode === 'listen' && currentDeck && listenModeState === 'idle') {
-      debugLog('Auto-starting listen mode sequence');
-      // Small delay to ensure state updates
-      const timeoutId = setTimeout(() => {
-        startListenModeSequence();
-      }, 50);
+      });
       
-      return () => clearTimeout(timeoutId);
+      // Play English audio
+      await playEnglishAudio(currentSentence);
+      
+      isRevealingRef.current = false;
+    } catch (error) {
+      console.error('Error revealing answer:', error);
+      isRevealingRef.current = false;
     }
-  }, [viewMode, currentDeck, listenModeState, startListenModeSequence]);
+  }, [audioSettings.pauseDuration, playEnglishAudio, setIsAnswerRevealed]);
   
-  // Clean up timeouts when component unmounts
+  // Function to handle the listen mode sequence
+  const handleListenMode = useCallback(async () => {
+    const currentSentence = getCurrentSentence();
+    
+    if (!currentSentence) {
+      debugLog('No current sentence');
+      return;
+    }
+    
+    // Check if we've already played this sentence
+    if (lastSentenceIdRef.current === currentSentence.id) {
+      debugLog('Already played this sentence');
+      return;
+    }
+    
+    // If we're already playing, don't start again
+    if (isPlayingRef.current) {
+      debugLog('Already playing, skipping');
+      return;
+    }
+    
+    try {
+      isPlayingRef.current = true;
+      
+      // Update last played sentence ID
+      lastSentenceIdRef.current = currentSentence.id;
+      
+      // Play Japanese audio first
+      if (currentSentence.sentence.audio) {
+        debugLog('Playing Japanese audio', { src: currentSentence.sentence.audio });
+        await play(currentSentence.sentence.audio).then(() => {
+          debugLog('Japanese audio finished');
+          
+          // After Japanese audio finishes, pause before revealing answer
+          return new Promise<void>((resolve) => {
+            setTimeout(() => {
+              debugLog('Pause after Japanese audio');
+              resolve();
+            }, audioSettings.pauseDuration);
+          });
+        });
+        
+        // After pause, reveal answer and play English
+        await revealAnswerAndPlayEnglish(currentSentence);
+      } else {
+        debugLog('No Japanese audio available');
+        
+        // If no Japanese audio, just reveal answer and play English
+        await revealAnswerAndPlayEnglish(currentSentence);
+      }
+      
+      isPlayingRef.current = false;
+    } catch (error) {
+      console.error('Error in listen mode sequence:', error);
+      isPlayingRef.current = false;
+    }
+  }, [audioSettings.pauseDuration, getCurrentSentence, revealAnswerAndPlayEnglish]);
+  
+  // Effect to handle listen mode
   useEffect(() => {
-    return () => {
-      clearAllTimeouts();
-    };
-  }, [clearAllTimeouts]);
+    if (viewMode === 'listen' && currentDeck) {
+      handleListenMode();
+    }
+  }, [viewMode, currentDeck, handleListenMode]);
+  
+  // Function to reset listen mode state
+  const resetListenMode = useCallback(() => {
+    lastSentenceIdRef.current = null;
+    isPlayingRef.current = false;
+    isRevealingRef.current = false;
+    isAdvancingRef.current = false;
+    isPlayingEnglishRef.current = false;
+    isPlayingJapaneseRef.current = false;
+    isPausingRef.current = false;
+    isResettingRef.current = false;
+    isStoppingRef.current = false;
+    isStartingRef.current = false;
+    isResumingRef.current = false;
+    isPausingBetweenCardsRef.current = false;
+  }, []);
   
   return {
-    listenModeState,
-    startListenModeSequence,
-    resetListenMode,
-    restartCurrentPhase
+    resetListenMode
   };
 } 
