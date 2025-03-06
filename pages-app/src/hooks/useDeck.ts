@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { Deck, Sentence } from '../types';
+import { Deck } from '../types';
 import { srsService } from '../services/srsService';
 import { fetchDeck } from '../utils/loadDeck';
 

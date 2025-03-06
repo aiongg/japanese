@@ -1,4 +1,4 @@
-import { Sentence, SRSData } from '../types';
+import { Sentence } from '../types';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
 
 interface SRSDebugTableProps {

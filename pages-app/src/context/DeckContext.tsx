@@ -21,7 +21,10 @@ export function DeckProvider({ children }: { children: ReactNode }) {
         const initialDeckMetadata: DeckMetadata[] = deckFiles.map(file => ({
           id: file,
           title: file.replace('sentences_', 'Sentences ').replace('-', ' to '),
-          count: 0 // Placeholder count
+          count: 0,
+          dueCount: 0,
+          newCount: 0,
+          completedCount: 0
         }));
         
         // Set initial metadata to show something immediately
@@ -34,7 +37,10 @@ export function DeckProvider({ children }: { children: ReactNode }) {
             return deck ? {
               id: deckId,
               title: deck.title,
-              count: deck.sentences.length
+              count: deck.sentences.length,
+              dueCount: 0,
+              newCount: deck.sentences.length,
+              completedCount: 0
             } : null;
           } catch (error) {
             console.error(`Error loading deck ${deckId}:`, error);

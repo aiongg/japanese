@@ -7,7 +7,7 @@ const DEFAULT_SRS_DATA: SRSData = {
   dueDate: null,
   repetitions: 0,
   timesSeen: 0,
-  lastResponse: null
+  lastResponse: 'unseen'
 };
 
 export async function fetchDeckList(): Promise<string[]> {
@@ -80,4 +80,8 @@ function formatDeckTitle(filename: string): string {
     return `Sentences ${start}-${end}`;
   }
   return filename;
-} 
+}
+
+export function initializeCard(): SRSData {
+  return DEFAULT_SRS_DATA;
+}

@@ -1,21 +1,11 @@
 import { useEffect } from 'react';
 
-// Debug flag - set to true to enable debug logs
-const DEBUG = true;
-
-// Function to log debug messages
-function debugLog(...args: unknown[]) {
-  if (DEBUG) {
-    console.log('[KEYBOARD SHORTCUTS]', ...args);
-  }
-}
-
-export interface UseKeyboardShortcutsProps {
-  onNext?: () => void;
-  onPrevious?: () => void;
-  onPlayAudio?: () => void;
-  onRevealAnswer?: () => void;
-  isAnswerRevealed?: boolean;
+interface UseKeyboardShortcutsOptions {
+  onNext: () => void;
+  onPrevious: () => void;
+  onPlayAudio: () => void;
+  onRevealAnswer: () => void;
+  isAnswerRevealed: boolean;
 }
 
 export function useKeyboardShortcuts({
@@ -24,7 +14,7 @@ export function useKeyboardShortcuts({
   onPlayAudio,
   onRevealAnswer,
   isAnswerRevealed
-}: UseKeyboardShortcutsProps) {
+}: UseKeyboardShortcutsOptions) {
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
       // Ignore key events when typing in input fields
